@@ -1,0 +1,141 @@
+#process_code {
+  display: flex;
+  flex-direction: column;
+}
+
+.top_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_select_container {
+  display: flex;
+  /* 제목과 select 상자를 가로로 나란히 배치 */
+  align-items: center;
+  /* 세로 중앙 정렬 */
+  gap: 10px;
+  /* 제목과 select 상자 사이의 간격 */
+}
+
+#process_code_button {
+  display: flex;
+  gap: 20px;
+  /* 버튼 사이의 간격 */
+}
+
+
+#process_board {
+  width: 95%;
+  border-collapse: collapse;
+  text-align: center;
+  border: '1';
+}
+
+th,
+td {
+  padding: 0.8%;
+  border: 1px solid rgba(170, 165, 165, 0.826);
+}
+
+#main_content {
+  width: 100%;
+  background-color: #e9e3e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: #d3caca;
+  color: black;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.change_button {
+  padding: 10px 20px;
+  /* 버튼 내부 여백 설정 */
+  background-color: #1abc9c;
+  /* 밝은 파란색 배경 */
+  border: none;
+  /* 테두리 제거 */
+  color: white;
+  /* 글자색 흰색 */
+  font-size: 1em;
+  /* 글자 크기 */
+  border-radius: 10px;
+  /* 모서리 둥글게 */
+  cursor: pointer;
+  /* 마우스 오버 시 커서 변경 */
+  transition: background-color 0.3s ease;
+  /* 배경색 변경 애니메이션 */
+}
+
+.change_button:hover {
+  background-color: #4169E1;
+  /* 마우스 오버 시 배경색 진한 파란색으로 변경 */
+}
+
+/* 공정거래 등록 팝업 위치 fixed 및 크기등 조절 */
+#process_new_register {
+  display: none;
+  width: 50%;
+  max-height: 80%;
+  background-color: #e0dcdc;
+  border-radius: 5px;
+  position: fixed;
+  top: 10%;
+  right: 20%;
+  overflow-y: auto;
+}
+
+#table_wrap {
+  width: 90%;
+  height: 70%;
+  background-color: #fff;
+  /* position :absolute; */
+  margin: 0 auto;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+#new_process {
+  width: 100%;
+  padding: 3px;
+}
+
+.input_group {
+  display: flex;
+}
+
+#pop_title {
+  height: 7%;
+  font-size: 1.0em;
+  font-weight: bold;
+  margin: 1% 0 1% 5%;
+}
+
+#new_process .text {
+  width: 100%;
+  border: 1px solid rgb(217, 217, 236);
+  border-radius: 5px;
+}
+
+#new_process .text:focus {
+  outline: 1px solid rgb(50, 50, 230);
+}
+
+/*  팝업 테이블 선 없애기 */
+#new_process td,
+tr {
+  font-size: 0.9em;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
+
+}

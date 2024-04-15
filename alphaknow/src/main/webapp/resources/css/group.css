@@ -1,0 +1,112 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Malgun Gothic', 'Nanum Gothic', 'Gothic', sans-serif;
+}
+
+.side {
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+.vertical_line {
+    width: 2px;
+    height: 100%;
+    background-color: #777;
+    position: fixed;
+    top: 0;
+    left: 20%;
+}
+
+.profile_img {
+    display: inline-block;
+    width: 120px;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.logout {
+    text-decoration: none;
+    color: #7a7a7a;
+    border: 2px solid #7a7a7a;
+    padding: 4px;
+}
+
+.side_menu {
+    margin-top: 90px;
+}
+
+.side_menu ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+.side_menu ul li {
+    display: inline-block;
+}
+
+.side_menu ul li a {
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    width: 180px;
+    text-align: left;
+    color: #777;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.side_menu ul li a:hover {
+    color: rgb(27, 197, 163);
+    cursor: pointer;
+}
+
+.side_menu ul li a.active {
+    color: rgb(26, 188, 156);
+    cursor: pointer;
+}
+
+.main {
+    width: 80%;
+    height: 100%;
+}
+
+.menu {
+    margin-left: 20px;
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline-block;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    width: 170px;
+    height: 40px;
+    border: 0;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgb(190, 190, 190);
+    color: #fff;
+    border-radius: 50px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.menu ul li a:hover {
+    background: rgb(170, 170, 170);
+    color: #fff;
+    border: 0;
+}

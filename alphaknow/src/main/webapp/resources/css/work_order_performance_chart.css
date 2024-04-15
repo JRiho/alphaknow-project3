@@ -1,0 +1,278 @@
+/* 전체 마진, 폰트 */
+body {
+    margin: 0px;
+    font-size: 1em;
+}
+
+/* 작업지시대비실적현황 헤더 */
+#headerj {
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+
+    margin-top: 10px;
+    padding: 5px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 윗칸 div */
+.updiv {
+    /* border: 1px dotted black; */
+    width: 97%;
+    height: 380px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 15px;
+    font-size: 0.8em;
+}
+
+/* selbox_div */
+#selbox_div {
+    /* border: 1px dotted black; */
+    margin-bottom: 5px;
+}
+
+/* selbox */
+#dname,
+#wname,
+#work_chart {
+    height: 25px;
+}
+
+/* 차트, 월 표시 전체 div */
+#chartInfo {
+    /* border: 1px dotted black; */
+    border: 1px solid #cccccc;
+
+    display: flex;
+
+    height: 93.5%;
+}
+
+/* 차트 표 왼쪽 부분 1~100% 라인 */
+#chart_num {
+    /* border: 1px dotted black; */
+
+    height: 90%;
+    width: 1.5%;
+
+    display: flex;
+    overflow-x: visible;
+
+    flex-direction: column;
+    justify-content: space-between
+}
+
+/* 라인 자체 */
+.line {
+    /* border-bottom: 1px solid black; */
+    border-bottom: 1px solid #cccccc;
+    width: 6500%;
+
+    /* 그래프 뒤로 라인 나오게 하기 */
+    z-index: -1;
+    /* 우측으로 밀기 */
+    margin-left: 300%;
+    /* 라인 = 바 맞추기 */
+    margin-bottom: 1px;
+}
+
+/* 라인 앞 숫자 div */
+#chart_line {
+    /* border: 1px dotted black; */
+    height: 90%;
+    width: 1.5%;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between
+}
+
+/* 라인 앞 숫자 자체 */
+.line_label {
+    /* border: 1px solid black; */
+    margin-left: -10px;
+    font-size: 10px;
+}
+
+/* 라인 제외 바차트, 월표시 묶음 */
+#bar_month_wrap {
+    /* border: 1px dotted black; */
+    width: 100%;
+}
+
+/* 바 차트 컨테이너 div */
+#bar_container {
+    /* border: 1px dotted black; */
+    border: 1px solid #cccccc;
+    width: 100% -1px;
+    height: 90%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+/* 월 컨테이너 div */
+#month_container {
+    /* border: 1px dotted black; */
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+/* 바 자체 */
+.bar {
+    border: 1px solid black;
+    background-color: lightblue;
+    width: 30px;
+    /* height: 10%; */
+
+    /* 초기 높이를 0으로 설정 */
+    height: 0;
+    /* growHeight 애니메이션 추가 */
+    /* forwards 를 통해 애니메이션이 끝난 후 높이 유지 */
+    animation: growHeight 0.7s ease-out forwards;
+}
+
+/* .bar 애니메이션 효과 */
+@keyframes growHeight {
+    to {
+        height: 30%;
+        /* 최종 높이: 10% */
+    }
+}
+
+/* ////////////////////////////////////////////////// */
+/* 월 칸 테두리 */
+.month {
+    /* border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black; */
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    background-color: #eaeaea;
+    width: 100%;
+    height: 93%;
+
+    text-align: center;
+    line-height: 35px;
+}
+
+/* 월 칸 테두리 (우측) */
+#month12 {
+    /* border-right: 1px solid black; */
+    border-right: 1px solid #cccccc;
+}
+
+/* ////////////////////////////////////////////////// */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 중앙구분선 */
+#center_line {
+    border-top: 1px solid #cccccc;
+
+    margin-top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+/* 아랫칸 div */
+.downdiv {
+    /* border: 1px dotted black; */
+    width: 97%;
+    height: 300px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 15px;
+    font-size: 0.8em;
+    padding-bottom: 15px;
+}
+
+/* selbox_div */
+#selbox_div {
+    /* border: 1px dotted black; */
+    margin-bottom: 5px;
+}
+
+/* selbox */
+#pcb_month {
+    height: 25px;
+}
+
+/* week_info_div */
+#week_info {
+    /* border: 1px dotted black; */
+    width: 100% -1px;
+    height: 90%;
+}
+
+/* weeks_div */
+#weeks {
+    display: flex;
+}
+
+/* 각 주차들 박스 전체 */
+.week {
+    cursor: pointer;
+
+    /* border: 1px dotted black; */
+    border: 1px solid #cccccc;
+    padding: 5px 10px;
+
+    background-color: #eaeaea;
+}
+
+/* info_div */
+#info1 {
+    /* border: 1px dotted red; */
+    /* border: 1px dotted red; */
+    width: 100%;
+    height: 90%;
+}
+
+/* info_table 테두리 */
+#info_table,
+#info_table_thead tr,
+#info_table_thead th,
+#info_table_tbody tr,
+#info_table_tbody td {
+    /* border: 1px solid black; */
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+}
+
+/* 테이블 전체 넓이 */
+#info_table {
+    width: 100%;
+    height: 100%;
+}
+
+
+#info_table_thead th {
+    height: 35px;
+    background-color: #eaeaea;
+}

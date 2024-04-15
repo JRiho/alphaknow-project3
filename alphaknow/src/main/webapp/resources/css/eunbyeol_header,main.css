@@ -1,0 +1,259 @@
+/* content 영역 설정*/
+#content {
+	font-family: 'Malgun Gothic', 'Nanum Gothic', 'Gothic', sans-serif;
+	background-color: rgb(222,226,230);
+	font-size: 1em;
+	overflow-y: auto;
+}
+
+/* content header 설정*/
+#main_header {
+	font-size: 2em;
+	width: 100%;
+	background-color: rgb(222,226,230);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* content_header_title 페이지 이름*/
+#content_header_title {
+	width: 50%;
+	margin-left: 3%;
+}
+
+/* content_header_search  페이지 내 검색 영역*/
+#content_header_search {
+	width: 50%;
+	display: flex;
+	justify-content: flex-end;
+	border-radius: 25px;
+	margin-right: 3%;
+}
+
+#content_header_search>button {
+	height: 30px;
+	font-size: 10px;
+}
+
+/* content main 영역*/
+#main_content_wrap {
+	width: 100%;
+	background-color: rbg(247,248,249);
+	overflow-y: auto;
+}
+
+/* 메인테이블 조절*/
+#main_board {
+	width: 95%;
+	border-collapse: collapse;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* content main table 선 설정*/
+thead tr {
+	background-color: rgb(255,255,255);
+	border-top: 2px solid #000
+}
+
+th, td {
+	padding: 0.8%;
+	border: 1px solid rgba(255,255,255);
+}
+
+/* content_main button 간격 조절 */
+#content_main_button {
+	display: flex;
+	justify-content: center;
+	padding: 3px;
+}
+
+#content_main_button>button {
+	margin: 5px;
+}
+
+/* 모든 input 창 hover */
+input {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+
+input:hover {
+	outline: 1px solid rgb(50, 50, 230);
+}
+
+input:focus {
+	outline: 1px solid rgb(50, 50, 230);
+}
+
+/* 버튼효과 css */
+.change_button {
+	padding: 1% 2%;
+	background-color: #6495ED;
+	border: none;
+	color: #fff;
+	font-size: 0.8em;
+	border-radius: 10px;
+	cursor: pointer;
+	/* 배경 이미지 애니메이션*/
+	transition: background-color 0.3s ease;
+}
+
+.change_button:hover {
+	background-color: #4169E1;
+}
+
+.button_basic {
+	padding: 1% 1%;
+	background-color: #fff;
+	font-size: 0.8em;
+	border-radius: 10px;
+	cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.button_basic:hover {
+	border: 1px solid rgb(50, 50, 230);
+}
+
+/* 팝업창 헤더*/
+.pop_header {
+	width: 100%;
+	height: 15%;
+	background-color: #1f48d4;
+	border-radius: 5px 5px 0 0;
+}
+
+.pop_header_title {
+	font-size: 1.5em;
+	padding: 2% 0 2% 2%;
+}
+
+/* 팝업창 nav 제목 */
+.pop_content_header {
+	display: flex;
+}
+
+.pop_content_title {
+	margin: 2% 0 2% 2%;
+	display: flex;
+}
+
+/* 팝업창 content 영역 */
+.pop_content_wrap {
+	width: 100%;
+	background-color: rgb(247,248,249);
+	border-radius: 5px;
+}
+
+.pop_content_com {
+	width: 90%;
+	max-height: 450px;
+	background-color: #fff;
+	display: flex;
+	overflow-y: auto;
+	margin: 0 auto;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+/* 팝업창 스크롤 바 css*/
+
+/* 스크롤바 전체의 너비 */
+.pop_content_com::-webkit-scrollbar {
+	width: 12px;
+}
+
+/* 팝업 스크롤바 배경 */
+.pop_content_com::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #f5f5f5;
+}
+
+/* 스크롤바 핸들(움직이는 부분) */
+.pop_content_com::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgb(222, 226, 230);
+}
+
+/* 스크롤바 핸들 호버 시 */
+.pop_content_com::-webkit-scrollbar-thumb:hover {
+	background-color: rgb(206, 212, 218);
+}
+
+/* 스크롤바 배경 */
+.pop_content_com::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #f5f5f5;
+}
+
+/* 스크롤바 핸들(움직이는 부분) */
+.pop_content_com::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgb(222, 226, 230);
+}
+
+/* 스크롤바 핸들 호버 시 */
+.pop_content_com::-webkit-scrollbar-thumb:hover {
+	background-color: rgb(206, 212, 218);
+}
+
+
+
+/* 팝업창 리스트에 대한 설정*/
+.wrapper_ul {
+	width: 100%;
+	display: flex;
+}
+
+.wrapper_li {
+	width: 100%;
+	padding: 0;
+	font-size: 0.8em;
+}
+
+.whole_row {
+	display: flex;
+	margin: 0 auto;
+	align-items: center;
+}
+
+.control_set {
+	display: flex;
+	height: 40px;
+	padding-top: 10px;
+}
+
+.title {
+	width: 30%;
+	margin-left: 5%;
+}
+
+.form {
+	width: 100%;
+}
+
+.form input {
+	width: 100%;
+}
+
+.pop_footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+}
+
+.pop_footer>button {
+	margin: 5px;
+}
+
+.use_check{
+	display: flex;
+	align-items: center;
+}
+/* pop 드래그 팝업창 드래그 */
+.draggable {
+	cursor: move;
+}

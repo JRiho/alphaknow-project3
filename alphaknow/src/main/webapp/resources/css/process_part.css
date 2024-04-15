@@ -1,0 +1,79 @@
+a {
+    text-decoration-line: none;
+}
+
+.center {
+    text-align: center;
+    font-weight: bold;
+}
+
+.day {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#part list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4개의 열 생성 */
+    grid-auto-rows: auto;
+    /* 행 높이 자동 조정 */
+    grid-gap: 10px;
+    /* 그리드 간격 */
+}
+
+#part list li {
+    list-style-type: none;
+    /* 리스트 스타일 제거 */
+}
+
+#part list li a img {
+    width: 200px;
+    /* 이미지의 너비를 150px로 고정 */
+    height: 200px;
+    /* 이미지의 높이를 150px로 고정 */
+    object-fit: cover;
+    /* 이미지 비율을 유지하면서 컨테이너에 맞게 조정 */
+}
+
+#main_content {
+    width: 100%;
+    background-color: #e9e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: #d3caca;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.change_button {
+    padding: 10px 20px;
+    /* 버튼 내부 여백 설정 */
+    background-color: #6495ED;
+    /* 밝은 파란색 배경 */
+    border: none;
+    /* 테두리 제거 */
+    color: white;
+    /* 글자색 흰색 */
+    font-size: 16px;
+    /* 글자 크기 */
+    border-radius: 10px;
+    /* 모서리 둥글게 */
+    cursor: pointer;
+    /* 마우스 오버 시 커서 변경 */
+    transition: background-color 0.3s ease;
+    /* 배경색 변경 애니메이션 */
+}
+
+.change_button:hover {
+    background-color: #4169E1;
+    /* 마우스 오버 시 배경색 진한 파란색으로 변경 */
+}
