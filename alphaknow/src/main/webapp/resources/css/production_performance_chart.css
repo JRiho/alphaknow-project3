@@ -1,0 +1,190 @@
+/* 전체 마진, 폰트 */
+body {
+    margin: 0px;
+    font-size: 1em;
+}
+
+/* 생산계획대비실적현황 헤더 */
+#headerj {
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+
+    margin-top: 10px;
+    padding: 5px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 윗칸 div */
+.updiv {
+    /* border: 1px dotted black; */
+    width: 97%;
+    height: 380px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 15px;
+    font-size: 0.8em;
+}
+
+/* selbox_div */
+#selbox_div {
+    /* border: 1px dotted black; */
+    margin-bottom: 5px;
+}
+
+/* selbox */
+#pcb_year,
+#pcb_type,
+#pcb_chart {
+    height: 25px;
+}
+
+
+
+
+
+
+
+/* 차트, 월 표시 전체 div */
+#chartInfo {
+    width: 100%;
+    height: 95%;
+}
+
+
+
+
+
+
+
+
+/* ////////////////////////////////////////////////// */
+/* 월 칸 테두리 */
+.month {
+    /* border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black; */
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    background-color: #eaeaea;
+    width: 100%;
+    height: 93%;
+
+    text-align: center;
+    line-height: 35px;
+}
+
+/* 월 칸 테두리 (우측) */
+#month12 {
+    /* border-right: 1px solid black; */
+    border-right: 1px solid #cccccc;
+}
+
+/* ////////////////////////////////////////////////// */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 중앙구분선 */
+#center_line {
+    border-top: 1px solid #cccccc;
+
+    margin-top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+/* 아랫칸 div */
+.downdiv {
+    /* border: 1px dotted black; */
+    width: 97%;
+    height: 300px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 15px;
+    font-size: 0.8em;
+    padding-bottom: 15px;
+}
+
+/* selbox_div */
+#selbox_div {
+    /* border: 1px dotted black; */
+    margin-bottom: 5px;
+}
+
+/* selbox */
+#pcb_month {
+    height: 25px;
+}
+
+/* week_info_div */
+#week_info {
+    /* border: 1px dotted black; */
+    width: 100% -1px;
+    height: 90%;
+}
+
+/* weeks_div */
+#weeks {
+    display: flex;
+}
+
+/* 각 주차들 박스 전체 */
+.week {
+    cursor: pointer;
+
+    /* border: 1px dotted black; */
+    border: 1px solid #cccccc;
+    padding: 5px 10px;
+
+    background-color: #eaeaea;
+}
+
+/* info_div */
+#info1 {
+    /* border: 1px dotted red; */
+    /* border: 1px dotted red; */
+    width: 100%;
+    height: 90%;
+}
+
+/* info_table 테두리 */
+#info_table,
+#info_table_thead tr,
+#info_table_thead th,
+#info_table_tbody tr,
+#info_table_tbody td {
+    /* border: 1px solid black; */
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+}
+
+/* 테이블 전체 넓이 */
+#info_table {
+    width: 100%;
+    height: 100%;
+}
+
+
+#info_table_thead th {
+    height: 35px;
+    background-color: #eaeaea;
+}

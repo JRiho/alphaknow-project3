@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- tag(node) 의 순서에 주의 -->
+	
+    <settings>
+		<!-- 전달인자로 들어가는 null 이 에러가 나지 않게 함 (전달인자로 null을 줄 수 있음) -->
+        <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+
+	<!-- mapper애서 사용할 타입이 길어서 짧게 별칭 지정 -->
+	<typeAliases>
+		<typeAlias type="pppDTO.ProductionPlanPerformanceDTO" alias="pppDTO" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"></property>
+				<property name="url" value="jdbc:oracle:thin:@112.148.46.134:51521:xe"></property>
+				<property name="username" value="alphaknow"></property>
+				<property name="password" value="qwer1234"></property>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- xml 자원 등록 -->
+	<mappers>
+		<mapper resource="mybatis/mappers/pppChart.xml" />
+	</mappers>
+	
+</configuration>
