@@ -1,3 +1,0 @@
-INDEX VERSION 1.4+D:\workspace\workspace_teamproject_toSpring_after\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3897483592.index
-2718509213.index
