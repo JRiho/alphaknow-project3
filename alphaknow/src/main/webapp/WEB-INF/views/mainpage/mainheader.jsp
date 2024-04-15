@@ -16,7 +16,6 @@
 
 <body>
     <div class="main_box">
-        <!-- <div class="left-box"> -->
         <div id="header">
             <ul>
                 <li id="li_icon">
