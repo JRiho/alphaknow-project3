@@ -16,3 +16,7 @@ header {
 	height: 80px; 
 	display: block;
 }
+
+header > a {
+	cursor: pointer;
+}

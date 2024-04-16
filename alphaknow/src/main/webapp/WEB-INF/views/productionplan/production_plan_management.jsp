@@ -2,14 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO"%>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생산계획관리</title>
-</head>
 
 <body>
 	<form id=myForm method="post">
@@ -117,13 +109,9 @@
 	</form>
 </body>
 
-<%
-String contextPath = request.getContextPath();
-%>
-
 <link rel="stylesheet"
-	href="<%=contextPath%>/css/production_plan_management.css">
+	href="/alphaknow/resources/css/production_plan_management.css">
 <script
-	src="<%=contextPath%>/js/production_plan_management.js"></script>
+	src="/alphaknow/resources/js/production_plan_management.js"></script>
 
 </html>
