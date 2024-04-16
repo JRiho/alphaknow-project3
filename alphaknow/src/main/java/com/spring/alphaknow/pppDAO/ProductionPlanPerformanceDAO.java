@@ -1,4 +1,4 @@
-package pppController;
+package com.spring.alphaknow.pppDAO;
 
 import java.io.Reader;
 import java.util.Calendar;
@@ -6,12 +6,11 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import pppDTO.ProductionPlanPerformanceDTO;
+import com.spring.alphaknow.dto.pppDTO.ProductionPlanPerformanceDTO;
 
 public class ProductionPlanPerformanceDAO {
 	private static SqlSessionFactory sqlMapper = null;

@@ -1,4 +1,4 @@
-package com.spring.alphaknow.dto.equipmentDAO;
+package com.spring.alphaknow.dao.equipmentDAO;
 
 import java.io.IOException;
 import java.util.List;

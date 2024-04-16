@@ -1,4 +1,4 @@
-package ppmController;
+package com.spring.alphaknow.dao.ppmDAO;
 
 import java.io.IOException;
 import java.sql.Connection;

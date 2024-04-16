@@ -1,4 +1,4 @@
-package pppController;
+package com.spring.alphaknow.pppDAO;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pppDTO.ProductionPlanPerformanceDTO;
+import com.spring.alphaknow.dto.pppDTO.ProductionPlanPerformanceDTO;
 
 @WebServlet("/ppp.do")
 public class PppChartServlet extends HttpServlet {

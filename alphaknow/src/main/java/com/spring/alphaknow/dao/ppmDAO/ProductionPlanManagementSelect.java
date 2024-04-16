@@ -1,4 +1,4 @@
-package com.spring.alphaknow.dto.ppmDAO;
+package com.spring.alphaknow.dao.ppmDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
