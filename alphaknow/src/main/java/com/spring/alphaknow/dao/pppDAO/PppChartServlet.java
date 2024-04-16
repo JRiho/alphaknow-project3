@@ -1,4 +1,4 @@
-package com.spring.alphaknow.pppDAO;
+package com.spring.alphaknow.dao.pppDAO;
 
 import java.io.IOException;
 import java.util.List;

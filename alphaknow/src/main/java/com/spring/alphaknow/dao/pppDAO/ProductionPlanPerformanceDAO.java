@@ -1,4 +1,4 @@
-package com.spring.alphaknow.pppDAO;
+package com.spring.alphaknow.dao.pppDAO;
 
 import java.io.Reader;
 import java.util.Calendar;
