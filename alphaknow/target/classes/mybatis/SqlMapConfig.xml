@@ -3,7 +3,9 @@
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+	<!-- jdbc.properties로 ㅋ  -->
+	 <properties resource="jdbc.properties"/>
+	
 <!-- tag(node) 의 순서에 주의 -->
 	
     <settings>
@@ -20,10 +22,10 @@
 		<environment id="development">
 			<transactionManager type="JDBC"></transactionManager>
 			<dataSource type="POOLED">
-				<property name="driver" value="oracle.jdbc.driver.OracleDriver"></property>
-				<property name="url" value="jdbc:oracle:thin:@112.148.46.134:51521:xe"></property>
-				<property name="username" value="alphaknow"></property>
-				<property name="password" value="qwer1234"></property>
+				<property name="driver" value="${driver}" />
+    			<property name="url" value="${url}" />
+			    <property name="username" value="${username}" />
+			    <property name="password" value="${password}" />
 			</dataSource>
 		</environment>
 	</environments>

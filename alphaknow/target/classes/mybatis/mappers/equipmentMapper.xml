@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.alphaknow.mappers.EquipmentMapper">
+    <select id="getAllEquipments" resultType="Equipment">
+        SELECT * FROM Equipment
+    </select>
+    <insert id="addEquipment">
+        INSERT INTO Equipment (equipment_code, equipment_name, ...)
+        VALUES (#{equipmentCode}, #{equipmentName}, ...)
+    </insert>
+    <delete id="deleteEquipment">
+        DELETE FROM Equipment WHERE equipment_code = #{equipmentCode}
+    </delete>
+    <update id="updateEquipment">
+        UPDATE Equipment SET equipment_name = #{equipmentName}, ...
+        WHERE equipment_code = #{equipmentCode}
+    </update>
+</mapper>
