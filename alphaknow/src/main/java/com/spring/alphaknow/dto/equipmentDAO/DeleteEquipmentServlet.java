@@ -1,4 +1,4 @@
-package process;
+package com.spring.alphaknow.dto.equipmentDAO;
 
 
 import javax.servlet.*;

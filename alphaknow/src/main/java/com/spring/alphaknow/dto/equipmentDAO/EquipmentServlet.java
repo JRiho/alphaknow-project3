@@ -1,4 +1,4 @@
-package process;
+package com.spring.alphaknow.dto.equipmentDAO;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import classDirectory.Equipment;
+import com.spring.alphaknow.dto.equipmentDTO.Equipment;
 
 @WebServlet("/equipment")
 public class EquipmentServlet extends HttpServlet {
