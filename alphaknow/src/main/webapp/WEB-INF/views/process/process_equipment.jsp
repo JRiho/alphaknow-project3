@@ -158,7 +158,7 @@
 					<th>구입업체명</th>
 					<th>수리업체명</th>
 					<th>관리자</th>
-					<th>위치</th>
+					<th>위치</th> 
 					<th>용도</th>
 					<th>사용여부</th>
 					<th>구매일</th>
@@ -170,7 +170,7 @@
 				<%
 				List<Equipment> equipmentList = (List<Equipment>) request.getAttribute("equipmentList");
 				if (equipmentList != null) {
-					for (Equipment equipment : equipmentList) {
+					for (Equipment equipment : equipmentList) { 
 				%>
 				<tr>
 					<th><input type="checkbox" name="selectedEquipment"

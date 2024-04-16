@@ -18,7 +18,7 @@
         VALUES (#{equipmentCode}, #{equipmentName}, #{managementNumber}, #{manufacturer}, 
                 #{purchasingCompanyName}, #{repairCompanyName}, #{manager}, #{location}, 
                 #{usage}, #{usageStatus}, #{purchaseDate}, #{historyRegistrationDate})
-    </insert>
+    </insert>                  
 
     <!-- 장비 삭제 -->
     <delete id="deleteEquipment">
