@@ -1,4 +1,4 @@
-package pppDTO;
+package com.spring.alphaknow.dto.pppDTO;
 
 public class ProductionPlanPerformanceDTO {
 	private int workYear;
