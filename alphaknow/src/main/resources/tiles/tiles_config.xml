@@ -10,21 +10,36 @@
 		<put-attribute name="content" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
-
+	
+	<!-- 메인페이지 -->
 	<definition name="mainpage" extends="baseLayout">
 		<put-attribute name="title" value="메인페이지" />
 		<put-attribute name="content" value="/WEB-INF/views/mainpage/mainPage.jsp" />
 	</definition>
 	
+	<!-- 게시판 -->
 	<definition name="board" extends="baseLayout">
-		<put-attribute name="title" value="메인페이지" />
+		<put-attribute name="title" value="게시판" />
 		<put-attribute name="content" value="/WEB-INF/views/board/project_board.jsp" />
 	</definition>
 	
+	<!-- 생산계획관리 -->
+	<definition name="ppm" extends="baseLayout">
+		<put-attribute name="title" value="생산계획관리" />
+		<put-attribute name="content" value="/WEB-INF/views/productionplan/production_plan_management.jsp" />
+	</definition>
+	
+	
+	
+	
+	
+	
+	<!-- 메인페이지 리플로우온도 -->
 	<definition name="iframeReflow" template="/WEB-INF/views/monitoring/reflow_iframe.jsp">
 		<put-attribute name="body" value=""/>
 	</definition>
 	
+	<!-- 메인페이지 PCB로더 -->
 	<definition name="iframeDowntimeRate" template="/WEB-INF/views/monitoring/project_downtimeRate.jsp">
 		<put-attribute name="body" value=""/>
 	</definition>

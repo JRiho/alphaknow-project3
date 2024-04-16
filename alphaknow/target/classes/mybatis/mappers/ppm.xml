@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ppm">
+
+	<resultMap id="productionPlanManagementResultMap" type="ppmDTO">
+        <id property="ppc" column="production_plan_code"/>
+        <result property="itemCode" column="item_code"/>
+        <result property="itemName" column="item_name"/>
+        <result property="deliveryPlace" column="delivery_place"/>
+        <result property="deliveryAmount" column="delivery_amount"/>
+        <result property="productionAmount" column="expected_production_amount"/>
+        <result property="remainAmount" column="expected_remain_amount"/>
+        <result property="startdate" column="expected_start_date"/>
+        <result property="enddate" column="expected_end_date"/>
+    </resultMap>
+		
+	<select id="ppmSelect" resultMap="productionPlanManagementResultMap">
+		SELECT 
+		    production_plan_code, 
+		    item_code, 
+		    item_name, 
+		    delivery_place, 
+		    delivery_amount, 
+		    expected_production_amount, 
+		    expected_remain_amount, 
+		    TO_DATE(expected_start_date, 'YY-MM-DD') AS expected_start_date, 
+		    TO_DATE(expected_end_date, 'YY-MM-DD') AS expected_end_date 
+		FROM 
+		    production_plan_temp
+	</select>
+
+<!-- 	<insert id="insertProductionData" parameterType="pppDTO"> -->
+<!--         INSERT INTO production_plan_chart_temp -->
+<!--         (work_year, work_month, work_week, work_day, item_name, production_amount, make_amount, achievement_rate, defect_rate) -->
+<!--         VALUES -->
+<!--         (#{workYear}, #{workMonth}, #{workWeek}, #{workDay}, #{itemName}, #{productionAmount}, #{makeAmount}, #{achievementRate}, #{defectRate}) -->
+<!--     </insert> -->
+
+</mapper>

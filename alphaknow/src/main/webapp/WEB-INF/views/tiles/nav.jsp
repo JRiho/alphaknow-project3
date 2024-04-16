@@ -2,11 +2,12 @@
 	pageEncoding="UTF-8"%>
 	
 <link rel="stylesheet" href="/alphaknow/resources/css/tiles/nav.css">
+<script src="/alphaknow/resources/js/tiles/nav.js"></script>
 	
 <!-- 네비게이션 링크 따야함 -->
 <nav>
 	<ul>
-		<li><a href="/alphaknow/board/select">게시판</a></li>
+		<li id="boardLi"><a href="/alphaknow/board/select">게시판</a></li>
 		<li>공정기준정보
 			<ul>
 				<li>공정코드관리</li>
@@ -24,7 +25,7 @@
 		</li>
 		<li>생산관리
 			<ul>
-				<li>생산계획관리</li>
+				<li><a href="/alphaknow/ppm/select">생산계획관리</a></li>
 				<li>생산지시관리</li>
 			</ul>
 		</li>

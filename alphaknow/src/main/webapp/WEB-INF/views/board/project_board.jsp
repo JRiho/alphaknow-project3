@@ -4,16 +4,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.spring.alphaknow.dto.boardDTO.BoardDTO"%>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
 <link rel="stylesheet" href="/alphaknow/resources/css/boardWrite.css">
 <script src="/alphaknow/resources/js/script.js"></script>
-</head>
 
 <style>
 #boardContent {

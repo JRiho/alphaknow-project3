@@ -1,7 +1,7 @@
 a {
 	text-decoration: none;
 	color: inherit;
-	cursor: auto;
+	cursor: pointer;
 	background-color: transparent;
 	outline: none;
 }
