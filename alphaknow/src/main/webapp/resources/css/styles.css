@@ -1,13 +1,3 @@
-body {
-	/* margin: 1; */
-	max-height: 100vh;
-	font-family: 'Malgun Gothic', 'Nanum Gothic', 'Gothic', sans-serif;
-	background-color: rgb(233, 236, 239);
-	/* background-image: url(../img/background.webp); */
-	z-index: -1;
-	font-size: 1em;
-}
-
 .main_box {
 	width: 95%;
 	height: auto;

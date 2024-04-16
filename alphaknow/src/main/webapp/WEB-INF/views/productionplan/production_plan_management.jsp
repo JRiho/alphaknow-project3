@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-<%@ page import="ppmDTO.ProductPlanManagementDTO"%>
+<%@ page import="com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +13,6 @@
 
 <body>
 	<form id=myForm method="post">
-		<%@ include file="../mainheader.jsp"%>
 		<!-- content -->
 		<div id="content">
 

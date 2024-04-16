@@ -1,9 +1,8 @@
-package ppmController;
+package com.spring.alphaknow.dto.ppmDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ppmDTO.ProductPlanManagementDTO;
+import com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO;
 
 @WebServlet("/ppms")
 public class ProductionPlanManagementSelect extends HttpServlet {
@@ -120,7 +119,6 @@ public class ProductionPlanManagementSelect extends HttpServlet {
 
 		try {
 			request.getRequestDispatcher("productionplan/production_plan_management.jsp").forward(request, response);
-//			response.sendRedirect(request.getContextPath() + "/productionplan/production_plan_management.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

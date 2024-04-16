@@ -1,4 +1,4 @@
-package login;
+package com.spring.alphaknow.login;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -23,7 +23,8 @@ public class LoginServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
 
-        try (Connection conn = Login.getConnection()) {
+        try {
+        	Connection conn = Login.getConnection();
         	String sql = "SELECT DEPARTMENT_CODE, EMPLOYEE_NAME FROM employee WHERE EMPLOYEE_KEY=? AND EMPLOYEE_PW=?";
             try (PreparedStatement statement = conn.prepareStatement(sql)) {
                 statement.setString(1, userId);

@@ -1,4 +1,4 @@
-package board;
+package com.spring.alphaknow.dao.boardDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
