@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.spring.alphaknow.dto.boardDTO.BoardDTO;
+
 @WebServlet("/select")
 public class BoardSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -1,7 +1,8 @@
-package process;
+package com.spring.alphaknow.dto.equipmentDAO;
 
-import classDirectory.Equipment;
 import java.util.List;
+
+import com.spring.alphaknow.dto.equipmentDTO.Equipment;
 
 public interface EquipmentDAO {
     List<Equipment> getAllEquipments() throws Exception;
@@ -11,3 +12,4 @@ public interface EquipmentDAO {
 	void updateEquipment(Equipment equipment) throws Exception;
 }
 
+ 
