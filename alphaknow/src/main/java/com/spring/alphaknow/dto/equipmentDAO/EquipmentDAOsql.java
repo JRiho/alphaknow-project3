@@ -19,12 +19,15 @@ public class EquipmentDAOsql implements EquipmentDAO {
 
 	@Override
 	public List<Equipment> getAllEquipments() throws Exception {
-		List<Equipment> equipmentList = new ArrayList<>();
+		List<Equipment> equipmentList = new ArrayList<Equipment>();
 		Class.forName(driver);
-		try (Connection conn = DriverManager.getConnection(url, user, password);
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM Equipment")) {
-
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM Equipment");
 			while (rs.next()) {
 				Equipment equipment = new Equipment(rs.getInt("equipment_code"), rs.getString("equipment_name"),
 						rs.getString("management_number"), rs.getString("manufacturer"),
@@ -34,6 +37,18 @@ public class EquipmentDAOsql implements EquipmentDAO {
 						rs.getString("history_registration_date"));
 				equipmentList.add(equipment);
 			}
+		}catch (SQLException e) {
+		    // 예외 처리 로직 (예: 로깅)
+		    e.printStackTrace();
+		} finally {
+		    // 자원 해제
+		    try {
+		        if (rs != null) rs.close();
+		        if (stmt != null) stmt.close();
+		        if (conn != null) conn.close();
+		    } catch (SQLException se) {
+		        se.printStackTrace();
+		    }
 		}
 		return equipmentList;
 	}
@@ -100,9 +115,11 @@ public class EquipmentDAOsql implements EquipmentDAO {
 	@Override
 	public void deleteEquipment(int equipmentCode) throws Exception {
 		Class.forName(driver);
-		try (Connection conn = DriverManager.getConnection(url, user, password);
-				PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Equipment WHERE equipment_code = ?")) {
-
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+			pstmt = conn.prepareStatement("DELETE FROM Equipment WHERE equipment_code = ?");
 			// 삭제할 장비의 equipment_code를 설정
 			pstmt.setInt(1, equipmentCode);
 
@@ -112,16 +129,33 @@ public class EquipmentDAOsql implements EquipmentDAO {
 			if (affectedRows == 0) {
 				throw new SQLException("장비 삭제 실패: 해당 장비가 데이터베이스에 없습니다.");
 			}
+		}catch (SQLException e) {
+		    // 예외 처리 로직 (예: 로깅)
+		    e.printStackTrace();
+		} finally {
+		    // 자원 해제
+		    try {
+		        if (conn != null) conn.close();
+		        if (pstmt != null) pstmt.close();
+		    } catch (SQLException se) {
+		        se.printStackTrace();
+		    }
 		}
 	}
 	
 	@Override
 	public void updateEquipment(Equipment equipment) throws Exception {
 	    Class.forName(driver);
-	    try (Connection conn = DriverManager.getConnection(url, user, password);
-	            PreparedStatement pstmt = conn.prepareStatement(
-	                "UPDATE Equipment SET equipment_name = ?, management_number = ?, manufacturer = ?, purchasing_company_name = ?, repair_company_name = ?, manager = ?, location = ?, usage = ?, usage_status = ?, purchase_date = TO_DATE(?, 'YYYY-MM-DD'), history_registration_date = TO_DATE(?, 'YYYY-MM-DD') WHERE equipment_code = ?")) {
-
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    try  {
+	    	conn = DriverManager.getConnection(url, user, password);
+            pstmt = conn.prepareStatement(
+            "UPDATE Equipment SET equipment_name = ?, management_number = ?, manufacturer = ?,"
+            + " purchasing_company_name = ?, repair_company_name = ?, manager = ?, location = ?,"
+            + " usage = ?, usage_status = ?, purchase_date = TO_DATE(?, 'YYYY-MM-DD'),"
+            + " history_registration_date = TO_DATE(?, 'YYYY-MM-DD') WHERE equipment_code = ?");
+            
 	        pstmt.setString(1, equipment.getEquipmentName());
 	        pstmt.setString(2, equipment.getManagementNumber());
 	        pstmt.setString(3, equipment.getManufacturer());
@@ -140,7 +174,18 @@ public class EquipmentDAOsql implements EquipmentDAO {
 	        if (affectedRows == 0) {
 	            throw new SQLException("장비 업데이트 실패: 해당 장비가 데이터베이스에 없습니다.");
 	        }
-	    }
+	    }catch (SQLException e) {
+		    // 예외 처리 로직 (예: 로깅)
+		    e.printStackTrace();
+		} finally {
+		    // 자원 해제
+		    try {
+		    	if (conn != null) conn.close();
+		        if (pstmt != null) pstmt.close();
+		    } catch (SQLException se) {
+		        se.printStackTrace();
+		    }
+		}
 	}
 
 
