@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.spring.alphaknow.dto.equipmentDTO.Equipment;
 
-public class EquipmentDAOsql implements EquipmentDAO {
+public class EquipmentDAOsql implements EquipmentDAOtes {
    private static final String driver = "oracle.jdbc.driver.OracleDriver";
    private static final String url = "jdbc:oracle:thin:@112.148.46.134:51521:xe";
    private static final String user = "alphaknow";
