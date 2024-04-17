@@ -1,6 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,6 @@
     <link rel="stylesheet" href="../css/group.css">
     <link rel="stylesheet" href="../css/overtime_popup.css">
     <link rel="stylesheet" href="../css/attend_popup1.css">
-    
 </head>
 <style>
     .menu ul li a.att {
@@ -184,7 +184,7 @@
             </div>
             <div>생산1팀/매니저</div>
             <div>010-5811-9717</div>
-            <div style="margin-top: 20px"><a href="../project_login.html" class="logout">로그아웃</a></div>
+            <div style="margin-top: 20px"><a href="../project_login.jsp" class="logout">정보수정</a></div>
         </div>
 
         <div class="vertical_line"></div>
@@ -192,8 +192,7 @@
         <div class="side_menu">
             <ul>
                 <li><a class="active">일정관리</a></li>
-                <li><a class="EDSM" href="project_EDSM.html">전자결재</a></li>
-                <li><a class="side_board" href="project_board.html">건의게시판</a></li>
+                <li><a class="EDSM" href="project_EDSM.jsp">전자결재</a></li>
             </ul>
         </div>
     </div>
@@ -202,7 +201,7 @@
 
         <div class="menu">
             <ul>
-                <li><a class="calendar" href="project_calendar.html">캘린더</a></li>
+                <li><a class="calendar" href="project_calendar.jsp">캘린더</a></li>
                 <li><a class="att" href="">근태현황</a></li>
             </ul>
         </div>

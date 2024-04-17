@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
-<%@ page import="board.BoardDTO"%>
+<%@ page import="com.spring.alphaknow.dto.boardDTO.BoardDTO"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" href="css/boardWrite.css">
+<link rel="stylesheet" href="/alphaknow/resources/css/boardWrite.css">
 <script src="js/script.js"></script>
 </head>
 
@@ -306,7 +306,7 @@
 <body>
 	<form action="/alphaknow/board" method="post">
 
-		<%@ include file="../mainheader.jsp"%>
+		<%@ include file="../mainpage/mainheader.jsp"%>
 
 
 		<div id="boardContent">
