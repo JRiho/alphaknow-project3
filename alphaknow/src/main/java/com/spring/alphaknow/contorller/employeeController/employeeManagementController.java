@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.alphaknow.dto.employeeDTO.EmployeeDTO;
 import com.spring.alphaknow.service.employeeService.EmployeeService;
@@ -32,7 +34,7 @@ public class employeeManagementController {
 	}
 	
 	@RequestMapping(value="/employee/insert", method=RequestMethod.POST)
-	public String ppmInsert(
+	public String employeeInsert(
 			@RequestParam ("employeeName") String employeeName,
 			@RequestParam ("employeePhone") int employeePhone,
 			@RequestParam ("employeeId") String employeeId,
@@ -100,4 +102,20 @@ public class employeeManagementController {
 //		
 //		return "redirect:/ppm/select";
 //	}
+	
+	
+	// Ajax 사원번호 받아서 상세정보 표시
+	@RequestMapping("/employee/ajax.do")
+	@ResponseBody
+	public List<EmployeeDTO> employeeAjax(
+			@RequestParam("empno") int employeeKey
+			) {
+		
+		// dto 에 담기
+        EmployeeDTO dto = new EmployeeDTO();
+        dto.setEmployeeKey(employeeKey);
+		
+		List<EmployeeDTO> list = employeeService.employeeDetailList(dto);
+		return list;
+	}
 }

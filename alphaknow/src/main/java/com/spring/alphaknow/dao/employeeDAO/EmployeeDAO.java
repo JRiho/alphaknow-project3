@@ -1,6 +1,7 @@
 package com.spring.alphaknow.dao.employeeDAO;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,16 @@ public class EmployeeDAO {
 //        
 //        return ppc;
 //    }
+	
+	public List<EmployeeDTO> selectEmployeeDetail(EmployeeDTO dto) {
+		// ajax select문 실행
+		System.out.println("selectEmployeeDetail > dto : " + dto);
+		System.out.println("llllllllllllllllllllllllll" + dto.getEmployeeKey());
+		
+		List<EmployeeDTO> list = sqlSession.selectOne("mapper.employee.employeeAjax", dto.getEmployeeKey());
+		
+		System.out.println(list);
+		return list;
+	}
 	
 }

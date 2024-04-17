@@ -29,4 +29,8 @@ public class EmployeeService {
 //	public String ppmDelete(String ppc) {
 //		return productionPlanManagementDAO.deleteProductionPlan(ppc);
 //	}
+	
+	public List<EmployeeDTO> employeeDetailList(EmployeeDTO dto) {
+		return employeeDAO.selectEmployeeDetail(dto);
+	}
 }

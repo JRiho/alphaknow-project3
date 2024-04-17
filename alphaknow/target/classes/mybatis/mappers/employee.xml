@@ -76,4 +76,26 @@
 <!-- 	    WHERE production_plan_code = #{ppc} -->
 <!-- 	</delete> -->
 
+	
+	<!-- 아작스 -->
+	<select id="employeeAjax" parameterType="int" resultType="employeeDTO">
+		SELECT 
+			EMPLOYEE_KEY, 
+			EMPLOYEE_NAME,
+			EMPLOYEE_PHONE,
+			EMPLOYEE_DATE, 
+			JOB_GRADE,
+			EMPLOYEE_ID,
+			EMPLOYEE_PW,
+			EMPLOYEEMENT_STATUS,
+			DEPARTMENT_NAME
+    	FROM 
+    		EMPLOYEE
+    	WHERE
+    		EMPLOYEE_KEY = #{_parameter}
+	</select>
+
+
+
+
 </mapper>
