@@ -1,4 +1,4 @@
-package com.spring.alphaknow.dao.equipmentDAO;
+package com.spring.alphaknow.process.service;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.alphaknow.dto.equipmentDTO.Equipment;
+import com.spring.alphaknow.process.mapper.EquipmentMapper;
 
 @Service
 public class EquipmentService {

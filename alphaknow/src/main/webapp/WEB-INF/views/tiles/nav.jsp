@@ -13,7 +13,6 @@
 				<li>공정코드관리</li>
 				<li>작업표준서</li>
 				<li><a href="/alphaknow/equipment">장비정보관리</a></li>
-				<li>장비정보관리</li>
 				<li>부품정보관리</li>
 			</ul>
 		</li>
