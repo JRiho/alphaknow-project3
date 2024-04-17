@@ -24,7 +24,7 @@ public class EquipmentController {
     public String listEquipments(Model model) {
         List<Equipment> equipmentList = equipmentService.getAllEquipments();
         model.addAttribute("equipmentList", equipmentList);
-        return "process/process_equipment";  // 포워드할 JSP 페이지
+        return "processEquipment";  // 포워드할 JSP 페이지
     }
 
     @RequestMapping(params = "action=add", method = RequestMethod.POST)

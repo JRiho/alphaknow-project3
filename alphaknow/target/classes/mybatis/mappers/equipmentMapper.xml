@@ -11,7 +11,7 @@
     </select>
 
     <!-- 장비 추가 -->
-    <insert id="addEquipment">
+    <insert id="insertEquipment">
         INSERT INTO Equipment (equipment_code, equipment_name, management_number, manufacturer, 
                                purchasing_company_name, repair_company_name, manager, location, 
                                usage, usage_status, purchase_date, history_registration_date)
