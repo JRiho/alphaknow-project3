@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="com.spring.alphaknow.dao.equipmentDAO.EquipmentMapper">
+	namespace="com.spring.alphaknow.process.mapper.EquipmentMapper">
 	
 	<!--  resultMap 생성 -->
 	<resultMap id="equipmentResultMap" type="Equipment">

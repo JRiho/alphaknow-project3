@@ -39,7 +39,7 @@
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.spring.alphaknow.dao.equipmentDAO"/>
+	<mybatis-spring:scan base-package="com.spring.alphaknow.process.*"/>
 
 	
 	

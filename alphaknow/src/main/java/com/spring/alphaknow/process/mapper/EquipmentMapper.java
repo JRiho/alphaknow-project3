@@ -1,4 +1,4 @@
-package com.spring.alphaknow.dao.equipmentDAO;
+package com.spring.alphaknow.process.mapper;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.spring.alphaknow.dao.equipmentDAO;
+package com.spring.alphaknow.process.controller;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.alphaknow.dto.equipmentDTO.Equipment;
+import com.spring.alphaknow.process.service.EquipmentService;
 
 @Controller
 @RequestMapping("/equipment")
