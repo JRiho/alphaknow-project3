@@ -5,7 +5,6 @@
 
 <main>
 	<div class="container">
-		내용입력!!!
 
 
 
