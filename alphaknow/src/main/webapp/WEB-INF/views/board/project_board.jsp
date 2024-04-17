@@ -4,8 +4,21 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.spring.alphaknow.dto.boardDTO.BoardDTO"%>
 
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="/alphaknow/resources/css/boardWrite.css">
+<script src="js/script.js"></script>
+</head>
+=======
 <link rel="stylesheet" href="/alphaknow/resources/css/boardWrite.css">
 <script src="/alphaknow/resources/js/script.js"></script>
+>>>>>>> 35f6fd48f6d6209cf2d89bdf601ea63ef0bd1122
 
 <style>
 #boardContent {
@@ -298,6 +311,12 @@
 <body>
 	<form action="/alphaknow/board" method="post">
 
+<<<<<<< HEAD
+		<%@ include file="../mainpage/mainheader.jsp"%>
+
+
+=======
+>>>>>>> 35f6fd48f6d6209cf2d89bdf601ea63ef0bd1122
 		<div id="boardContent">
 
 			<div class="main">
@@ -429,5 +448,3 @@
 
 
 </body>
-
-</html>

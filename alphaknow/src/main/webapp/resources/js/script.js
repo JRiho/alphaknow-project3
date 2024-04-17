@@ -238,6 +238,10 @@ window.addEventListener('load', function () {
 
     })
 })
+
+function openPopup() {
+    window.open('project_calendar.jsp', '프로필', 'width=850, height=600');
+}
 /////////////////////////////공동 javascript 끝/////////////////////////////////////////////////////
 
 
