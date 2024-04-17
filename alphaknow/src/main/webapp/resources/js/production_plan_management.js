@@ -175,7 +175,7 @@ window.addEventListener("load", function() {
 				checkbox.checked = false;
 			});
 
-			document.getElementById('myForm').action = "../alphaknow/ppmi"
+			document.getElementById('myForm').action = "/alphaknow/ppm/insert"
 			btnOk.type = "submit";
 
 			document.querySelector("#btn_auto").style.cssText = "display: inline-block;"
@@ -244,7 +244,7 @@ window.addEventListener("load", function() {
 				});
 			});
 
-			document.getElementById('myForm').action = "../alphaknow/ppmu"
+			document.getElementById('myForm').action = "/alphaknow/ppm/update"
 			btnOk.type = "submit";
 
 			document.querySelector("#btn_auto").style.cssText = "display: inline-block;"
@@ -262,7 +262,7 @@ window.addEventListener("load", function() {
 		function delRow() {
 			hideAlarm();
 
-			document.getElementById('myForm').action = "../alphaknow/ppmd"
+			document.getElementById('myForm').action = "/alphaknow/ppm/delete"
 			btnOk.type = "submit";
 
 			//			document.querySelectorAll('.table1_chkChild:checked').forEach(function(checkbox) {
@@ -275,13 +275,13 @@ window.addEventListener("load", function() {
 		btnOk.addEventListener("click", delRow);
 	});
 
-	document.querySelector("#btn_save").addEventListener("click", function() {
-		function okIsSubmit() {
-			hideAlarm();
-			document.querySelector("#myForm").submit();
-			btnOk.removeEventListener("click", okIsSubmit);
-		}
-		showAlarm("계획을 저장합니다.");
-		btnOk.addEventListener("click", okIsSubmit);
-	});
+//	document.querySelector("#btn_save").addEventListener("click", function() {
+//		function okIsSubmit() {
+//			hideAlarm();
+//			document.querySelector("#myForm").submit();
+//			btnOk.removeEventListener("click", okIsSubmit);
+//		}
+//		showAlarm("계획을 저장합니다.");
+//		btnOk.addEventListener("click", okIsSubmit);
+//	});
 });

@@ -32,7 +32,6 @@
                     </div>
                 </li>
                 <li id="li_user_name">
-                	<button type="button" onclick="openPopup()"><img src="${pageContext.request.contextPath}/img/mainprofile.png" id="profile"></button>
                    <% 
                     // 세션에서 사용자 이름 가져오기
                     String userName = (String)session.getAttribute("userName");
@@ -113,6 +112,5 @@
             <div id="storing3"><a href="${pageContext.request.contextPath}/ibgogwanli/customerList.jsp">거래처 관리/등록</a></div>
             <div id="storing4"><a href="${pageContext.request.contextPath}/employee">사원 등록</a></div>
         </div>
-    </div>
 
         

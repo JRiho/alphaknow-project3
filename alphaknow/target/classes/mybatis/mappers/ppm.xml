@@ -30,12 +30,50 @@
 		FROM 
 		    production_plan_temp
 	</select>
-
-<!-- 	<insert id="insertProductionData" parameterType="pppDTO"> -->
-<!--         INSERT INTO production_plan_chart_temp -->
-<!--         (work_year, work_month, work_week, work_day, item_name, production_amount, make_amount, achievement_rate, defect_rate) -->
-<!--         VALUES -->
-<!--         (#{workYear}, #{workMonth}, #{workWeek}, #{workDay}, #{itemName}, #{productionAmount}, #{makeAmount}, #{achievementRate}, #{defectRate}) -->
-<!--     </insert> -->
+	
+	<insert id="ppmInsert" parameterType="ppmDTO">
+		INSERT INTO production_plan_temp (
+			production_plan_code,
+			item_code,
+			item_name,
+			delivery_place,
+			delivery_amount,
+			expected_production_amount,
+			expected_remain_amount,
+			expected_start_date,
+			expected_end_date
+		)
+		VALUES (
+			'PPC' || TO_CHAR(SYSTIMESTAMP, 'YYYYMMDDHH24MISS') || ppc_seq.NEXTVAL,
+			#{itemCode},
+			#{itemName},
+			#{deliveryPlace},
+			#{deliveryAmount},
+			#{productionAmount},
+			#{remainAmount},
+			#{startdate},
+			#{enddate}
+		) 	
+	</insert>
+	
+	<update id="ppmUpdate" parameterType="ppmDTO">
+	    UPDATE production_plan_temp
+	    SET
+	        item_code = #{itemCode},
+	        item_name = #{itemName},
+	        delivery_place = #{deliveryPlace},
+	        delivery_amount = #{deliveryAmount},
+	        expected_production_amount = #{productionAmount},
+	        expected_remain_amount = #{remainAmount},
+	        expected_start_date = #{startdate},
+	        expected_end_date = #{enddate}
+	    WHERE
+	        production_plan_code = #{ppc}
+	</update>
+	
+	<delete id="ppmDelete" parameterType="String">
+		DELETE FROM production_plan_temp
+	    WHERE production_plan_code = #{ppc}
+	</delete>
 
 </mapper>

@@ -12,7 +12,7 @@
 			<ul>
 				<li>공정코드관리</li>
 				<li>작업표준서</li>
-				<li><a href="/alphaknow/equipment">장비정보관리</a></li>
+				<li>장비정보관리</li>
 				<li>부품정보관리</li>
 			</ul>
 		</li>
@@ -30,6 +30,6 @@
 			</ul>
 		</li>
 		<li>실적현황</li>
-		<li id="employeeLi"><a href="/alphaknow/employee">사원관리/등록</a></li>
+		<li>사원등록</li>
 	</ul>
 </nav>
