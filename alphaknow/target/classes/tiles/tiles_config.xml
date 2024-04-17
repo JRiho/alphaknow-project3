@@ -43,5 +43,17 @@
 	<definition name="iframeDowntimeRate" template="/WEB-INF/views/monitoring/project_downtimeRate.jsp">
 		<put-attribute name="body" value=""/>
 	</definition>
+	
+	<!-- 공정코드관리 -->
+	<definition name="processEquipment" extends="baseLayout">
+		<put-attribute name="title" value="장비관리" />
+		<put-attribute name="content" value="/WEB-INF/views/process/process_equipment.jsp" />
+	</definition>
+	
+	<!-- 사원관리 -->
+	<definition name="employeeManagement" extends="baseLayout">
+		<put-attribute name="title" value="사원관리" />
+		<put-attribute name="content" value="/WEB-INF/views/employee/employee_management.jsp" />
+	</definition>
 
 </tiles-definitions>
