@@ -3,6 +3,7 @@ package com.spring.alphaknow.contorller.employeeController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,7 @@ public class employeeManagementController {
 	@RequestMapping(value="/employee/insert", method=RequestMethod.POST)
 	public String employeeInsert(
 			@RequestParam ("employeeName") String employeeName,
-			@RequestParam ("employeePhone") int employeePhone,
+			@RequestParam ("employeePhone") String employeePhone,
 			@RequestParam ("employeeId") String employeeId,
 			@RequestParam ("employeePw") String employeePw,
 			@RequestParam ("departmentName") String departmentName
@@ -54,40 +55,7 @@ public class employeeManagementController {
         
         return "redirect:/employee";
 	}
-	
-//	@RequestMapping("/ppm/update")
-//    public String ppmUpdate(
-//            @RequestParam("itemCodeUpdate") int itemCode,
-//            @RequestParam("itemNameUpdate") String itemName,
-//            @RequestParam("deliveryPlaceUpdate") String deliveryPlace,
-//            @RequestParam("deliveryAmountUpdate") int deliveryAmount,
-//            @RequestParam("productionAmountUpdate") int productionAmount,
-//            @RequestParam("remainAmountUpdate") int remainAmount,
-//            @RequestParam("startdateUpdate") String startDate,
-//            @RequestParam("enddateUpdate") String endDate,
-//            @RequestParam("chkChild") String ppc
-//    		) {
-//        // 날짜형 자료 변환
-//        Date startdate = Date.valueOf(startDate);
-//        Date enddate = Date.valueOf(endDate);
-//
-//        // DTO에 담기
-//        ProductPlanManagementDTO dto = new ProductPlanManagementDTO();
-//        dto.setItemCode(itemCode);
-//        dto.setItemName(itemName);
-//        dto.setDeliveryPlace(deliveryPlace);
-//        dto.setDeliveryAmount(deliveryAmount);
-//        dto.setProductionAmount(productionAmount);
-//        dto.setRemainAmount(remainAmount);
-//        dto.setStartdate(startdate);
-//        dto.setPpc(ppc);
-//
-//        // Update 서비스 호출
-//        productionPlanManagementService.ppmUpdate(dto);
-//
-//        return "redirect:/ppm/select";
-//    }
-//	
+
 //	@RequestMapping("/ppm/delete")
 //	public String ppmDelete(
 //			@RequestParam("chkChild") String[] productionPlanCodes
@@ -105,7 +73,7 @@ public class employeeManagementController {
 	
 	
 	// Ajax 사원번호 받아서 상세정보 표시
-	@RequestMapping("/employee/ajax.do")
+	@RequestMapping("/employee/ajax.doSelect")
 	@ResponseBody
 	public List<EmployeeDTO> employeeAjax(
 			@RequestParam("empno") int employeeKey
@@ -118,4 +86,32 @@ public class employeeManagementController {
 		List<EmployeeDTO> list = employeeService.employeeDetailList(dto);
 		return list;
 	}
+	
+	// Ajax 사원번호 받아서 해당 사원 정보 수정
+	@RequestMapping("/employee/ajax.doUpdate")
+	@ResponseBody
+	public EmployeeDTO employeeAjaxUpdate(
+			@RequestParam("employeeKey") int employeeKey,
+            @RequestParam("employeeName") String employeeName,
+            @RequestParam("employeePhone") String employeePhone,
+            @RequestParam("employeeId") String employeeId,
+            @RequestParam("employeePw") String employeePw,
+            @RequestParam("departmentName") String departmentName,
+            @RequestParam("employmentStatus") String employmentStatus
+			) {
+		
+		// dto 에 담기
+        EmployeeDTO dto = new EmployeeDTO();
+        dto.setEmployeeKey(employeeKey);
+        dto.setEmployeeName(employeeName);
+        dto.setEmployeePhone(employeePhone);
+        dto.setEmployeeId(employeeId);
+        dto.setEmployeePw(employeePw);
+        dto.setDepartmentName(departmentName);
+        dto.setEmploymentStatus(employmentStatus);
+		
+		employeeService.employeeDetailList(dto);
+		return dto;
+	}
+	
 }

@@ -22,15 +22,17 @@ public class EmployeeService {
 		return employeeDAO.insertEmployee(dto);
 	}
 	
-//	public ProductPlanManagementDTO ppmUpdate(ProductPlanManagementDTO dto) {
-//		return productionPlanManagementDAO.updateProductionPlan(dto);
-//	}
-//	
 //	public String ppmDelete(String ppc) {
 //		return productionPlanManagementDAO.deleteProductionPlan(ppc);
 //	}
 	
+	// Ajax 부분입니다 ----------------------------------------------------
+	
 	public List<EmployeeDTO> employeeDetailList(EmployeeDTO dto) {
 		return employeeDAO.selectEmployeeDetail(dto);
+	}
+	
+	public EmployeeDTO employeeUpdate(EmployeeDTO dto) {
+		return employeeDAO.updateEmployeeDetail(dto);
 	}
 }

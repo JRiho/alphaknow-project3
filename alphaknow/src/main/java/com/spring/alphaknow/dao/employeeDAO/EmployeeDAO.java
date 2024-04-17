@@ -27,13 +27,6 @@ public class EmployeeDAO {
         return dto;
     }
 	
-//	public ProductPlanManagementDTO updateProductionPlan(ProductPlanManagementDTO dto) {	
-//        // update 실행
-//        sqlSession.update("mapper.ppm.ppmUpdate", dto);
-//        
-//        return dto;
-//    }
-//	
 //	public String deleteProductionPlan(String ppc) {	
 //        // delete 실행
 //        sqlSession.update("mapper.ppm.ppmDelete", ppc);
@@ -41,15 +34,19 @@ public class EmployeeDAO {
 //        return ppc;
 //    }
 	
+	// Ajax 부분입니다 ----------------------------------------------------
+	
 	public List<EmployeeDTO> selectEmployeeDetail(EmployeeDTO dto) {
-		// ajax select문 실행
-		System.out.println("selectEmployeeDetail > dto : " + dto);
-		System.out.println("llllllllllllllllllllllllll" + dto.getEmployeeKey());
-		
-		List<EmployeeDTO> list = sqlSession.selectOne("mapper.employee.employeeAjax", dto.getEmployeeKey());
-		
-		System.out.println(list);
+		// ajax select문 실행		
+		List<EmployeeDTO> list = sqlSession.selectList("mapper.employee.employeeAjax", dto);
 		return list;
+	}
+	
+	public EmployeeDTO updateEmployeeDetail(EmployeeDTO dto) {
+		// ajax update문 실행		
+		sqlSession.update("mapper.employee.employeeAjaxUpdate", dto);
+
+		return dto;
 	}
 	
 }

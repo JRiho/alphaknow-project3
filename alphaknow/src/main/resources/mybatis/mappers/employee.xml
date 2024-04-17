@@ -78,7 +78,8 @@
 
 	
 	<!-- 아작스 -->
-	<select id="employeeAjax" parameterType="int" resultType="employeeDTO">
+	<!-- 사원 세부정보 열람 -->
+	<select id="employeeAjax" parameterType="employeeDTO" resultMap="employeeResultMap">
 		SELECT 
 			EMPLOYEE_KEY, 
 			EMPLOYEE_NAME,
@@ -92,10 +93,23 @@
     	FROM 
     		EMPLOYEE
     	WHERE
-    		EMPLOYEE_KEY = #{_parameter}
+    		EMPLOYEE_KEY = #{employeeKey}
 	</select>
-
-
-
+	
+	<!-- 사원 수정 -->
+	<update id="employeeAjaxUpdate" parameterType="employeeDTO">
+    UPDATE 
+    	ALPHAKNOW.EMPLOYEE
+    SET
+        EMPLOYEE_NAME = #{employeeName},
+        EMPLOYEE_PHONE = #{employeePhone},
+        JOB_GRADE = #{jobGrade},
+        EMPLOYEE_ID = #{employeeId},
+        EMPLOYEE_PW = #{employeePw},
+        EMPLOYEEMENT_STATUS = #{employmentStatus},
+        DEPARTMENT_NAME = #{departmentName}
+    WHERE 
+    	EMPLOYEE_KEY = #{employeeKey}
+</update>
 
 </mapper>

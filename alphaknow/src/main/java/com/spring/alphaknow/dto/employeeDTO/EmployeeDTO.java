@@ -5,7 +5,7 @@ import java.sql.Date;
 public class EmployeeDTO {
 	private int employeeKey;
     private String employeeName;
-    private int employeePhone;
+    private String employeePhone;
     private Date employeeDate;
     private String jobGrade;
     private String employeeId;
@@ -25,10 +25,10 @@ public class EmployeeDTO {
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
-	public int getEmployeePhone() {
+	public String getEmployeePhone() {
 		return employeePhone;
 	}
-	public void setEmployeePhone(int employeePhone) {
+	public void setEmployeePhone(String employeePhone) {
 		this.employeePhone = employeePhone;
 	}
 	public Date getEmployeeDate() {
