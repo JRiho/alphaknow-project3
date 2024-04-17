@@ -1,4 +1,4 @@
-package ppmDTO;
+package com.spring.alphaknow.dto.ppmDTO;
 
 import java.sql.Date;
 

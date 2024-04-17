@@ -1,60 +1,6 @@
 /////////////////////////////공동 javascript /////////////////////////////////////////////////////
 
 window.addEventListener('load', function () {
-    let searchInput = document.querySelector('#search_txt');
-    let engine = document.querySelector('#li_search');
-    let searchButton = document.querySelector('#search_img1');
-
-    // 검색 실행 함수
-    function executeSearch() {
-        const searchValue = searchInput.value;
-        if (searchValue === "모니" || searchValue === "모니터" || searchValue === "모니터링") {
-            let menu = document.createElement('div');
-            menu.classList.add('search_menu');
-
-            let items = [
-                { text: '모니터링(장비)', link: '../monitoring/monitoring_equipment.html' },
-                { text: '가동률 현황', link: '#' },
-                { text: '비가동률 현황', link: '#' },
-                { text: '리플로우(온도)', link: '../monitoring/monitoring_reflow.html' }
-            ];
-
-            items.forEach(function (item) {
-                let menuChild = document.createElement('div');
-                menuChild.textContent = item.text;
-                menuChild.style.cursor = "pointer";
-                menuChild.addEventListener('click', function () {
-                    window.location.href = item.link;
-                });
-                menu.appendChild(menuChild);
-            });
-            engine.appendChild(menu);
-        } else {
-            let directLinks = {
-                '모니터링(장비)': '../monitoring/monitoring_equipment.html',
-                '리플로우(온도)': '../monitoring/monitoring_reflow.html',
-                '가동률현황': '#',
-                '비가동현황': '#'
-            };
-            if (directLinks[searchValue]) {
-                window.location.href = directLinks[searchValue];
-            }
-        }
-    }
-
-    // 클릭 이벤트 리스너
-    searchButton.addEventListener('click', function () {
-        executeSearch();
-    });
-
-    // 키 입력 이벤트 리스너
-    searchInput.addEventListener('keypress', function (e) {
-        if (e.key === "Enter") {
-            executeSearch();
-        }
-    });
-});
-window.addEventListener('load', function () {
     let moniter = document.querySelector('#moniter');
     let monitering = document.querySelector('#monitering');
 

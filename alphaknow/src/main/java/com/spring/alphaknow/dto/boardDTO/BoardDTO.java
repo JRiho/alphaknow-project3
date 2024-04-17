@@ -1,4 +1,4 @@
-package board;
+package com.spring.alphaknow.dto.boardDTO;
 
 import java.util.Date;
 

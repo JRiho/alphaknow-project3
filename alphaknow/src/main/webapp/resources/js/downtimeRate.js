@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', function () {
         window.myPieChart = new Chart(ctx, config);
     }
 
-    function updateOperationStats(operatingRate, downtimeRate) {
-        operationStats.querySelector('#operatingRate').textContent = `${operatingRate}%`;
-        operationStats.querySelector('#downtimeRate').textContent = `${downtimeRate.toFixed(1)}%`;
-    }
+//    function updateOperationStats(operatingRate, downtimeRate) {
+//        operationStats.querySelector('#operatingRate').textContent = `${operatingRate}%`;
+//        operationStats.querySelector('#downtimeRate').textContent = `${downtimeRate.toFixed(1)}%`;
+//    }
 
     // 현재 시간을 기준으로 총 작동시간 업데이트 함수
     function updateTotalOperationTime() {

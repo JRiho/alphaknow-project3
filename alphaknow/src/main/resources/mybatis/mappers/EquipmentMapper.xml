@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.alphaknow.dao.equipmentDAO.EquipmentMapper">
+    <!-- 모든 장비 정보 조회 -->
+    <select id="getAllEquipments" resultType="Equipment">
+        SELECT equipment_code, equipment_name, management_number, manufacturer, 
+               purchasing_company_name, repair_company_name, manager, location, 
+               usage, usage_status, purchase_date, history_registration_date
+        FROM Equipment
+    </select>
+
+    <!-- 장비 추가 -->
+    <insert id="insertEquipment">
+        INSERT INTO Equipment (equipment_code, equipment_name, management_number, manufacturer, 
+                               purchasing_company_name, repair_company_name, manager, location, 
+                               usage, usage_status, purchase_date, history_registration_date)
+        VALUES (#{equipmentCode}, #{equipmentName}, #{managementNumber}, #{manufacturer}, 
+                #{purchasingCompanyName}, #{repairCompanyName}, #{manager}, #{location}, 
+                #{usage}, #{usageStatus}, #{purchaseDate}, #{historyRegistrationDate})
+    </insert>                  
+
+    <!-- 장비 삭제 -->
+    <delete id="deleteEquipment">
+        DELETE FROM Equipment WHERE equipment_code = #{equipmentCode}
+    </delete>
+
+    <!-- 장비 정보 업데이트 -->
+    <update id="updateEquipment">
+        UPDATE Equipment
+        SET equipment_name = #{equipmentName},
+            management_number = #{managementNumber},
+            manufacturer = #{manufacturer},
+            purchasing_company_name = #{purchasingCompanyName},
+            repair_company_name = #{repairCompanyName},
+            manager = #{manager},
+            location = #{location},
+            usage = #{usage},
+            usage_status = #{usageStatus},
+            purchase_date = #{purchaseDate},
+            history_registration_date = #{historyRegistrationDate}
+        WHERE equipment_code = #{equipmentCode}
+    </update>
+</mapper>

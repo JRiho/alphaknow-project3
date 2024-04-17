@@ -4,6 +4,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.spring.alphaknow.dto.boardDTO.BoardDTO"%>
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +15,10 @@
 <link rel="stylesheet" href="/alphaknow/resources/css/boardWrite.css">
 <script src="js/script.js"></script>
 </head>
+=======
+<link rel="stylesheet" href="/alphaknow/resources/css/boardWrite.css">
+<script src="/alphaknow/resources/js/script.js"></script>
+>>>>>>> 35f6fd48f6d6209cf2d89bdf601ea63ef0bd1122
 
 <style>
 #boardContent {
@@ -169,22 +174,22 @@
 }
 
 .page_nation .pprev {
-	background: #f8f8f8 url('img/page_pprev.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_pprev.png') no-repeat center center;
 	margin-left: 0;
 }
 
 .page_nation .prev {
-	background: #f8f8f8 url('img/page_prev.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_prev.png') no-repeat center center;
 	margin-right: 7px;
 }
 
 .page_nation .next {
-	background: #f8f8f8 url('img/page_next.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_next.png') no-repeat center center;
 	margin-left: 7px;
 }
 
 .page_nation .nnext {
-	background: #f8f8f8 url('img/page_nnext.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_nnext.png') no-repeat center center;
 	margin-right: 0;
 }
 
@@ -306,16 +311,19 @@
 <body>
 	<form action="/alphaknow/board" method="post">
 
+<<<<<<< HEAD
 		<%@ include file="../mainpage/mainheader.jsp"%>
 
 
+=======
+>>>>>>> 35f6fd48f6d6209cf2d89bdf601ea63ef0bd1122
 		<div id="boardContent">
 
 			<div class="main">
 
 				<div id="boardWrite">
 					<button type="button" id="boardWrite_btn">
-						<img src="img/boardWrite_icon.png">
+						<img src="/alphaknow/resources/img/boardWrite_icon.png">
 					</button>
 					<label for="boardWrite_btn"><span>새글쓰기</span></label>
 				</div>
@@ -440,5 +448,3 @@
 
 
 </body>
-
-</html>

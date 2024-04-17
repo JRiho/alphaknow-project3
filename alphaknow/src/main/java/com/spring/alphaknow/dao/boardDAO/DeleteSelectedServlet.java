@@ -1,4 +1,4 @@
-package board;
+package com.spring.alphaknow.dao.boardDAO;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -49,7 +49,7 @@ public class DeleteSelectedServlet extends HttpServlet {
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, boardId);
             pstmt.executeUpdate();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // 리소스 해제

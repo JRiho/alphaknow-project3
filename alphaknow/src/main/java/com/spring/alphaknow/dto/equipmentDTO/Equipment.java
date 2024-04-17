@@ -1,4 +1,4 @@
-package classDirectory;
+package com.spring.alphaknow.dto.equipmentDTO;
 
 public class Equipment {
     private int equipmentCode;
