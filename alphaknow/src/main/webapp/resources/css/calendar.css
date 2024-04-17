@@ -1,0 +1,22 @@
+
+/* 날짜 선택 컨테이너와 관련된 스타일 */
+.date-select-container {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right : 5%;
+}
+/* 날짜 선택 드롭다운 스타일 */
+.date-select {
+    margin-right: 10px;
+}
+/* 달력 버튼 스타일 */
+.calendar-button {
+    display: inline-block;
+    cursor: pointer;
+}
+/* 숨겨진 시작 및 종료 날짜 선택기 스타일 */
+#hidden-start-datepicker, #hidden-end-datepicker {
+    position: absolute; 
+    visibility: hidden; 
+}
