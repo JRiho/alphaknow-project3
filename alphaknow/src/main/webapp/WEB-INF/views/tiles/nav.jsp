@@ -30,6 +30,6 @@
 			</ul>
 		</li>
 		<li>실적현황</li>
-		<li>사원등록</li>
+		<li id="employeeLi"><a href="/alphaknow/employee">사원관리/등록</a></li>
 	</ul>
 </nav>
