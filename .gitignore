@@ -1,4 +1,4 @@
 .metadata/
-.settings/
-target/
+/.settings/
+/target/
 Servers/
