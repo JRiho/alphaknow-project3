@@ -18,9 +18,9 @@
 
 		<tiles:insertAttribute name="nav" />
 
-
-		<tiles:insertAttribute name="content" />
-
+		<div class="layout_content">
+			<tiles:insertAttribute name="content" />
+		</div>
 
 		<tiles:insertAttribute name="footer" />
 
