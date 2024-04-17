@@ -17,12 +17,6 @@
 			
 <!-- 		<typeAlias type="pppDTO.ProductionPlanPerformanceDTO" -->
 <!-- 			alias="pppDTO" /> -->
-
-		<typeAlias type="com.spring.alphaknow.dto.equipmentDTO.Equipment"
-			alias="Equipment" />
-
-
-
 	</typeAliases>
 
 </configuration>

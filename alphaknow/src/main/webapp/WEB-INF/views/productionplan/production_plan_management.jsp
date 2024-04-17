@@ -113,3 +113,5 @@
 	href="/alphaknow/resources/css/production_plan_management.css">
 <script
 	src="/alphaknow/resources/js/production_plan_management.js"></script>
+
+</html>
