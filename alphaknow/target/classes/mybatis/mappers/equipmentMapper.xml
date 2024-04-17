@@ -1,44 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.alphaknow.dao.equipmentDAO.EquipmentMapper">
-    <!-- 모든 장비 정보 조회 -->
-    <select id="getAllEquipments" resultType="Equipment">
-        SELECT equipment_code, equipment_name, management_number, manufacturer, 
-               purchasing_company_name, repair_company_name, manager, location, 
-               usage, usage_status, purchase_date, history_registration_date
-        FROM Equipment
-    </select>
+<mapper
+	namespace="com.spring.alphaknow.dao.equipmentDAO.EquipmentMapper">
+	
+	<!--  resultMap 생성 -->
+	<resultMap id="equipmentResultMap" type="Equipment">
+	    <result property="equipmentCode" column="equipment_code" />
+	    <result property="equipmentName" column="equipment_name" />
+	    <result property="managementNumber" column="management_number" />
+	    <result property="manufacturer" column="manufacturer" />
+	    <result property="purchasingCompanyName" column="purchasing_company_name" />
+	    <result property="repairCompanyName" column="repair_company_name" />
+	    <result property="manager" column="manager" />
+	    <result property="location" column="location" />
+	    <result property="usage" column="usage" />
+	    <result property="usageStatus" column="usage_status" />
+	    <result property="purchaseDate" column="purchase_date" />
+	    <result property="historyRegistrationDate" column="history_registration_date" />
+	</resultMap>
 
-    <!-- 장비 추가 -->
-    <insert id="insertEquipment">
-        INSERT INTO Equipment (equipment_code, equipment_name, management_number, manufacturer, 
-                               purchasing_company_name, repair_company_name, manager, location, 
-                               usage, usage_status, purchase_date, history_registration_date)
-        VALUES (#{equipmentCode}, #{equipmentName}, #{managementNumber}, #{manufacturer}, 
-                #{purchasingCompanyName}, #{repairCompanyName}, #{manager}, #{location}, 
-                #{usage}, #{usageStatus}, #{purchaseDate}, #{historyRegistrationDate})
-    </insert>                  
+	
+	<!-- 모든 장비 정보 조회 -->
+	<select id="getAllEquipments" resultMap="equipmentResultMap">
+		SELECT 
+			equipment_code, equipment_name, management_number, manufacturer,
+			purchasing_company_name, repair_company_name, manager, location,
+			usage, usage_status, purchase_date, history_registration_date
+		FROM
+			Equipment
+	</select>
 
-    <!-- 장비 삭제 -->
-    <delete id="deleteEquipment">
-        DELETE FROM Equipment WHERE equipment_code = #{equipmentCode}
-    </delete>
+	<!-- 장비 추가 -->
+	<!-- 장비 추가 -->
+	<insert id="insertEquipment">
+		INSERT 
+		INTO Equipment (equipment_code, equipment_name, management_number,
+		manufacturer,
+		purchasing_company_name, repair_company_name, manager, location,
+		usage, usage_status, purchase_date, history_registration_date)
+		VALUES (equipment_seq.NEXTVAL, #{equipmentName}, #{managementNumber},
+		#{manufacturer},
+		#{purchasingCompanyName}, #{repairCompanyName}, #{manager}, #{location},
+		#{usage}, #{usageStatus}, #{purchaseDate}, #{historyRegistrationDate})
+	</insert>
 
-    <!-- 장비 정보 업데이트 -->
-    <update id="updateEquipment">
-        UPDATE Equipment
-        SET equipment_name = #{equipmentName},
-            management_number = #{managementNumber},
-            manufacturer = #{manufacturer},
-            purchasing_company_name = #{purchasingCompanyName},
-            repair_company_name = #{repairCompanyName},
-            manager = #{manager},
-            location = #{location},
-            usage = #{usage},
-            usage_status = #{usageStatus},
-            purchase_date = #{purchaseDate},
-            history_registration_date = #{historyRegistrationDate}
-        WHERE equipment_code = #{equipmentCode}
-    </update>
+
+	<!-- 장비 삭제 -->
+	<delete id="deleteEquipment">
+		DELETE FROM Equipment WHERE equipment_code = #{equipmentCode}
+	</delete>
+
+	<!-- 장비 정보 업데이트 -->
+	<update id="updateEquipment">
+		UPDATE Equipment
+		SET equipment_name = #{equipmentName},
+		management_number = #{managementNumber},
+		manufacturer = #{manufacturer},
+		purchasing_company_name = #{purchasingCompanyName},
+		repair_company_name = #{repairCompanyName},
+		manager = #{manager},
+		location = #{location},
+		usage = #{usage},
+		usage_status = #{usageStatus},
+		purchase_date = #{purchaseDate},
+		history_registration_date = #{historyRegistrationDate}
+		WHERE equipment_code = #{equipmentCode}
+	</update>
 </mapper>

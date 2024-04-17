@@ -1,7 +1,9 @@
 package com.spring.alphaknow.dto.equipmentDTO;
 
 public class Equipment {
-    private int equipmentCode;
+    
+
+	private int equipmentCode;
     private String equipmentName;
     private String managementNumber;
     private String manufacturer;
@@ -131,4 +133,13 @@ public class Equipment {
     public void setHistoryRegistrationDate(String historyRegistrationDate) {
         this.historyRegistrationDate = historyRegistrationDate;
     }
+    
+    @Override
+	public String toString() {
+		return "Equipment [equipmentCode=" + equipmentCode + ", equipmentName=" + equipmentName + ", managementNumber="
+				+ managementNumber + ", manufacturer=" + manufacturer + ", purchasingCompanyName="
+				+ purchasingCompanyName + ", repairCompanyName=" + repairCompanyName + ", manager=" + manager
+				+ ", location=" + location + ", usage=" + usage + ", usageStatus=" + usageStatus + ", purchaseDate="
+				+ purchaseDate + ", historyRegistrationDate=" + historyRegistrationDate + "]";
+	}
 }

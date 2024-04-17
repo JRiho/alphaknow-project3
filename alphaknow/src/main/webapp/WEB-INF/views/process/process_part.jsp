@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <%@ include file="../mainheader.jsp"%>
         <div class="day">
             <ul id="part_list">
                 <!-- 항목이 여기에 동적으로 추가됩니다. -->
