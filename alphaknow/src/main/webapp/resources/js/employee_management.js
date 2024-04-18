@@ -80,6 +80,8 @@ $(function () {
 	// 사원세부정보 닫기 버튼 클릭
 	$("#hide_employee_infoDetail").off("click").on("click", function () {
 		$(".employee_infoDetail").hide();
+		$(".modifyEmployee").show();
+		$(".modifyEmployeeEnd").hide();
 	})
 })
 

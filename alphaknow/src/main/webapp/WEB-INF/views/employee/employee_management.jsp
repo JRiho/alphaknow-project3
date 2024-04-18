@@ -11,9 +11,12 @@
 
 <body>
 	<div class="wrap_container">
-		<div class="management_header">사원관리</div>
+		<div class="management_header">
+			<div class="header_text">사원관리</div>
+			<button type="button" id="show_employee_regedit">사원등록</button>
+		</div>
 		<div class="employee_info">
-			<table border="1">
+			<table border="1" class="employee_info_table">
 				<thead>
 					<tr>
 						<th></th>
@@ -49,7 +52,6 @@
 				</tbody>
 			</table>
 		</div>
-		<button type="button" id="show_employee_regedit">사원등록</button>
 	</div>
 
 
@@ -76,10 +78,6 @@
 				<tr>
 					<td>비밀번호</td>
 					<td><input type="password" name="employeePw"></td>
-				</tr>
-				<tr>
-					<td>비밀번호확인</td>
-					<td><input type="password"></td>
 				</tr>
 				<tr>
 					<td>부서</td>

@@ -16,3 +16,68 @@
 .hide {
 	display: none;
 }
+
+/* 사원관리 헤더 */
+.management_header{
+	display: flex;
+	justify-content: space-between;
+}
+.header_text {
+	font-size: 30px;
+	font-weight: bold;
+	padding: 30px 30px;
+}
+/* 사원등록 버튼 */
+#show_employee_regedit {
+	/* 위치조정 */
+	width: 7%;
+    height: 40px;
+    margin-top: 32px;
+    margin-right: 100px;
+    border-radius: 10px;
+    
+    /* 버튼 스타일 */
+    color: #fff;
+    background-color: #337ab7;
+    border: 1px solid #f0f0f0;
+    
+    transition: all 0.3s ease;
+    
+    font-weight: bold;
+    font-size: 15px;
+}
+/* 버튼호버 색 */
+#show_employee_regedit:hover {
+    border-color: #004dc1;
+    background-color: white;
+    color: #004dc1;
+}
+#show_employee_regedit:active {
+    border-color: #004dc1;
+    background-color: #076bbc;
+    color: white;
+    
+    transition: none;
+}
+
+/* 사원정보 테이블 */
+.employee_info_table {
+	width: 100%;
+}
+
+/* 사원정보 테이블 테두리 */
+.employee_info_table, 
+.employee_info_table th, 
+.employee_info_table td {
+  	border: 1px solid black;
+  	border-collapse: collapse;
+}
+
+table,
+tr,
+td,
+th {
+	border: 1px solid black;
+  	border-collapse: collapse;
+  	padding: 10px;
+}
