@@ -23,7 +23,6 @@
 	</resultMap>
 
 	<!-- 모든 프로세스 코드 정보 조회 -->
-	<!-- 모든 프로세스 코드 정보 조회 -->
 	<select id="getAllProcessCodes" resultType="ProcessCodeDTO">
 		SELECT *
 		FROM ProcessCode

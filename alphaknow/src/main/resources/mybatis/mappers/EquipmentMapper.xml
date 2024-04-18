@@ -32,8 +32,7 @@
 	</select>
 
 	<!-- 장비 추가 -->
-	<!-- 장비 추가 -->
-	<insert id="insertEquipment">
+	<insert id="insertEquipment" >
 		INSERT 
 		INTO Equipment (equipment_code, equipment_name, management_number,
 		manufacturer,
@@ -44,6 +43,7 @@
 		#{purchasingCompanyName}, #{repairCompanyName}, #{manager}, #{location},
 		#{usage}, #{usageStatus}, #{purchaseDate}, #{historyRegistrationDate})
 	</insert>
+	
 
 
 	<!-- 장비 삭제 -->

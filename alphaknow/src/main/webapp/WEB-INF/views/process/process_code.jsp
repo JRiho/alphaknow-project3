@@ -28,7 +28,7 @@
 				type="text" id="process_st_count">
 		</div>
 	</div>
-
+	<br><br>
 	<div id="main_content">
 		<table id="process_board">
 			<!-- 테이블 너비 조절 -->
@@ -36,8 +36,9 @@
 				<col style="width: 4.29%" />
 				<col style="width: 4.29%" />
 				<col style="width: 4.29%" />
+				<col style="width: 4.29%" />
 				<col style="width: 15%" />
-				<col style="width: 15%" />
+				<col style="width: 11%" />
 				<col style="width: 30%" />
 				<col style="width: 4.29%" />
 				<col style="width: 10%" />
@@ -47,6 +48,7 @@
 			</colgroup>
 			<thead>
 				<tr>
+					<th></th>
 					<th>순서</th>
 					<th>코드</th>
 					<th>에러코드</th>
@@ -64,6 +66,8 @@
 			<tbody>
 				 <c:forEach var="process" items="${processCodeList}">
                     <tr>
+                    	<th><input type="checkbox" name="selectedProcess"
+						value="${process.sequenceNo}"></th>
                         <td>${process.sequenceNo}</td>
                         <td>${process.code}</td>
                         <td>${process.errorCode}</td>
@@ -78,15 +82,13 @@
                     </tr>
                 </c:forEach>
 			</tbody>
-
 		</table>
-
 	</div>
 	<!-- 공정 신규등록 및 수정 팝업 div -->
 	<div id="process_new_register" style="display:none;">
         <div id="process_title">공정명 등록/수정</div>
         <div id="table_wrap">
-            <form action="/processcodes" method="post">
+            <form action="/processcode" method="post">
                 <input type="hidden" name="_method" value="post" id="form_method">
                 <table id="new_process">
                     <colgroup>
