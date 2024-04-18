@@ -5,28 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.alphaknow.dao.ppmDAO.ProductionPlanManagementDAO;
+import com.spring.alphaknow.dao.ppmDAO.ProductionPlanManagementDAOImpl;
 import com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO;
 
 @Service
 public class ProductionPlanManagementService {
 	
 	@Autowired
-	ProductionPlanManagementDAO productionPlanManagementDAO;
+	ProductionPlanManagementDAOImpl productionPlanManagementDAOImpl;
 	
 	public List ppmList() {
-		return productionPlanManagementDAO.selectPpmList();
+		return productionPlanManagementDAOImpl.ppmSelect();
 	}
 	
 	public ProductPlanManagementDTO ppmInsert(ProductPlanManagementDTO dto) {
-		return productionPlanManagementDAO.insertProductionPlan(dto);
+		return productionPlanManagementDAOImpl.ppmInsert(dto);
 	}
 	
 	public ProductPlanManagementDTO ppmUpdate(ProductPlanManagementDTO dto) {
-		return productionPlanManagementDAO.updateProductionPlan(dto);
+		return productionPlanManagementDAOImpl.ppmUpdate(dto);
 	}
 	
 	public String ppmDelete(String ppc) {
-		return productionPlanManagementDAO.deleteProductionPlan(ppc);
+		return productionPlanManagementDAOImpl.ppmDelete(ppc);
 	}
 }
