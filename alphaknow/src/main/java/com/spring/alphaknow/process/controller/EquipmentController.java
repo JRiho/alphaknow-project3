@@ -18,7 +18,7 @@ import com.spring.alphaknow.process.service.EquipmentService;
 @RequestMapping("/equipment")
 public class EquipmentController {
 
-    @Autowired
+    @Autowired                                 
     private EquipmentService equipmentService;  // 서비스 자동으로 주입
 
     @RequestMapping(method = RequestMethod.GET)

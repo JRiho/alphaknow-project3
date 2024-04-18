@@ -30,10 +30,6 @@
 	</definition>
 	
 	
-	
-	
-	
-	
 	<!-- 메인페이지 리플로우온도 -->
 	<definition name="iframeReflow" template="/WEB-INF/views/monitoring/reflow_iframe.jsp">
 		<put-attribute name="body" value=""/>

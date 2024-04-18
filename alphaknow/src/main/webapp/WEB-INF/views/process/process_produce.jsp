@@ -40,7 +40,7 @@
             , ["../img/people.png",
                 "작업자 검사", "process_produce_workerinspection.html"]
         ];
-        listproduce.push(...produce);
+        listproduce.push(...produce); 
 
         let list = document.querySelector("#eq_list");
 
