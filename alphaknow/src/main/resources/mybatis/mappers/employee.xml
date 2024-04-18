@@ -56,27 +56,11 @@
 		)	
 	</insert>
 	
-<!-- 	<update id="employeeUpdate" parameterType="employeeDTO"> -->
-<!-- 	    UPDATE production_plan_temp -->
-<!-- 	    SET -->
-<!-- 	        item_code = #{itemCode}, -->
-<!-- 	        item_name = #{itemName}, -->
-<!-- 	        delivery_place = #{deliveryPlace}, -->
-<!-- 	        delivery_amount = #{deliveryAmount}, -->
-<!-- 	        expected_production_amount = #{productionAmount}, -->
-<!-- 	        expected_remain_amount = #{remainAmount}, -->
-<!-- 	        expected_start_date = #{startdate}, -->
-<!-- 	        expected_end_date = #{enddate} -->
-<!-- 	    WHERE -->
-<!-- 	        production_plan_code = #{ppc} -->
-<!-- 	</update> -->
-	
-<!-- 	<delete id="employeeDelete" parameterType="String"> -->
-<!-- 		DELETE FROM production_plan_temp -->
-<!-- 	    WHERE production_plan_code = #{ppc} -->
-<!-- 	</delete> -->
+	<delete id="employeeDelete" parameterType="int">
+		DELETE FROM ALPHAKNOW.EMPLOYEE
+	    WHERE EMPLOYEE_KEY = #{employeeKey}
+	</delete>
 
-	
 	<!-- 아작스 -->
 	<!-- 사원 세부정보 열람 -->
 	<select id="employeeAjax" parameterType="employeeDTO" resultMap="employeeResultMap">

@@ -12,7 +12,9 @@
 		$(".detailInfo").off("click").on("click", function() {
 			// 사원번호 확보
 			let tr = $(this).parent().parent();
-			let empno = tr.find("#employeeKey").text();
+			// console.log($(this).parent().parent()[0])
+			let empno = tr.find(".selectEmployeeKey").val();
+			// console.log(tr.find(".selectEmployeeKey")[0])
 			// console.log("empno : " + empno);
 			// 사원번호를 들고 아작스로 이동
 			
@@ -47,15 +49,15 @@
 						}
 		                
 						// 데이터를 td에 넣기 (나중에 업데이트에 쓸 id도 넣기)
-		                $(".departmentName").html('<span class="show">' + data[0].departmentName + '</span>')
+		                $(".departmentName").html('<span class="show">' + data[0].departmentName + '</span>');
 		                $(".employeeDate").html(formattedDate)
-		                $(".employeeId").html('<input type="text" class="hide" name="employeeId" id="updateEmployeeId" value='+ data[0].employeeId +'>' + '<span class="show">' + data[0].employeeId + '</span>')
-		                $(".employeeKey").html('<span class="show">' + data[0].employeeKey + '</span>')
-		                $(".employeeName").html('<input type="text" class="hide" name="employeeName" id="updateEmployeeName" value='+ data[0].employeeName +'>' + '<span class="show">' + data[0].employeeName + '</span>')
-		                $(".employeePhone").html('<input type="text" class="hide" name="employeePhone" id="updateEmployeePhone" value='+ data[0].employeePhone +'>' + '<span class="show">' + data[0].employeePhone + '</span>')
-		                $(".employeePw").html('<input type="password" class="hide" name="employeePw" id="updateEmployeePw" value='+ data[0].employeePw +'>' + '<span class="show">' + data[0].employeePw + '</span>')
-		                $(".employmentStatus").html('<span class="show">' + data[0].employmentStatus + '</span>' + '<span class="hide">' + data[0].employmentStatus + '</span>')
-		                $(".jobGrade").html('<span class="show">' + data[0].jobGrade + '</span>' + '<span class="hide">' + data[0].jobGrade + '</span>')
+		                $(".employeeId").html('<input type="text" class="hide" name="employeeId" value="'+ data[0].employeeId +'">' + '<span class="show">' + data[0].employeeId + '</span>')
+		                $(".employeeKey").html(data[0].employeeKey + '<input type="hidden" name="employeeKey" value="'+ data[0].employeeKey +'">')
+		                $(".employeeName").html('<input type="text" class="hide" name="employeeName" value="'+ data[0].employeeName +'">' + '<span class="show">' + data[0].employeeName + '</span>')
+		                $(".employeePhone").html('<input type="text" class="hide" name="employeePhone" value="'+ data[0].employeePhone +'">' + '<span class="show">' + data[0].employeePhone + '</span>')
+		                $(".employeePw").html('<input type="password" class="hide" name="employeePw" value="'+ data[0].employeePw +'">' + '<span class="show">' + data[0].employeePw + '</span>')
+		                $(".employmentStatus").html('<span class="show">' + data[0].employmentStatus + '</span>')
+		                $(".jobGrade").html('<span class="show">' + data[0].jobGrade + '</span>')
 		                
 		            },
 		            error: function(xhr, status, error) {
@@ -93,38 +95,27 @@
 	// 수정 버튼 클릭 시
 	$(document).ready(function() {
     	$(".modifyEmployee").off("click").on("click", function() {
-			
-    		// 기존 데이터 수집 (json형식)
-    		let oldData = {
-    			"departmentName": $(".departmentName").text(),
-    			"employeeDate": $(".employeeDate").text(),
-    			"employeeId": $(".employeeId").text(),
-    			"employeeKey": $(".employeeKey").text(),
-    			"employeeName": $(".employeeName").text(),
-    			"employeePhone": $(".employeePhone").text(),
-    			"employeePw": $(".employeePw").text(),
-    			"employmentStatus": $(".employmentStatus").text(),
-    			"jobGrade": $(".jobGrade").text()
-    		};
-			
-			// console.log(oldData)
+    		
+    		// 수정버튼 숨기기
+    		$(".modifyEmployee").hide();
+    		// 수정완료버튼 보이기
+    		$(".modifyEmployeeEnd").css('display', 'inline-block');
     		
 	        // input의 class hide와 span의 show가 바뀌게 설정
 	        $("input.hide").removeClass("hide").addClass("show");
 			$("span.show").removeClass("show").addClass("hide");
-			$("span.hide").removeClass("hide").addClass("show");
 	        
-	     	// departmentName 요소의 input을 select 요소로 변경
+	     	// departmentName 요소의 span을 select 요소로 변경
 	        let departmentSelect = $("<select>").attr("name", "departmentName"); // select 요소 생성
-	        $(".departmentName input").replaceWith(departmentSelect); // input 요소를 select 요소로 교체
+	        $(".departmentName span").after(departmentSelect); // input 요소를 select 요소로 교체
 
-	        // employmentStatus 요소의 input을 select 요소로 변경
+	        // employmentStatus 요소의 span을 select 요소로 변경
 	        let employmentStatusSelect = $("<select>").attr("name", "employmentStatus"); // select 요소 생성
-	        $(".employmentStatus input").replaceWith(employmentStatusSelect); // input 요소를 select 요소로 교체
+	        $(".employmentStatus span").after(employmentStatusSelect); // input 요소를 select 요소로 교체
 	        
-	     	// jobGrade 요소의 input을 select 요소로 변경
+	     	// jobGrade 요소의 span을 select 요소로 변경
 	        let jobGradeSelect = $("<select>").attr("name", "jobGrade"); // select 요소 생성
-	        $(".jobGrade span").replaceWith(jobGradeSelect); // input 요소를 select 요소로 교체
+	        $(".jobGrade span").after(jobGradeSelect); // span 요소를 select 요소로 교체
 
 	        // 각 select 요소에 option 요소 추가
 	        // departmentName select 요소에 option 추가
@@ -141,7 +132,7 @@
 	            $("<option>").text("퇴사").val("퇴사")
 	        );
 	        
-	     // jobGrade select 요소에 option 추가
+	     	// jobGrade select 요소에 option 추가
 	        jobGradeSelect.append(
 	            $("<option>").text("인턴").val("인턴"),
 	            $("<option>").text("사원").val("사원"),
@@ -160,70 +151,91 @@
 	$(function() {
 		$(".modifyEmployeeEnd").off("click").on("click", function() {
 			// form 데이터를 쿼리스트링으로 변환
-	        let formData = $("#updateForm").serialize(); // form의 데이터를 URL 인코딩된 문자열로 반환
+	        let formData = $("#myForm").serialize(); // form의 데이터를 URL 인코딩된 문자열로 반환
 	        console.log(formData)
 			
 			// Ajax
-// 			$(function() {    
-// 		        // AJAX 요청 실행
-// 		        $.ajax({
-// 		            url: "/alphaknow/employee/ajax.doUpdate", // 요청할 URL
-// 		            method: "GET", // HTTP 요청 메서드 (GET, POST 등)
-// 		            dataType: "json", // 응답 데이터 타입 (json, xml, html 등)
-// 		            success: function(data) {
-// 		                // 요청 성공 시 처리할 로직
-// 		                //console.log("data : ", data[0]);
-// 		                // data값 활용
+			$(function() {    
+		        // AJAX 요청 실행
+		        $.ajax({
+		            url: "/alphaknow/employee/ajax.doUpdate?" + formData, // 요청할 URL
+		            method: "GET", // HTTP 요청 메서드 (GET, POST 등)
+		            dataType: "json", // 응답 데이터 타입 (json, xml, html 등)
+		            success: function(data) {
+		                // 요청 성공 시 처리할 로직
+		                console.log("data : ", data);
+		                // data값 활용		                
+						
+		                // input의 class hide와 span의 show가 바뀌게 설정
+				        $("input.show").removeClass("show").addClass("hide");
+						$("span.hide").removeClass("hide").addClass("show");
+						
+						// departmentName의 select문 지우기
+						$(".departmentName select").remove()
+						// jobGrade의 select문 지우기
+						$(".jobGrade select").remove()
+						// employmentStatus의 select문 지우기
+						$(".employmentStatus select").remove()
 		                
-// 		                // 타임스탬프를 Date 객체로 변환
-// 						let timestamp = data[0].employeeDate;
-// 						let date = new Date(timestamp);
-						
-// 						// "yyyy-mm-dd" 형식으로 날짜 문자열 포맷팅
-// 						let formattedDate = formatDate(date);
-						
-// 						// console.log("Formatted Date:", formattedDate);
-						
-// 						// 날짜를 "yyyy-mm-dd" 형식으로 포맷팅하는 함수
-// 						function formatDate(date) {
-// 						    let year = date.getFullYear();
-// 						    let month = ('0' + (date.getMonth() + 1)).slice(-2); // 월은 0부터 시작하므로 +1 필요
-// 						    let day = ('0' + date.getDate()).slice(-2);
+						// 상세정보의 사원번호와 같은 값을 사원관리에서 찾아서 변경하기
+						$(".employeeKey input").each(function() {
+						    var employeeKey = $(this).val();
+						    // 같은 값을 가진 요소의 tr
+						    var tr = $(".selectEmployeeKey").filter(function() {
+						    	return $(this).val() === employeeKey;
+						    }).parent().parent();
 						    
-// 						    return year + '-' + month + '-' + day;
-// 						}
+//  						console.log($(".selectEmployeeKey").filter(function() {
+//  						   	return $(this).val() === employeeKey;
+//  						}).parent().parent()[0])
+							// tr에 값 넣기(사원관리부분)
+							tr.find(".selEmployeeName").text(data.employeeName)
+							tr.find(".selDepartmentName").text(data.departmentName)
+							tr.find(".selJobGrade").text(data.jobGrade)
+							tr.find(".selEmploymentStatus").text(data.employmentStatus)
+							
+							// (사원정보부분) 수정된 값으로 바뀌도록 넣기
+							$(".departmentName").html('<span class="show">' + data.departmentName + '</span>');
+			                $(".employeeId").html('<input type="text" class="hide" name="employeeId" value="'+ data.employeeId +'">' + '<span class="show">' + data.employeeId + '</span>')
+			                $(".employeeName").html('<input type="text" class="hide" name="employeeName" value="'+ data.employeeName +'">' + '<span class="show">' + data.employeeName + '</span>')
+			                $(".employeePhone").html('<input type="text" class="hide" name="employeePhone" value="'+ data.employeePhone +'">' + '<span class="show">' + data.employeePhone + '</span>')
+			                $(".employeePw").html('<input type="password" class="hide" name="employeePw" value="'+ data.employeePw +'">' + '<span class="show">' + data.employeePw + '</span>')
+			                $(".employmentStatus").html('<span class="show">' + data.employmentStatus + '</span>')
+			                $(".jobGrade").html('<span class="show">' + data.jobGrade + '</span>')
+						});
 		                
-						
-// 		                $(".departmentName").text(data[0].departmentName)
-// 		                $(".employeeDate").text(formattedDate)
-// 		                $(".employeeId").text(data[0].employeeId)
-// 		                $(".employeeKey").text(data[0].employeeKey)
-// 		                $(".employeeName").text(data[0].employeeName)
-// 		                $(".employeePhone").text(data[0].employeePhone)
-// 		                $(".employeePw").text(data[0].employeePw)
-// 		                $(".employmentStatus").text(data[0].employmentStatus)
-// 		                $(".jobGrade").text(data[0].jobGrade)
-		                
-// 		            },
-// 		            error: function(xhr, status, error) {
-// 		                // 요청 실패 시 처리할 로직
-// 		                console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
-// 		                // 오류 처리 등의 작업을 수행
-// 		            }
-// 		        })  
-// 			})
-// 			$(".employee_infoDetail").show();
+		            },
+		            error: function(xhr, status, error) {
+		                // 요청 실패 시 처리할 로직
+		                console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
+		                // 오류 처리 등의 작업을 수행
+		            }
+		        })  
+			})
+			$(".modifyEmployeeEnd").hide();
+			$(".modifyEmployee").css("display", "inline-block");
+		})
+	})
+	
+	// 삭제버튼 클릭
+	$(function() {
+		$(".delEmployee").off("click").on("click", function() {
+			if(confirm("삭제하겠습니까?")) {
+				$("#myForm").attr("action", "/alphaknow/employee/delete")
+				$("#myForm").submit();
+			}
 		})
 	})
 	
 </script>
 <style>
+	/* 처음에 안보여야 하는 요소들 */
 	/* 사원등록 */
-	.employee_regedit {
-		display: none;
-	}
+	.employee_regedit,
 	/* 사원세부정보 */
-	.employee_infoDetail {
+	.employee_infoDetail,
+	/* 수정완료버튼 */
+	.modifyEmployeeEnd {
 		display: none;
 	}
 	.show {
@@ -256,16 +268,11 @@
 						<c:forEach var="emp" items="${list}" varStatus="num">
 							<tr>
 								<th>${ num.index + 1 }</th>
-								<td id="employeeKey">${ emp.employeeKey }</td>
-								<td>${ emp.employeeName }</td>
-								<td>${ emp.departmentName }</td>
-								<td>${ emp.jobGrade }</td>
-								<c:if test="${ '재직' == emp.employmentStatus }">
-									<td>${ emp.employmentStatus }중</td>
-								</c:if>
-								<c:if test="${ '재직' != emp.employmentStatus }">
-									<td>${ emp.employmentStatus }</td>
-								</c:if>
+								<td class="selEmployeeKey">${ emp.employeeKey }<input type="hidden" class="selectEmployeeKey" value="${ emp.employeeKey }"></td>
+								<td class="selEmployeeName">${ emp.employeeName }</td>
+								<td class="selDepartmentName">${ emp.departmentName }</td>
+								<td class="selJobGrade">${ emp.jobGrade }</td>
+								<td class="selEmploymentStatus">${ emp.employmentStatus }</td>
 								<td>
 									<button type="button" class="detailInfo">상세정보</button>
 								</td>
@@ -329,7 +336,7 @@
 
 
 	<div class="employee_infoDetail">
-		<form id="updateForm" method="get" action="/alphaknow/employee/ajax.doUpdate">
+		<form id="myForm">
 			<div class="infoDetail_header">
 				사원정보
 				<button type="button" id="hide_employee_infoDetail">x</button>
@@ -374,7 +381,7 @@
 			</table>
 			<button type="button" class="modifyEmployee">수정</button>
 			<button type="button" class="modifyEmployeeEnd">수정완료</button>
-			<button type="button">삭제</button>
+			<button type="button" class="delEmployee">삭제</button>
 		</form>
 	</div>
 

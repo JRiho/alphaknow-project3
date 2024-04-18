@@ -22,9 +22,9 @@ public class EmployeeService {
 		return employeeDAO.insertEmployee(dto);
 	}
 	
-//	public String ppmDelete(String ppc) {
-//		return productionPlanManagementDAO.deleteProductionPlan(ppc);
-//	}
+	public int employeeDelete(int empno) {
+		return employeeDAO.deleteEmployee(empno);
+	}
 	
 	// Ajax 부분입니다 ----------------------------------------------------
 	

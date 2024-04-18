@@ -27,12 +27,12 @@ public class EmployeeDAO {
         return dto;
     }
 	
-//	public String deleteProductionPlan(String ppc) {	
-//        // delete 실행
-//        sqlSession.update("mapper.ppm.ppmDelete", ppc);
-//        
-//        return ppc;
-//    }
+	public int deleteEmployee(int empno) {	
+        // delete 실행
+        sqlSession.delete("mapper.employee.employeeDelete", empno);
+        
+        return empno;
+    }
 	
 	// Ajax 부분입니다 ----------------------------------------------------
 	

@@ -56,20 +56,14 @@ public class employeeManagementController {
         return "redirect:/employee";
 	}
 
-//	@RequestMapping("/ppm/delete")
-//	public String ppmDelete(
-//			@RequestParam("chkChild") String[] productionPlanCodes
-//			) {
-//		try {
-//			for (String ppc : productionPlanCodes) {
-//				productionPlanManagementService.ppmDelete(ppc);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return "redirect:/ppm/select";
-//	}
+	@RequestMapping("/employee/delete")
+	public String employeeDelete(
+			@RequestParam("employeeKey") int employeeKey
+			) {
+		employeeService.employeeDelete(employeeKey);
+		
+		return "redirect:/employee";
+	}
 	
 	
 	// Ajax 사원번호 받아서 상세정보 표시
@@ -97,7 +91,8 @@ public class employeeManagementController {
             @RequestParam("employeeId") String employeeId,
             @RequestParam("employeePw") String employeePw,
             @RequestParam("departmentName") String departmentName,
-            @RequestParam("employmentStatus") String employmentStatus
+            @RequestParam("employmentStatus") String employmentStatus,
+            @RequestParam("jobGrade") String jobGrade            
 			) {
 		
 		// dto 에 담기
@@ -109,8 +104,9 @@ public class employeeManagementController {
         dto.setEmployeePw(employeePw);
         dto.setDepartmentName(departmentName);
         dto.setEmploymentStatus(employmentStatus);
+        dto.setJobGrade(jobGrade);
 		
-		employeeService.employeeDetailList(dto);
+		employeeService.employeeUpdate(dto);
 		return dto;
 	}
 	
