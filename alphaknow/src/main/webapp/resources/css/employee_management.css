@@ -1,0 +1,18 @@
+/* 처음에 안보여야 하는 요소들 */
+/* 사원등록 */
+.employee_regedit, 
+/* 사원세부정보 */ 
+.employee_infoDetail, 
+/* 수정완료버튼 */
+.modifyEmployeeEnd {
+	display: none;
+}
+
+/* 제이쿼리 요소 숨기기 보이기 */
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
