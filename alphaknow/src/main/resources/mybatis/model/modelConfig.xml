@@ -20,6 +20,9 @@
 		
 		<typeAlias type="com.spring.alphaknow.dto.equipmentDTO.Equipment"
 		alias="Equipment" />
+	
+		<typeAlias type="com.spring.alphaknow.dto.processcodeDTO.ProcessCodeDTO"
+		alias="ProcessCodeDTO" />
 	</typeAliases>
 
 </configuration>
