@@ -47,15 +47,15 @@
 						}
 		                
 						// 데이터를 td에 넣기 (나중에 업데이트에 쓸 id도 넣기)
-		                $(".departmentName").html('<input type="hidden" name="departmentName" id="updateDepartmentName" value='+ data[0].departmentName +'>' + data[0].departmentName)
-		                $(".employeeDate").html('<input type="hidden" name="employeeDate" id="updateEmployeeDate" value='+ formattedDate +'>' + formattedDate)
-		                $(".employeeId").html('<input type="hidden" name="employeeId" id="updateEmployeeId" value='+ data[0].employeeId +'>' + data[0].employeeId)
-		                $(".employeeKey").html('<input type="hidden" name="employeeKey" id="updateEmployeeKey" value='+ data[0].employeeKey +'>' + data[0].employeeKey)
-		                $(".employeeName").html('<input type="hidden" name="employeeName" id="updateEmployeeName" value='+ data[0].employeeName +'>' + data[0].employeeName)
-		                $(".employeePhone").html('<input type="hidden" name="employeePhone" id="updateEmployeePhone" value='+ data[0].employeePhone +'>' + data[0].employeePhone)
-		                $(".employeePw").html('<input type="hidden" name="employeePw" id="updateEmployeePw" value='+ data[0].employeePw +'>' + data[0].employeePw)
-		                $(".employmentStatus").html('<input type="hidden" name="employmentStatus" id="updateEmploymentStatus" value='+ data[0].employmentStatus +'>' + data[0].employmentStatus)
-		                $(".jobGrade").html('<input type="hidden" name="jobGrade" id="updateJobGrade" value='+ data[0].jobGrade +'>' + data[0].jobGrade)
+		                $(".departmentName").html('<span class="show">' + data[0].departmentName + '</span>')
+		                $(".employeeDate").html(formattedDate)
+		                $(".employeeId").html('<input type="text" class="hide" name="employeeId" id="updateEmployeeId" value='+ data[0].employeeId +'>' + '<span class="show">' + data[0].employeeId + '</span>')
+		                $(".employeeKey").html('<span class="show">' + data[0].employeeKey + '</span>')
+		                $(".employeeName").html('<input type="text" class="hide" name="employeeName" id="updateEmployeeName" value='+ data[0].employeeName +'>' + '<span class="show">' + data[0].employeeName + '</span>')
+		                $(".employeePhone").html('<input type="text" class="hide" name="employeePhone" id="updateEmployeePhone" value='+ data[0].employeePhone +'>' + '<span class="show">' + data[0].employeePhone + '</span>')
+		                $(".employeePw").html('<input type="password" class="hide" name="employeePw" id="updateEmployeePw" value='+ data[0].employeePw +'>' + '<span class="show">' + data[0].employeePw + '</span>')
+		                $(".employmentStatus").html('<span class="show">' + data[0].employmentStatus + '</span>' + '<span class="hide">' + data[0].employmentStatus + '</span>')
+		                $(".jobGrade").html('<span class="show">' + data[0].jobGrade + '</span>' + '<span class="hide">' + data[0].jobGrade + '</span>')
 		                
 		            },
 		            error: function(xhr, status, error) {
@@ -109,12 +109,10 @@
 			
 			// console.log(oldData)
     		
-	        // 숨겨진 input을 보이도록 변경
-	        $(".employeeName").text("").not("input");
-			$(".employeeName input").attr("type", "text");
-			$(".employeePhone input").attr("type", "text");
-			$(".employeeId input").attr("type", "text");
-			$(".employeePw input").attr("type", "password").val("");
+	        // input의 class hide와 span의 show가 바뀌게 설정
+	        $("input.hide").removeClass("hide").addClass("show");
+			$("span.show").removeClass("show").addClass("hide");
+			$("span.hide").removeClass("hide").addClass("show");
 	        
 	     	// departmentName 요소의 input을 select 요소로 변경
 	        let departmentSelect = $("<select>").attr("name", "departmentName"); // select 요소 생성
@@ -123,6 +121,10 @@
 	        // employmentStatus 요소의 input을 select 요소로 변경
 	        let employmentStatusSelect = $("<select>").attr("name", "employmentStatus"); // select 요소 생성
 	        $(".employmentStatus input").replaceWith(employmentStatusSelect); // input 요소를 select 요소로 교체
+	        
+	     	// jobGrade 요소의 input을 select 요소로 변경
+	        let jobGradeSelect = $("<select>").attr("name", "jobGrade"); // select 요소 생성
+	        $(".jobGrade span").replaceWith(jobGradeSelect); // input 요소를 select 요소로 교체
 
 	        // 각 select 요소에 option 요소 추가
 	        // departmentName select 요소에 option 추가
@@ -137,6 +139,18 @@
 	            $("<option>").text("재직").val("재직"),
 	            $("<option>").text("휴직").val("휴직"),
 	            $("<option>").text("퇴사").val("퇴사")
+	        );
+	        
+	     // jobGrade select 요소에 option 추가
+	        jobGradeSelect.append(
+	            $("<option>").text("인턴").val("인턴"),
+	            $("<option>").text("사원").val("사원"),
+	            $("<option>").text("주임").val("주임"),
+	            $("<option>").text("대리").val("대리"),
+	            $("<option>").text("과장").val("과장"),
+	            $("<option>").text("차장").val("차장"),
+	            $("<option>").text("부장").val("부장"),
+	            $("<option>").text("사장").val("사장")
 	        );
     	})
     })
@@ -212,6 +226,13 @@
 	.employee_infoDetail {
 		display: none;
 	}
+	.show {
+		display: block;
+	}
+	.hide {
+		display: none;
+	}
+	
 </style>
 
 <body>

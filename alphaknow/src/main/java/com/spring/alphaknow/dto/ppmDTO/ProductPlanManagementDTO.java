@@ -2,6 +2,18 @@ package com.spring.alphaknow.dto.ppmDTO;
 
 import java.sql.Date;
 
+//import lombok.Data;
+//import lombok.Getter;
+//import lombok.Setter;
+//import lombok.ToString;
+//
+//@Getter
+//@Setter
+//@ToString
+//@RequiredArgsConstructor // 생성자
+//@EqualsAndHashCode // hashcode + equals // 객체가 같은지 판단 기준 map의 key로 사용하는 등의 경우
+//@Data
+
 public class ProductPlanManagementDTO {
 	String ppc;
 	int itemCode;
