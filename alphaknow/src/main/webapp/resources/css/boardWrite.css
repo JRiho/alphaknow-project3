@@ -1,4 +1,4 @@
-#pop_main {
+#pop_main, #pop_detail {
     display: none;
     position: fixed;
     top: 20%;
@@ -9,7 +9,7 @@
     border-radius: 20px;
 }
 
-#pop_header {
+#pop_header, #pop_header2 {
     width: 100%;
     text-align: left;
     background-color: #1f48d4;
@@ -18,17 +18,17 @@
     font-size: 1.5em;
 }
 
-#pop_header span {
+span {
     padding: 2% 0 2% 2%;
 }
 
-#pop_title {
+#pop_title, #pop_title2 {
     display: flex;
     text-align: left;
     margin: 2% 0 2% 5%;
 }
 
-#pop_content {
+#pop_content, #pop_content2 {
     display: flex;
     width: 90%;
     height: 43vh;
@@ -37,11 +37,11 @@
     border-radius: 5px;
 }
 
-#btns {
+#btns, #btns2 {
     padding: 2%;
 }
 
-#pop_main input {
+#pop_main input, #pop_detail input {
     width: 50%;
     height: 30px;
     font-size: 17px;
@@ -57,7 +57,7 @@
     outline: 1px solid rgb(50, 50, 230);
 }
 
-#pop_main textarea {
+#pop_main textarea, #pop_detail textarea {
     width: 80%;
     height: 20vh;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -109,7 +109,7 @@
 }
 
 /* 버튼효과 css */
-#save {
+#save, #update {
     padding: 1% 2%;
     background-color: #6495ED;
     border: none;
@@ -121,12 +121,13 @@
     transition: background-color 0.3s ease;
 }
 
-#save:hover {
+#save:hover, #update:hover {
     background-color: #4169E1;
 }
 
 #reset,
-#close {
+#close,
+#close2 {
     padding: 1% 1%;
     background-color: #fff;
     font-size: 0.8em;
@@ -136,6 +137,7 @@
 }
 
 #reset:hover,
-#close:hover {
+#close:hover,
+#close2:hover {
     border: 1px solid rgb(50, 50, 230);
 }

@@ -1,6 +1,7 @@
 header {
 	display: flex;
 	background-color: #f0f0f0;
+	justify-content: space-between;
 }
 
 .logo {
@@ -15,6 +16,21 @@ header {
 	width: 100%; 
 	height: 80px; 
 	display: block;
+}
+
+.profile {
+	height: 80px;
+	overflow: hidden;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 20px;
+}
+
+.profile img {
+	width: 100%;
+	height: 80px;
+	border-radius: 50%;
 }
 
 header > a {

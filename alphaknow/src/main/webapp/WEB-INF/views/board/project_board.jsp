@@ -161,22 +161,26 @@
 }
 
 .page_nation .pprev {
-	background: #f8f8f8 url('/alphaknow/resources/img/page_pprev.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_pprev.png')
+		no-repeat center center;
 	margin-left: 0;
 }
 
 .page_nation .prev {
-	background: #f8f8f8 url('/alphaknow/resources/img/page_prev.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_prev.png')
+		no-repeat center center;
 	margin-right: 7px;
 }
 
 .page_nation .next {
-	background: #f8f8f8 url('/alphaknow/resources/img/page_next.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_next.png')
+		no-repeat center center;
 	margin-left: 7px;
 }
 
 .page_nation .nnext {
-	background: #f8f8f8 url('/alphaknow/resources/img/page_nnext.png') no-repeat center center;
+	background: #f8f8f8 url('/alphaknow/resources/img/page_nnext.png')
+		no-repeat center center;
 	margin-right: 0;
 }
 
@@ -203,9 +207,14 @@
 #deleteBtn:hover {
 	background-color: #4169E1;
 }
+
+a:hover {
+	cursor: pointer;
+}
 </style>
 
 <script>
+	// 새글쓰기
 	window.addEventListener('load', function() {
 		let pop_main = document.getElementById("pop_main");
 		document.getElementById("boardWrite_btn").addEventListener("click",
@@ -218,8 +227,28 @@
 					pop_main.style.display = "none";
 				});
 	});
+	
+	// 게시물 상세보기
+	window.addEventListener('load', function() {
+	    let pop_detail = document.getElementById("pop_detail");
+	    let detailBtns = document.querySelectorAll(".detail_btn");
+
+	    detailBtns.forEach(button => {
+	        button.addEventListener("click", function() {
+	            let boardNum = button.getAttribute("data-board-num");
+	            pop_detail.style.display = "block";
+	            document.getElementById("myfrm").method = "post";
+	        });
+	    });
+
+	    // 팝업 닫기 버튼에 대한 이벤트 처리
+	    document.querySelector("#pop_detail #close2").addEventListener("click", function() {
+	        pop_detail.style.display = "none";
+	    });
+	});
 		
-		window.addEventListener('load', function () {
+	// 체크박스(관리자 모드에서 선택 후 삭제 가능)
+	window.addEventListener('load', function () {
             document.querySelector('#selectAll').addEventListener('click', function () {
                console.log("click")
                let checkboxes = document.querySelectorAll(".checkbox");
@@ -235,8 +264,9 @@
                }
             });
 
-         });
+       	});
 		
+	// 게시물 삭제 기능
 		window.addEventListener('load', function() {
 		    document.getElementById('deleteBtn').addEventListener('click', function() {
 		        const checkboxes = document.querySelectorAll('.checkbox');
@@ -265,38 +295,10 @@
 		    });
 		});
 
-         //     document.getElementById('deleteBtn').addEventListener('click', function() {
-         //         const selectedBoards = document.querySelectorAll('.checkbox:checked');
-         //         const selectedBoardIds = Array.from(selectedBoards).map(function(checkbox) {
-         //             return checkbox.value;
-         //         });
-
-         //         // 선택된 게시글의 ID를 DeleteBoardServlet으로 전달하여 삭제 요청을 보냄
-         //         fetch('/alphaknow/delete', {
-         //             method: 'POST',
-         //             headers: {
-         //                 'Content-Type': 'application/x-www-form-urlencoded'
-         //             },
-         //             body: 'boardNum=' + selectedBoardIds.join('&boardNum=')
-         //         }).then(function(response) {
-         //             // 응답 처리
-         //             if (response.ok) {
-         //                 // 삭제가 성공적으로 이루어진 경우, 페이지 리로드
-         //                 window.location.reload();
-         //             } else {
-         //                 // 삭제가 실패한 경우, 사용자에게 알림을 보여줄 수 있음
-         //                 alert('게시글 삭제 실패');
-         //             }
-         //         }).catch(function(error) {
-         //             console.error('Error:', error);
-         //         });
-         //     });
-         // });
-	
 </script>
 
 <body>
-	<form action="/alphaknow/board" method="post">
+	<form id="myfrm" action="/alphaknow/board/select" method="post">
 
 		<div id="boardContent">
 
@@ -341,10 +343,11 @@
 									class="checkbox" name="selectedBoards"
 									value="<%=board.getBoardNum()%>"></td>
 								<td><%=board.getBoardNum()%></td>
-								<td><%=board.getBoardTitle()%></td>
-								<td>1234</td>
+								<td><a class="detail_btn"
+									data-board-num="<%=board.getBoardNum()%>"><%=board.getBoardTitle()%></a></td>
+								<td><%=board.getEmployee_code()%></td>
 								<td><%=board.getBoardWriter()%></td>
-								<td>2024-03-06</td>
+								<td><%=board.getCreated_date()%></td>
 								<td><%=board.getBoardViews()%></td>
 							</tr>
 							<%
@@ -422,6 +425,97 @@
 
 			</div>
 
+
+
+			<div id="pop_detail">
+
+				<div id="pop_header2">
+					<span>게시글 상세</span>
+				</div>
+
+				<div id="pop_title2">게시글 상세</div>
+
+				<div id="pop_content2">
+					<div class="wrapper_ul">
+						<ul class="wrapper_li">
+							<li id="title_detail" class="whole_row">
+								<div class="title">제목</div>
+								<div class="form">
+									<%
+										List<BoardDTO> boardDetail = (List<BoardDTO>) request.getAttribute("boardDetail");
+										if (boardDetail != null) {
+											for (BoardDTO board : boardDetail) {
+									%>
+									<div class="control_set">
+										<input type="text" name="titleDetail"
+											value="<%=board.getBoardTitle()%>" readonly>
+									</div>
+									<%
+											}
+										}
+									%>
+								</div>
+							</li>
+							<li id="writer_detail" class="whole_row">
+								<div class="title">작성자</div>
+								<div class="form">
+									<div class="control_set">
+									<%
+										if(boardDetail != null) {
+											for(BoardDTO board : boardDetail) {
+									%>
+										<input type="text" name="writerDetail"
+											value="<%=board.getBoardWriter()%>" readonly>
+										<%
+											}
+										}
+										%>
+									</div>
+								</div>
+							</li>
+							<li id="employeeCode_detail" class="whole_row">
+								<div class="title">사원코드</div>
+								<div class="form">
+									<div class="control_set">
+									<%
+										if(boardDetail != null) {
+											for(BoardDTO board : boardDetail) {
+									%>
+										<input type="text" name="codeDetail"
+											value="<%=board.getEmployee_code()%>" readonly>
+											<%
+											}
+										}
+										%>
+									</div>
+								</div>
+							</li>
+							<li id="content_detail" class="whole_row">
+								<div class="title">내용</div>
+								<div class="form">
+									<div class="control_set">
+									<%
+										if(boardDetail != null) {
+											for(BoardDTO board : boardDetail) {
+									%>
+										<textarea name="contentDetail" readonly><%=board.getBoardContent()%></textarea>
+										<%
+											}
+										}
+										%>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="btns2">
+					<button type="button" id="update">수정하기</button>
+					<button type="button" id="close2">닫기</button>
+				</div>
+
+			</div>
 
 		</div>
 	</form>
