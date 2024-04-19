@@ -12,7 +12,7 @@
 	    <result property="jobGrade" column="JOB_GRADE"/>
 	    <result property="employeeId" column="EMPLOYEE_ID"/>
 	    <result property="employeePw" column="EMPLOYEE_PW"/>
-	    <result property="employmentStatus" column="EMPLOYEEMENT_STATUS"/>
+	    <result property="employeeStatus" column="EMPLOYEE_STATUS"/>
 	    <result property="departmentName" column="DEPARTMENT_NAME"/>
 	</resultMap>
 
@@ -25,7 +25,7 @@
 			JOB_GRADE,
 			EMPLOYEE_ID,
 			EMPLOYEE_PW,
-			EMPLOYEEMENT_STATUS,
+			EMPLOYEE_STATUS,
 			DEPARTMENT_NAME
     	FROM 
     		EMPLOYEE
@@ -40,18 +40,18 @@
 	    	JOB_GRADE,
 	    	EMPLOYEE_ID,
 	    	EMPLOYEE_PW,
-	    	EMPLOYEEMENT_STATUS,
+	    	EMPLOYEE_STATUS,
 	    	DEPARTMENT_NAME
 	    )
 		VALUES(
 			employee_seq.NEXTVAL,
 			#{employeeName},
 			#{employeePhone},
-			TO_CHAR(SYSDATE, 'YYYY-MM-DD'),
-			'사원',
+			TO_DATE(TO_CHAR(sysdate, 'YYYY-MM-DD'), 'YYYY-MM-DD'),
+			'인턴',
 			#{employeeId},
 			#{employeePw},
-			'재직',
+			'신규',
 			#{departmentName}
 		)	
 	</insert>
@@ -72,7 +72,7 @@
 			JOB_GRADE,
 			EMPLOYEE_ID,
 			EMPLOYEE_PW,
-			EMPLOYEEMENT_STATUS,
+			EMPLOYEE_STATUS,
 			DEPARTMENT_NAME
     	FROM 
     		EMPLOYEE
@@ -90,7 +90,7 @@
         JOB_GRADE = #{jobGrade},
         EMPLOYEE_ID = #{employeeId},
         EMPLOYEE_PW = #{employeePw},
-        EMPLOYEEMENT_STATUS = #{employmentStatus},
+        EMPLOYEE_STATUS = #{employeeStatus},
         DEPARTMENT_NAME = #{departmentName}
     WHERE 
     	EMPLOYEE_KEY = #{employeeKey}
