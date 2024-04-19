@@ -91,7 +91,7 @@ public class employeeManagementController {
             @RequestParam("employeeId") String employeeId,
             @RequestParam("employeePw") String employeePw,
             @RequestParam("departmentName") String departmentName,
-            @RequestParam("employmentStatus") String employmentStatus,
+            @RequestParam("employeeStatus") String employeeStatus,
             @RequestParam("jobGrade") String jobGrade            
 			) {
 		
@@ -103,7 +103,7 @@ public class employeeManagementController {
         dto.setEmployeeId(employeeId);
         dto.setEmployeePw(employeePw);
         dto.setDepartmentName(departmentName);
-        dto.setEmploymentStatus(employmentStatus);
+        dto.setEmployeeStatus(employeeStatus);
         dto.setJobGrade(jobGrade);
 		
 		employeeService.employeeUpdate(dto);

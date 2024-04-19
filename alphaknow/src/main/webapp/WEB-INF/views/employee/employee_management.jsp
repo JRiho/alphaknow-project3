@@ -37,7 +37,7 @@
 								<td class="selEmployeeName">${ emp.employeeName }</td>
 								<td class="selDepartmentName">${ emp.departmentName }</td>
 								<td class="selJobGrade">${ emp.jobGrade }</td>
-								<td class="selEmploymentStatus">${ emp.employmentStatus }</td>
+								<td class="selEmployeeStatus">${ emp.employeeStatus }</td>
 								<td>
 									<button type="button" class="detailInfo">상세정보</button>
 								</td>
@@ -46,7 +46,7 @@
 					</c:if>
 					<c:if test="${ empty list }">
 						<tr>
-							<th>표시할 사원이 없습니다.</th>
+							<th colspan="7">표시할 사원이 없습니다.</th>
 						</tr>
 					</c:if>
 				</tbody>
@@ -136,7 +136,7 @@
 				</tr>
 				<tr>
 					<td>근속현황</td>
-					<td class="employmentStatus"></td>
+					<td class="employeeStatus"></td>
 				</tr>
 			</table>
 			<button type="button" class="modifyEmployee">수정</button>
