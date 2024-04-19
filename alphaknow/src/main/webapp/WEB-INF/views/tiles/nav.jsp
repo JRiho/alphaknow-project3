@@ -11,9 +11,9 @@
 		<li>공정기준정보
 			<ul>
 				<li><a href="/alphaknow/processcode">공정코드관리</a></li>
-				<li>작업표준서</li>
+				<li><a href="/alphaknow/processproduce">작업표준서</a></li>
 				<li><a href="/alphaknow/equipment">장비정보관리</a></li>
-				<li>부품정보관리</li>
+				<li><a href="/alphaknow/part">부품정보관리</a></li>
 			</ul>
 		</li>
 		<li>재고관리
