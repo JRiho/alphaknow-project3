@@ -67,5 +67,13 @@
 		<put-attribute name="title" value="사원관리" />
 		<put-attribute name="content" value="/WEB-INF/views/employee/employee_management.jsp" />
 	</definition>
+	
+	
+	<!-- 그룹웨어 -->
+	
+		<!-- 프로필 누르면 팝업 -->
+		<definition name="profilePopup" template="/WEB-INF/views/group/project_EDSM.jsp">
+			<put-attribute name="body" value=""/>
+		</definition>
 
 </tiles-definitions>

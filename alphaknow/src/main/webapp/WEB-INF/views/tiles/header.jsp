@@ -5,7 +5,7 @@
 
 <script>
 function openPopup() {
-    window.open('/alphaknow/group/project_calendar.jsp', '프로필', 'width=950, height=750');
+    window.open('/alphaknow/myprofile/main', '프로필', 'width=950, height=750');
 }
 </script>
 	

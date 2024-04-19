@@ -3,14 +3,12 @@
 
     <link rel="stylesheet" href="/alphaknow/resources/css/process_produce.css">
 
-<body>
+
         <div class="day">
             <ul id="eq_list">
                 <!-- 항목이 여기에 동적으로 추가됩니다. -->
             </ul>
         </div>
-
-    </div>
     <script>
         let listproduce = [];
         let produce = [
@@ -46,4 +44,4 @@
             list.appendChild(li);
         });
     </script>
-</body>
+

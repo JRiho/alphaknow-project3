@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/group.css">
+    <link rel="stylesheet" href="/alphaknow/resources/css/group.css">
 </head>
 <style>
     .menu ul li a.calendar {
@@ -81,7 +81,7 @@
 <body>
     <div class="side">
         <div class="side_profile">
-            <img src="../img/profile_icon.png" class="profile_img">
+            <img src="/alphaknow/resources/img/profile_icon.png" class="profile_img">
             <div><font size="5"><b>이민영</b></font></div>
             <div>생산1팀/매니저</div>
             <div>010-5811-9717</div>
@@ -107,10 +107,10 @@
         </div>
 
         <div class="date">
-            <img src="../img/arrow_icon.png"
+            <img src="/alphaknow/resources/img/arrow_icon.png"
             class="arrow1">
             <font size="6"><b>2024.02</b></font>
-            <img src="../img/arrow_icon.png"
+            <img src="/alphaknow/resources/img/arrow_icon.png"
             class="arrow2">
         </div>
 
