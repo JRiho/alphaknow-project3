@@ -10,11 +10,11 @@ body {
 }
 
 .wrap {
-	border: 1px solid #c8cdd3;
 	width: 1280px;
 	height: 100%;
 }
 
 .layout_content {
+	border: 1px solid #c8cdd3;
 	min-height: 800px;
 }

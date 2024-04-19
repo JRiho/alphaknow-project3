@@ -30,10 +30,6 @@
 	</definition>
 	
 	
-	
-	
-	
-	
 	<!-- 메인페이지 리플로우온도 -->
 	<definition name="iframeReflow" template="/WEB-INF/views/monitoring/reflow_iframe.jsp">
 		<put-attribute name="body" value=""/>
@@ -45,10 +41,17 @@
 	</definition>
 	
 	<!-- 공정코드관리 -->
+	<definition name="processCode" extends="baseLayout">
+		<put-attribute name="title" value="공정코드관리" />
+		<put-attribute name="content" value="/WEB-INF/views/process/process_code.jsp" />
+	</definition>
+	
 	<definition name="processEquipment" extends="baseLayout">
 		<put-attribute name="title" value="장비관리" />
 		<put-attribute name="content" value="/WEB-INF/views/process/process_equipment.jsp" />
 	</definition>
+	
+	
 	
 	<!-- 사원관리 -->
 	<definition name="employeeManagement" extends="baseLayout">

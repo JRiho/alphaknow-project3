@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="com.spring.alphaknow.dao.equipmentDAO.EquipmentMapper">
+	namespace="com.spring.alphaknow.process.mapper.EquipmentMapper">
 	
 	<!--  resultMap 생성 -->
 	<resultMap id="equipmentResultMap" type="Equipment">
@@ -32,8 +32,7 @@
 	</select>
 
 	<!-- 장비 추가 -->
-	<!-- 장비 추가 -->
-	<insert id="insertEquipment">
+	<insert id="insertEquipment" >
 		INSERT 
 		INTO Equipment (equipment_code, equipment_name, management_number,
 		manufacturer,
@@ -44,6 +43,7 @@
 		#{purchasingCompanyName}, #{repairCompanyName}, #{manager}, #{location},
 		#{usage}, #{usageStatus}, #{purchaseDate}, #{historyRegistrationDate})
 	</insert>
+	
 
 
 	<!-- 장비 삭제 -->
