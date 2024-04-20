@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/alphaknow/resources/css/employee_management.css">
 <script src="/alphaknow/resources/js/employee_management.js"></script>
 
-<body>
+
 	<div class="wrap_container">
 		<div class="management_header">
 			<div class="header_text">사원관리</div>
@@ -145,4 +145,3 @@
 		</form>
 	</div>
 
-</body>
