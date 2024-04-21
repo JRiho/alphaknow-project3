@@ -31,7 +31,7 @@
 	</div>
 	<div class="date_search_set">
 		<input type="date">
-		<button type="button">선택날짜조회</button>
+		<button type="button">조회</button>
 	</div>
 	<div class="receiving_management_list_table_container">
 		<table border="1" class="receiving_management_list_table">
@@ -241,7 +241,7 @@
 
 				<tr>
 					<th>입고주소</th>
-					<td colspan="5"><input type="date" name="requestAddr"
+					<td colspan="5"><input type="text" name="requestAddr"
 						id="requestAddr"></td>
 				</tr>
 
