@@ -171,60 +171,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th>1</th>
-					<th><input type="checkbox" class="selectItemList"></th>
-					<td>임의의 품목코드리스트1 <input type="hidden" value="임의의 품목코드리스트1"
-						class="itemListCode">
-					</td>
-					<td>임의의 품목명리스트1 <input type="hidden" value="임의의 품목명리스트1"
-						class="itemListName">
-					</td>
-					<td>임의의 거래처 <input type="hidden" value="임의의 거래처"
-						class="itemListCompany">
-					</td>
-					<td>100 <input type="hidden" value="100" class="itemListPrice">
-					</td>
-					<td>20 <input type="hidden" value="20"
-						class="itemListCurrentAmount">
-					</td>
-				</tr>
-				<tr>
-					<th>1</th>
-					<th><input type="checkbox" class="selectItemList"></th>
-					<td>임의의 품목코드리스트2 <input type="hidden" value="임의의 품목코드리스트2"
-						class="itemListCode">
-					</td>
-					<td>임의의 품목명리스트2 <input type="hidden" value="임의의 품목명리스트2"
-						class="itemListName">
-					</td>
-					<td>임의의 거래처 <input type="hidden" value="임의의 거래처"
-						class="itemListCompany">
-					</td>
-					<td>100 <input type="hidden" value="100" class="itemListPrice">
-					</td>
-					<td>20 <input type="hidden" value="20"
-						class="itemListCurrentAmount">
-					</td>
-				</tr>
-				<tr>
-					<th>1</th>
-					<th><input type="checkbox" class="selectItemList"></th>
-					<td>임의의 품목코드리스트 <input type="hidden" value="임의의 품목코드리스트"
-						class="itemListCode">
-					</td>
-					<td>임의의 품목명리스트 <input type="hidden" value="임의의 품목명리스트"
-						class="itemListName">
-					</td>
-					<td>임의의 거래처2 <input type="hidden" value="임의의 거래처2"
-						class="itemListCompany">
-					</td>
-					<td>100 <input type="hidden" value="100" class="itemListPrice">
-					</td>
-					<td>20 <input type="hidden" value="20"
-						class="itemListCurrentAmount">
-					</td>
-				</tr>
+				<!-- 동적으로 데이터값 추가  -->
 			</tbody>
 		</table>
 		<div class="show_request_item_div">
