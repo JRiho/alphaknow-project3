@@ -7,7 +7,7 @@
 <!-- 네비게이션 링크 따야함 -->
 <nav>
 	<ul>
-		<li id="boardLi"><a href="/alphaknow/board/select">게시판</a></li>
+		<li id="boardLi"><a href="/alphaknow/board">게시판</a></li>
 		<li>공정기준정보
 			<ul>
 				<li><a href="/alphaknow/processcode">공정코드관리</a></li>

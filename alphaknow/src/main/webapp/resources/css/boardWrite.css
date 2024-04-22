@@ -1,3 +1,15 @@
+.show {
+	display: block;	
+}
+
+.hide {
+	display: none;
+}
+
+#updateComplete{
+	display: none;
+}
+
 #pop_main, #pop_detail {
     display: none;
     position: fixed;
@@ -12,7 +24,7 @@
 #pop_header, #pop_header2 {
     width: 100%;
     text-align: left;
-    background-color: #1f48d4;
+    background-color: #337ab7;
     padding: 10px 0 10px 0;
     border-radius: 5px 5px 0 0;
     font-size: 1.5em;
@@ -92,7 +104,7 @@ span {
     align-items: center;
 }
 
-.control_set {
+.form div {
     display: flex;
     height: 40px;
     padding-top: 10px;
@@ -109,7 +121,7 @@ span {
 }
 
 /* 버튼효과 css */
-#save, #update {
+#save, #update, #updateComplete {
     padding: 1% 2%;
     background-color: #6495ED;
     border: none;
@@ -121,8 +133,24 @@ span {
     transition: background-color 0.3s ease;
 }
 
-#save:hover, #update:hover {
+#save:hover, #update:hover, #updateComplete:hover {
     background-color: #4169E1;
+}
+
+#delete {
+	padding: 1% 2%;
+    background-color: #ff2626;
+    border: none;
+    color: #fff;
+    font-size: 0.8em;
+    border-radius: 10px;
+    cursor: pointer;
+    /* 배경 이미지 애니메이션*/
+    transition: background-color 0.3s ease;
+}
+
+#delete:hover {
+	background-color: #ff4b4b;
 }
 
 #reset,

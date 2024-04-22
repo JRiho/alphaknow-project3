@@ -10,7 +10,7 @@
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
 
-	<!-- mapper애서 사용할 타입이 길어서 짧게 별칭 지정 -->
+	<!-- mapper에서 사용할 타입이 길어서 짧게 별칭 지정 -->
 	<typeAliases>
 		<typeAlias type="com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO"
 			alias="ppmDTO" />
@@ -23,6 +23,9 @@
 	
 		<typeAlias type="com.spring.alphaknow.dto.processcodeDTO.ProcessCodeDTO"
 		alias="ProcessCodeDTO" />
+		
+		<typeAlias type="com.spring.alphaknow.dto.boardDTO.BoardDTO"
+		alias="boardDTO" />
 	</typeAliases>
 
 </configuration>

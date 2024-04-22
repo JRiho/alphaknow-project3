@@ -3,9 +3,14 @@
 <%@ page import="java.sql.*, java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.spring.alphaknow.dto.boardDTO.BoardDTO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/alphaknow/resources/css/boardWrite.css">
 <script src="/alphaknow/resources/js/script.js"></script>
+<script src="/alphaknow/resources/js/board.js"></script>
 
 <style>
 #boardContent {
@@ -125,7 +130,7 @@
 	position: absolute;
 	text-align: center;
 	font-size: 0;
-	top: 88%;
+	top: 80%;
 	left: 40%;
 }
 
@@ -213,165 +218,80 @@ a:hover {
 }
 </style>
 
-<script>
-	// 새글쓰기
-	window.addEventListener('load', function() {
-		let pop_main = document.getElementById("pop_main");
-		document.getElementById("boardWrite_btn").addEventListener("click",
-				function() {
-					pop_main.style.display = "block";
-				});
-
-		document.querySelector("#pop_main #close").addEventListener("click",
-				function() {
-					pop_main.style.display = "none";
-				});
-	});
-	
-	// 게시물 상세보기
-	window.addEventListener('load', function() {
-	    let pop_detail = document.getElementById("pop_detail");
-	    let detailBtns = document.querySelectorAll(".detail_btn");
-
-	    detailBtns.forEach(button => {
-	        button.addEventListener("click", function() {
-	            let boardNum = button.getAttribute("data-board-num");
-	            pop_detail.style.display = "block";
-	            document.getElementById("myfrm").method = "post";
-	        });
-	    });
-
-	    // 팝업 닫기 버튼에 대한 이벤트 처리
-	    document.querySelector("#pop_detail #close2").addEventListener("click", function() {
-	        pop_detail.style.display = "none";
-	    });
-	});
-		
-	// 체크박스(관리자 모드에서 선택 후 삭제 가능)
-	window.addEventListener('load', function () {
-            document.querySelector('#selectAll').addEventListener('click', function () {
-               console.log("click")
-               let checkboxes = document.querySelectorAll(".checkbox");
-
-               if (document.querySelector('#selectAll').checked == true) {
-                  checkboxes.forEach(function (checkbox) {
-                     checkbox.checked = true;
-                  });
-               } else {
-                  checkboxes.forEach(function (checkbox) {
-                     checkbox.checked = false;
-                  });
-               }
-            });
-
-       	});
-		
-	// 게시물 삭제 기능
-		window.addEventListener('load', function() {
-		    document.getElementById('deleteBtn').addEventListener('click', function() {
-		        const checkboxes = document.querySelectorAll('.checkbox');
-		        const selectedBoards = [];
-		        checkboxes.forEach(function(checkbox) {
-		            if (checkbox.checked) {
-		                selectedBoards.push(checkbox.value);
-		            }
-		        });
-		        if (selectedBoards.length > 0) {
-		            const form = document.createElement('form');
-		            form.method = 'POST';
-		            form.action = '/alphaknow/delete';
-		            selectedBoards.forEach(function(boardId) {
-		                const input = document.createElement('input');
-		                input.type = 'hidden';
-		                input.name = 'selectedBoard';
-		                input.value = boardId;
-		                form.appendChild(input);
-		            });
-		            document.body.appendChild(form);
-		            form.submit();
-		        } else {
-		            alert('삭제할 게시글을 선택해주세요.');
-		        }
-		    });
-		});
-
-</script>
-
 <body>
-	<form id="myfrm" action="/alphaknow/board/select" method="post">
 
-		<div id="boardContent">
+	<div id="boardContent">
 
-			<div class="main">
+		<div class="main">
 
-				<div id="boardWrite">
-					<button type="button" id="boardWrite_btn">
-						<img src="/alphaknow/resources/img/boardWrite_icon.png">
-					</button>
-					<label for="boardWrite_btn"><span>새글쓰기</span></label>
-				</div>
+			<div id="boardWrite">
+				<button type="button" id="boardWrite_btn">
+					<img src="/alphaknow/resources/img/boardWrite_icon.png">
+				</button>
+				<label for="boardWrite_btn"><span>새글쓰기</span></label>
+			</div>
 
-				<div class="boardSearch">
-					<select id="searchOption">
-						<option value="title">제목</option>
-						<option value="title">작성자</option>
-					</select> <input type="text" id="searchText">
-					<button id="searchBtn">검색</button>
-				</div>
+			<div class="boardSearch">
+				<select id="searchOption">
+					<option value="title">제목</option>
+					<option value="title">작성자</option>
+				</select> <input type="text" id="searchText">
+				<button id="searchBtn">검색</button>
+			</div>
 
-				<div>
-					<table id="boardList">
-						<thead>
-							<tr height="40px"
-								style="line-height: 40px; margin-top: 1%; border-top: 1px solid #999; border-bottom: 1px solid #999; background-color: #cecece; text-align: center;">
-								<td align="center" width="5%"><input type="checkbox"
-									id="selectAll"></td>
-								<td width="10%">번호</td>
-								<td>제목</td>
-								<td width="10%">사원코드</td>
-								<td width="10%">작성자</td>
-								<td width="20%">작성일</td>
-								<td width="10%">조회</td>
-							</tr>
-							<%
-							List<BoardDTO> boardList = (List<BoardDTO>) request.getAttribute("boardList");
-							if (boardList != null) {
-								for (BoardDTO board : boardList) {
-							%>
+			<div>
+				<table id="boardList">
+					<thead>
+						<tr height="40px"
+							style="line-height: 40px; margin-top: 1%; border-top: 1px solid #999; border-bottom: 1px solid #999; background-color: #cecece; text-align: center;">
+							<td align="center" width="5%"><input type="checkbox"
+								id="selectAll"></td>
+							<td width="10%">번호</td>
+							<td>제목</td>
+							<td width="10%">사원코드</td>
+							<td width="10%">작성자</td>
+							<td width="20%">작성일</td>
+							<td width="10%">조회</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:if test="${ not empty list }">
+							<c:forEach var="board" items="${list}" varStatus="num">
+								<tr>
+									<td align="center" width="5%"><input type="checkbox"
+										class="checkbox" name="selectedBoards"></td>
+									<td class="selBoardNum">${board.boardNum}</td>
+									<td class="selBoardTitle"><a class="detail_btn">${board.boardTitle}</a><input type="hidden" class="selectBoardNum" value="${ board.boardNum }"></td>
+									<td class="selEmployeeKey">${board.employeeKey}</td>
+									<td class="selEmployeeName">${board.employeeName}</td>
+									<td class="selCreatedDate">${board.createdDate}</td>
+									<td class="selBoardViews">${board.boardViews}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
+						<c:if test="${ empty list }">
 							<tr>
-								<td align="center" width="5%"><input type="checkbox"
-									class="checkbox" name="selectedBoards"
-									value="<%=board.getBoardNum()%>"></td>
-								<td><%=board.getBoardNum()%></td>
-								<td><a class="detail_btn"
-									data-board-num="<%=board.getBoardNum()%>"><%=board.getBoardTitle()%></a></td>
-								<td><%=board.getEmployee_code()%></td>
-								<td><%=board.getBoardWriter()%></td>
-								<td><%=board.getCreated_date()%></td>
-								<td><%=board.getBoardViews()%></td>
+								<th colspan=7>표시할 게시물이 없습니다.</th>
 							</tr>
-							<%
-							}
-							}
-							%>
-						
-					</table>
-				</div>
+						</c:if>
+					</tbody>
+				</table>
+			</div>
 
-				<div class="page_wrap">
-					<div class="page_nation">
-						<a class="pprev" href="#"></a> <a class="prev" href="#"></a> <a
-							href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a>
-						<a class="next" href="#"></a> <a class="nnext" href="#"></a>
-					</div>
-
+			<div class="page_wrap">
+				<div class="page_nation">
+					<a class="pprev" href="#"></a> <a class="prev" href="#"></a> <a
+						href="#" class="active">1</a> <a href="#">2</a> <a href="#">3</a>
+					<a class="next" href="#"></a> <a class="nnext" href="#"></a>
 				</div>
 
 			</div>
 
+		</div>
 
-			<div id="pop_main">
 
+		<div id="pop_main">
+			<form action="/alphaknow/board/insert" method="post">
 				<div id="pop_header">
 					<span>게시글 작성</span>
 				</div>
@@ -393,7 +313,7 @@ a:hover {
 								<div class="title">작성자</div>
 								<div class="form">
 									<div class="control_set">
-										<input type="text" name="boardWriter">
+										<input type="text" name="employeeName">
 									</div>
 								</div>
 							</li>
@@ -401,7 +321,7 @@ a:hover {
 								<div class="title">사원코드</div>
 								<div class="form">
 									<div class="control_set">
-										<input type="text" name="employee_code">
+										<input type="text" name="employeeKey">
 									</div>
 								</div>
 							</li>
@@ -423,12 +343,13 @@ a:hover {
 					<button type="button" id="close">닫기</button>
 				</div>
 
-			</div>
+			</form>
+		</div>
 
 
 
-			<div id="pop_detail">
-
+		<div id="pop_detail">
+			<form id="myForm">
 				<div id="pop_header2">
 					<span>게시글 상세</span>
 				</div>
@@ -441,69 +362,25 @@ a:hover {
 							<li id="title_detail" class="whole_row">
 								<div class="title">제목</div>
 								<div class="form">
-									<%
-										List<BoardDTO> boardDetail = (List<BoardDTO>) request.getAttribute("boardDetail");
-										if (boardDetail != null) {
-											for (BoardDTO board : boardDetail) {
-									%>
-									<div class="control_set">
-										<input type="text" name="titleDetail"
-											value="<%=board.getBoardTitle()%>" readonly>
-									</div>
-									<%
-											}
-										}
-									%>
+									<div class="titleDetail"><input type="hidden" class="selectBoardNum" value="${ board.boardNum }"></div>
 								</div>
 							</li>
 							<li id="writer_detail" class="whole_row">
 								<div class="title">작성자</div>
 								<div class="form">
-									<div class="control_set">
-									<%
-										if(boardDetail != null) {
-											for(BoardDTO board : boardDetail) {
-									%>
-										<input type="text" name="writerDetail"
-											value="<%=board.getBoardWriter()%>" readonly>
-										<%
-											}
-										}
-										%>
-									</div>
+									<div class="writerDetail"></div>
 								</div>
 							</li>
 							<li id="employeeCode_detail" class="whole_row">
 								<div class="title">사원코드</div>
 								<div class="form">
-									<div class="control_set">
-									<%
-										if(boardDetail != null) {
-											for(BoardDTO board : boardDetail) {
-									%>
-										<input type="text" name="codeDetail"
-											value="<%=board.getEmployee_code()%>" readonly>
-											<%
-											}
-										}
-										%>
-									</div>
+									<div class="employeeKey"></div>
 								</div>
 							</li>
 							<li id="content_detail" class="whole_row">
 								<div class="title">내용</div>
 								<div class="form">
-									<div class="control_set">
-									<%
-										if(boardDetail != null) {
-											for(BoardDTO board : boardDetail) {
-									%>
-										<textarea name="contentDetail" readonly><%=board.getBoardContent()%></textarea>
-										<%
-											}
-										}
-										%>
-									</div>
+									<div class="contentDetail"></div>
 								</div>
 							</li>
 						</ul>
@@ -512,15 +389,14 @@ a:hover {
 
 				<div id="btns2">
 					<button type="button" id="update">수정하기</button>
+					<button type="button" id="updateComplete">수정완료</button>
+					<button type="button" id="delete">삭제하기</button>
 					<button type="button" id="close2">닫기</button>
 				</div>
-
-			</div>
-
+			</form>
 		</div>
-	</form>
-
-
+		
+	</div>
 
 </body>
 
