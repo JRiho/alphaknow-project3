@@ -19,8 +19,12 @@ public class ProcessCodeService {
         return processCodeMapper.getAllProcessCodes();
     }
 
+    public ProcessCodeDTO processCodeSelect(int sequenceNo) {
+        return processCodeMapper.processCodeSelect(sequenceNo);
+    }
+
     public void addProcessCode(ProcessCodeDTO processCode) {
-        processCodeMapper.insertProcessCode(processCode);
+        processCodeMapper.addProcessCode(processCode);
     }
 
     public void updateProcessCode(ProcessCodeDTO processCode) {

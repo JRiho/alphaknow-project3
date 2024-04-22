@@ -3,13 +3,11 @@ package com.spring.alphaknow.process.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,16 +52,10 @@ public class ProcessCodeController {
         return "redirect:/processcode";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/detail", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<?> deleteProcessCodeAjax(@PathVariable("id") int sequenceNo) {
-        try {
-            processCodeService.deleteProcessCode(sequenceNo);
-            return ResponseEntity.ok().body("프로세스 코드가 성공적으로 삭제되었습니다!");
-        } catch (DataAccessException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류: " + e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("삭제 실패: " + e.getMessage());
-        }
+    public ProcessCodeDTO getProcessCodeDetail(@RequestParam("sequenceNo") int sequenceNo) {
+    	System.out.println("시퀀스 넘버 넘어오나 확인 :" + sequenceNo);
+        return processCodeService.processCodeSelect(sequenceNo);
     }
 }

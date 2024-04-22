@@ -60,6 +60,10 @@
 			<put-attribute name="title" value="작업표준서" />
 			<put-attribute name="content" value="/WEB-INF/views/process/process_produce.jsp" />
 		</definition>
+		<definition name="processproduce/*" extends="baseLayout">
+			<put-attribute name="title" value="작업표준서" />
+			<put-attribute name="content" value="/WEB-INF/views/process/{1}.html" />
+		</definition>
 	
 	
 	

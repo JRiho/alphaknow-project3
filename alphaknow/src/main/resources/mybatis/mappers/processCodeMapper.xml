@@ -1,96 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="com.spring.alphaknow.process.mapper.ProcessCodeMapper">
+<mapper namespace="com.spring.alphaknow.process.mapper.ProcessCodeMapper">
 
-	<!-- resultMap 생성 -->
-	<resultMap id="processCodeResultMap" type="ProcessCodeDTO">
-		<result property="sequenceNo" column="sequence_no" />
-		<result property="code" column="code" />
-		<result property="errorCode" column="error_code" />
-		<result property="processAbbreviation"
-			column="process_abbreviation" />
-		<result property="processAlias" column="process_alias" />
-		<result property="processType" column="process_type" />
-		<result property="standard" column="standard" />
-		<result property="standardWorkingTime"
-			column="standard_working_time" />
-		<result property="fakeFaultWarning" column="fake_fault_warning" />
-		<result property="genuineFaultWarning"
-			column="genuine_fault_warning" />
-		<result property="repeatable" column="repeatable" />
-	</resultMap>
 
-	<!-- 모든 프로세스 코드 정보 조회 -->
-	<select id="getAllProcessCodes" resultType="ProcessCodeDTO">
-		SELECT *
-		FROM ProcessCode
+    <!-- 모든 프로세스 코드 정보 조회 -->
+    <select id="getAllProcessCodes" resultType="ProcessCodeDTO">
+        SELECT * FROM ProcessCode
+    </select>
+
+    <!-- 프로세스 코드 추가 -->
+    <insert id="insertProcessCode" parameterType="processCodeDTO">
+        INSERT INTO ProcessCode (sequenceNo, code, errorCode, processAbbreviation,
+        processAlias, processType, standard, standardWorkingTime,
+        fakeFaultWarning, genuineFaultWarning, repeatable)
+        VALUES (#{sequenceNo}, #{code}, #{errorCode}, #{processAbbreviation},
+        #{processAlias}, #{processType}, #{standard}, #{standardWorkingTime},
+        #{fakeFaultWarning}, #{genuineFaultWarning}, #{repeatable})
+    </insert>
+
+    <!-- 프로세스 코드 삭제 -->
+    <delete id="deleteProcessCode" parameterType="int">
+        DELETE FROM ProcessCode WHERE sequenceNo = #{sequenceNo}
+    </delete>
+
+    <!-- 프로세스 코드 정보 업데이트 -->
+    <update id="updateProcessCode">
+        UPDATE ProcessCode
+        SET code = #{code}, errorCode = #{errorCode}, processAbbreviation =
+        #{processAbbreviation}, processAlias = #{processAlias}, processType = #{processType}, 
+        standard = #{standard}, standardWorkingTime = #{standardWorkingTime}, 
+        fakeFaultWarning = #{fakeFaultWarning}, genuineFaultWarning = #{genuineFaultWarning}, 
+        repeatable = #{repeatable}
+        WHERE sequenceNo = #{sequenceNo}
+    </update>
+
+   <select id="processCodeSelect" parameterType="processCodeDTO" resultType="processCodeDTO">
+	    SELECT sequenceNo, code, errorCode, processAbbreviation, processAlias, 
+	    processType, standard, standardWorkingTime, fakeFaultWarning, 
+	    genuineFaultWarning, repeatable
+	    FROM PROCESSCODE
+	    WHERE sequenceNo = #{sequenceNo}
 	</select>
 
 
-	<!-- 프로세스 코드 추가 -->
-	<insert id="insertProcessCode" parameterType="com.spring.alphaknow.dto.processcodeDTO.ProcessCodeDTO">
-	    INSERT INTO ProcessCode (sequence_no, code, error_code, process_abbreviation,
-	    process_alias, process_type, standard, standard_working_time,
-	    fake_fault_warning, genuine_fault_warning, repeatable)
-	    VALUES (#{sequenceNo}, #{code}, #{errorCode}, #{processAbbreviation},
-	    #{processAlias}, #{processType}, #{standard}, #{standardWorkingTime},
-	    #{fakeFaultWarning}, #{genuineFaultWarning}, #{repeatable})
-	</insert>
+    <update id="processCodeUpdate" parameterType="processCodeDTO">
+        UPDATE PROCESSCODE
+        SET code = #{code}, errorCode = #{errorCode}, processAbbreviation = #{processAbbreviation},
+        processAlias = #{processAlias}, processType = #{processType}, standard = #{standard},
+        standardWorkingTime = #{standardWorkingTime}
+        WHERE sequenceNo = #{sequenceNo}
+    </update>
 
-
-	<!-- 프로세스 코드 삭제 -->
-	<delete id="deleteProcessCode" parameterType="int">
-   		 DELETE FROM ProcessCode WHERE sequence_no = #{sequenceNo}
-	</delete>
-	
-
-	<!-- 프로세스 코드 정보 업데이트 -->
-	<update id="updateProcessCode">
-		UPDATE ProcessCode
-		SET code = #{code}, error_code = #{errorCode}, process_abbreviation =
-		#{processAbbreviation},
-		process_alias = #{processAlias}, process_type = #{processType}, standard =
-		#{standard},
-		standard_working_time = #{standardWorkingTime}, fake_fault_warning = #{fakeFaultWarning},
-		genuine_fault_warning = #{genuineFaultWarning}, repeatable =
-		#{repeatable}
-		WHERE sequence_no = #{sequenceNo}
-	</update>
-	
-	<select id="processCodeSelect" parameterType="processCodeDTO" resultMap="processCodeResultMap">
-    SELECT
-	        sequence_no,
-	        code,
-	        error_code,
-	        process_abbreviation,
-	        process_alias,
-	        process_type,
-	        standard,
-	        standard_working_time,
-	        fake_fault_warning,
-	        genuine_fault_warning,
-	        repeatable
-	    FROM
-	        PROCESSCODE
-	    WHERE
-	        sequence_no = #{sequenceNo}
-	</select>
-	
-	<update id="processCodeUpdate" parameterType="processCodeDTO">
-	    UPDATE 
-	        PROCESSCODE
-	    SET
-	        code = #{code},
-	        error_code = #{errorCode},
-	        process_abbreviation = #{processAbbreviation},
-	        process_alias = #{processAlias},
-	        process_type = #{processType},
-	        standard = #{standard},
-	        standard_working_time = #{standardWorkingTime}
-	    WHERE 
-	        sequence_no = #{sequenceNo}
-	</update>
-	
 </mapper>

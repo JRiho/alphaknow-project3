@@ -5,6 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="/alphaknow/resources/css/process_code.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
 
 <body>
@@ -13,10 +15,7 @@
 		<div class="top_section">
 			<div class="title_select_container">
 				<h1>공정코드관리</h1>
-				<select>
-					<option>선택1</option>
-					<option>선택2</option>
-				</select>
+				
 			</div>
 			<div id="process_code_button">
 				<button type="button" class="change_button" id="new_process_button">추가</button>
@@ -67,8 +66,11 @@
 			<tbody>
 				 <c:forEach var="process" items="${processCodeList}">
                     <tr>
-                    	<th><input type="checkbox" name="selectedProcess"
-						value="${process.sequenceNo}"></th>
+                    	<th><input 
+                    			type="checkbox" 
+                    			name="selectedProcess"
+                    	 		value="${process.sequenceNo}"
+                    	 		data-id="${process.sequenceNo}"></th>
                         <td>${process.sequenceNo}</td>
                         <td>${process.code}</td>
                         <td>${process.errorCode}</td>
@@ -89,7 +91,7 @@
 	<div id="process_new_register" style="display:none;">
         <div id="process_title">공정명 등록/수정</div>
         <div id="table_wrap">
-            <form action="/alphaknow/processcode" method="post">
+            <form action="/processcode" method="get">
                 <input type="hidden" name="_method" value="post" id="form_method">
                 <table id="new_process">
                     <colgroup>
