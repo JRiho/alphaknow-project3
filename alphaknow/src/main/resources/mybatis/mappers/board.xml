@@ -65,15 +65,25 @@
     		BOARD_NUM = #{boardNum}
 	</select>
 	
+	<!-- 조회수 증가 -->
+	<update id="increaseBoardViews">
+		UPDATE
+			BOARD
+		SET
+			BOARD_VIEWS = BOARD_VIEWS + 1
+		WHERE 
+	    	BOARD_NUM = #{boardNum}
+	</update>
+	
 	<!-- 게시글 수정 -->
 	<update id="boardAjaxUpdate" parameterType="boardDTO">
-    UPDATE 
-    	ALPHAKNOW.BOARD
-    SET
-        BOARD_TITLE = #{boardTitle},
-        BOARD_CONTENT = #{boardContent}
-    WHERE 
-    	BOARD_NUM = #{boardNum}
-</update>
+	    UPDATE 
+	    	ALPHAKNOW.BOARD
+	    SET
+	        BOARD_TITLE = #{boardTitle},
+	        BOARD_CONTENT = #{boardContent}
+	    WHERE 
+	    	BOARD_NUM = #{boardNum}
+	</update>
 
 </mapper>

@@ -349,7 +349,8 @@ a:hover {
 
 
 		<div id="pop_detail">
-			<form id="myForm">
+			<form id="myForm" method="get">
+			<input type="hidden" name="boardNum" id="selBoardNo">
 				<div id="pop_header2">
 					<span>게시글 상세</span>
 				</div>
@@ -362,7 +363,7 @@ a:hover {
 							<li id="title_detail" class="whole_row">
 								<div class="title">제목</div>
 								<div class="form">
-									<div class="titleDetail"><input type="hidden" class="selectBoardNum" value="${ board.boardNum }"></div>
+									<div class="titleDetail"></div>
 								</div>
 							</li>
 							<li id="writer_detail" class="whole_row">

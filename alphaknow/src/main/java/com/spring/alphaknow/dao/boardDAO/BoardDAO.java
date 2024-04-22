@@ -38,6 +38,10 @@ public class BoardDAO {
 	public List<BoardDTO> selectBoardDetail(BoardDTO dto) {
 		// ajax select문 실행		
 		List<BoardDTO> list = sqlSession.selectList("mapper.board.boardAjax", dto);
+		
+		// 조회수 증가
+		sqlSession.update("mapper.board.increaseBoardViews", dto);
+		
 		return list;
 	}
 	

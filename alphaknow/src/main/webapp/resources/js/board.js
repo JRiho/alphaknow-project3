@@ -1,32 +1,33 @@
 // 새글쓰기 관련 이벤트
-$(function () {
+$(function() {
 	// 사원등록 버튼 클릭
-	$("#boardWrite_btn").off("click").on("click", function () {
+	$("#boardWrite_btn").off("click").on("click", function() {
 		$("#pop_main").show();
 	})
 	// 사원등록 닫기 버튼 클릭
-	$("#close").off("click").on("click", function () {
+	$("#close").off("click").on("click", function() {
 		$("#pop_main").hide();
 	})
 })
 
 // 클릭한 행의 게시글번호 찾기
-$(function () {
-	$(".detail_btn").off("click").on("click", function () {
+$(function() {
+	$(".detail_btn").off("click").on("click", function() {
 		// 사원번호 확보
 		let tr = $(this).parent().parent();
 		// console.log($(this).parent().parent()[0])
 		let boardno = tr.find(".selectBoardNum").val();
+		$("#selBoardNo").val(boardno);
 		// 게시글번호를 들고 아작스로 이동
 
 		// Ajax
-		$(function () {
+		$(function() {
 			// AJAX 요청 실행
 			$.ajax({
 				url: "/alphaknow/board/ajax.doSelect?boardno=" + boardno, // 요청할 URL
 				method: "GET", // HTTP 요청 메서드 (GET, POST 등)
 				dataType: "json", // 응답 데이터 타입 (json, xml, html 등)
-				success: function (data) {
+				success: function(data) {
 					// 요청 성공 시 처리할 로직
 					// console.log("data : ", data[0]);
 					// data값 활용
@@ -56,7 +57,7 @@ $(function () {
 					$(".contentDetail").html('<textarea name="boardContent" class="hide" >' + data[0].boardContent + '</textarea>' + '<span class="show">' + data[0].boardContent + '</span>');
 
 				},
-				error: function (xhr, status, error) {
+				error: function(xhr, status, error) {
 					// 요청 실패 시 처리할 로직
 					console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
 					// 오류 처리 등의 작업을 수행
@@ -69,16 +70,16 @@ $(function () {
 })
 
 // 게시글상세 관련 이벤트
-$(function () {
+$(function() {
 	// 게시글상세 닫기 버튼 클릭
-	$("#close2").off("click").on("click", function () {
-		$("#pop_detail").hide();
+	$("#close2").off("click").on("click", function() {
+		window.location.reload();
 	})
 })
 
 // 수정 버튼 클릭 시
-$(document).ready(function () {
-	$("#update").off("click").on("click", function () {
+$(document).ready(function() {
+	$("#update").off("click").on("click", function() {
 
 		// 수정버튼 숨기기
 		$("#update").hide();
@@ -95,20 +96,20 @@ $(document).ready(function () {
 
 
 // 수정완료버튼 클릭
-$(function () {
-	$("#updateComplete").off("click").on("click", function () {
+$(function() {
+	$("#updateComplete").off("click").on("click", function() {
 		// form 데이터를 쿼리스트링으로 변환
 		let formData = $("#myForm").serialize(); // form의 데이터를 URL 인코딩된 문자열로 반환
 		console.log(formData)
 
 		// Ajax
-		$(function () {
+		$(function() {
 			// AJAX 요청 실행
 			$.ajax({
 				url: "/alphaknow/board/ajax.doUpdate?" + formData, // 요청할 URL
 				method: "GET", // HTTP 요청 메서드 (GET, POST 등)
 				dataType: "json", // 응답 데이터 타입 (json, xml, html 등)
-				success: function (data) {
+				success: function(data) {
 					// 요청 성공 시 처리할 로직
 					console.log("data : ", data);
 					// data값 활용		                
@@ -119,10 +120,10 @@ $(function () {
 					$("span.hide").removeClass("hide").addClass("show");
 
 					// 상세정보의 게시글번호와 같은 값을 테이블에서 찾아서 변경하기
-					$(".selBoardNum").each(function () {
+					$(".selBoardNum").each(function() {
 						var boardNum = $(this).val();
 						// 같은 값을 가진 요소의 tr
-						var tr = $(".selectBoardNum").filter(function () {
+						var tr = $(".selectBoardNum").filter(function() {
 							return $(this).val() === boardNum;
 						}).parent().parent();
 
@@ -135,7 +136,7 @@ $(function () {
 					});
 
 				},
-				error: function (xhr, status, error) {
+				error: function(xhr, status, error) {
 					// 요청 실패 시 처리할 로직
 					console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
 					// 오류 처리 등의 작업을 수행
@@ -148,11 +149,32 @@ $(function () {
 })
 
 // 삭제버튼 클릭
-$(function () {
-	$("#delete").off("click").on("click", function () {
+$(function() {
+	$("#delete").off("click").on("click", function() {
 		if (confirm("삭제하겠습니까?")) {
 			$("#myForm").attr("action", "/alphaknow/board/delete")
 			$("#myForm").submit();
 		}
 	})
 })
+
+// 체크박스(관리자 모드에서 선택 후 삭제 가능)
+window.addEventListener('load', function() {
+	document.querySelector('#selectAll').addEventListener('click', function() {
+		console.log("click")
+		let checkboxes = document.querySelectorAll(".checkbox");
+
+		if (document.querySelector('#selectAll').checked == true) {
+			checkboxes.forEach(function(checkbox) {
+				checkbox.checked = true;
+			});
+		} else {
+			checkboxes.forEach(function(checkbox) {
+				checkbox.checked = false;
+			});
+		}
+	});
+
+});
+
+// css
