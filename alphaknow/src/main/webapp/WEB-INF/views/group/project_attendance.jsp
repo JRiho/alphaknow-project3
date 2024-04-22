@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
   
-    <link rel="stylesheet" href="../css/group.css">
-    <link rel="stylesheet" href="../css/overtime_popup.css">
-    <link rel="stylesheet" href="../css/attend_popup1.css">
+    <link rel="stylesheet" href="/alphaknow/resources/css/group.css">
+    <link rel="stylesheet" href="/alphaknow/resources/css/overtime_popup.css">
+    <link rel="stylesheet" href="/alphaknow/resources/css/attend_popup1.css">
 </head>
 <style>
     .menu ul li a.att {
@@ -49,7 +49,7 @@
 
     .but {
         display: inline-block;
-        margin-left: 55%;
+        margin-left: 85%;
     }
 
     .but button {
@@ -77,10 +77,14 @@
     }
 
     .stat p {
-        font-size: 35px;
+        font-size: 27px;
         color: rgb(26, 188, 156);
-        margin-top: 20px;
     }
+    
+    .stat span {
+    	margin-top: 25%;
+    }
+
 
     .week_accum {
         display: inline-block;
@@ -101,7 +105,7 @@
         display: inline-block;
         width: 13%;
         text-align: center;
-        margin-left: 5%;
+        margin-left: 7%;
     }
 
     .month p {
@@ -128,7 +132,7 @@
 
     .week_stat div {
         position: relative;
-        margin-top: 70px;
+        margin-top: 7%;
         margin-left: 30px;
     }
 
@@ -149,6 +153,10 @@
         margin: 10px;
         line-height: 0.4;
         font-size: 20px;
+    }
+    
+    .week_stat .gray {
+    	margin-right: 5%;
     }
 </style>
 
@@ -178,13 +186,13 @@
    
     <div class="side">
         <div class="side_profile">
-            <img src="../img/profile_icon.png" class="profile_img">
+            <img src="/alphaknow/resources/img/profile_icon.png" class="profile_img">
             <div>
                 <font size="5"><b>이민영</b></font>
             </div>
             <div>생산1팀/매니저</div>
             <div>010-5811-9717</div>
-            <div style="margin-top: 20px"><a href="../project_login.jsp" class="logout">정보수정</a></div>
+            <div style="margin-top: 20px"><a href="" class="logout">정보수정</a></div>
         </div>
 
         <div class="vertical_line"></div>
@@ -192,7 +200,7 @@
         <div class="side_menu">
             <ul>
                 <li><a class="active">일정관리</a></li>
-                <li><a class="EDSM" href="project_EDSM.jsp">전자결재</a></li>
+                <li><a class="EDSM" href="/alphaknow/myprofile/EDSM">전자결재</a></li>
             </ul>
         </div>
     </div>
@@ -201,17 +209,17 @@
 
         <div class="menu">
             <ul>
-                <li><a class="calendar" href="project_calendar.jsp">캘린더</a></li>
-                <li><a class="att" href="">근태현황</a></li>
+                <li><a class="calendar" href="/alphaknow/myprofile/calendar">캘린더</a></li>
+                <li><a class="att" href="/alphaknow/myprofile/attendance">근태현황</a></li>
             </ul>
         </div>
 
         <div class="date">
-            <img src="../img/arrow_icon.png" class="arrow1">
+            <img src="/alphaknow/resources/img/arrow_icon.png" class="arrow1">
             <span>
                 <font size="6"><b>2024.02</b></font>
             </span>
-            <img src="../img/arrow_icon.png" class="arrow2">
+            <img src="/alphaknow/resources/img/arrow_icon.png" class="arrow2">
         </div>
 
         <div style="margin-left: 30px; display: inline-block">
@@ -219,7 +227,6 @@
         </div>
         <div class="but">
             <button type="button" id="overtime_application">연장근무신청</button>
-            <button type="button">목록 다운로드</button>
         </div>
 
         <div class="stat">
@@ -257,7 +264,7 @@
             <div>
                 <span>1주차</span>
                 <button type="button" id="week1_popup">
-                    <img src="../img/arrow_icon.png" width="20px" height="20px">
+                    <img src="/alphaknow/resources/img/arrow_icon.png" width="20px" height="20px">
                 </button>
                 <p>
                     <font color="#777">초과 근무시간 5h 00m</font>
@@ -267,7 +274,7 @@
             <div>
                 <span>2주차</span>
                 <button type="button" class="week2_popup">
-                    <img src="../img/arrow_icon.png" width="20px" height="20px">
+                    <img src="/alphaknow/resources/img/arrow_icon.png" width="20px" height="20px">
                 </button>
                 <p>
                     <font color="#777">초과 근무시간 0h 0m</font>
@@ -277,7 +284,7 @@
             <div>
                 <span>3주차</span>
                 <button type="button" class="week2_popup">
-                    <img src="../img/arrow_icon.png" width="20px" height="20px">
+                    <img src="/alphaknow/resources/img/arrow_icon.png" width="20px" height="20px">
                 </button>
                 <p>
                     <font color="#777">초과 근무시간 0h 0m</font>
@@ -287,7 +294,7 @@
             <div>
                 <span>4주차</span>
                 <button type="button" class="week2_popup">
-                    <img src="../img/arrow_icon.png" width="20px" height="20px">
+                    <img src="/alphaknow/resources/img/arrow_icon.png" width="20px" height="20px">
                 </button>
                 <p>
                     <font color="#777">초과 근무시간 0h 0m</font>
@@ -297,7 +304,7 @@
             <div>
                 <span>5주차</span>
                 <button type="button" class="week2_popup">
-                    <img src="../img/arrow_icon.png" width="20px" height="20px">
+                    <img src="/alphaknow/resources/img/arrow_icon.png" width="20px" height="20px">
                 </button>
                 <p>
                     <font color="#777">초과 근무시간 0h 0m</font>
@@ -314,7 +321,7 @@
 
             <div>
                 <button type="button" class="close">
-                    <img src="../img/close_icon.png" style="width: 50px; height: 50px;">
+                    <img src="/alphaknow/resources/img/close_icon.png" style="width: 50px; height: 50px;">
                 </button>
             </div>
         </div>
@@ -366,7 +373,7 @@
                 </tr>
                 <tr height="60%">
                     <td>
-                        <img src="../img/approved_icon.png" style="width: 80px; height: 70px;">
+                        <img src="/alphaknow/resources/img/approved_icon.png" style="width: 80px; height: 70px;">
                     </td>
                 </tr>
                 <tr>
@@ -425,7 +432,7 @@
 
         <div>
             <button type="button" class="close">
-                <img src="../img/close_icon.png" style="width: 40px; height: 40px;">
+                <img src="/alphaknow/resources/img/close_icon.png" style="width: 40px; height: 40px;">
             </button>
         </div>
 

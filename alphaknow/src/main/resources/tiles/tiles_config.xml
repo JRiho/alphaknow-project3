@@ -60,6 +60,10 @@
 			<put-attribute name="title" value="작업표준서" />
 			<put-attribute name="content" value="/WEB-INF/views/process/process_produce.jsp" />
 		</definition>
+		<definition name="processproduce/*" extends="baseLayout">
+			<put-attribute name="title" value="작업표준서" />
+			<put-attribute name="content" value="/WEB-INF/views/process/{1}.html" />
+		</definition>
 	
 	
 	
@@ -72,9 +76,24 @@
 	
 	<!-- 그룹웨어 -->
 	
-		<!-- 프로필 누르면 팝업 -->
-		<definition name="profilePopup" template="/WEB-INF/views/group/project_EDSM.jsp">
-			<put-attribute name="body" value=""/>
+		<!-- 프로필 누르면 팝업1 -->
+		<definition name="profilePopup1" template="/WEB-INF/views/group/project_calendar.jsp">
+			<put-attribute name="body" value="캘린더"/>
+		</definition>
+
+		<!-- 프로필 누르면 팝업2 -->
+		<definition name="profilePopup2" template="/WEB-INF/views/group/project_attendance.jsp">
+			<put-attribute name="body" value="근태현황"/>
+		</definition>
+
+		<!-- 프로필 누르면 팝업3 -->
+		<definition name="profilePopup3" template="/WEB-INF/views/group/project_EDSM.jsp">
+			<put-attribute name="body" value="전자결재"/>
+		</definition>
+
+		<!-- 프로필 누르면 팝업4 -->
+		<definition name="profilePopup4" template="/WEB-INF/views/group/project_docBox.jsp">
+			<put-attribute name="body" value="결재함"/>
 		</definition>
 		
 	<!-- 재고관리 -->

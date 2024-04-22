@@ -3,12 +3,15 @@ package com.spring.alphaknow.process.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.alphaknow.dto.processcodeDTO.ProcessCodeDTO;
@@ -47,5 +50,12 @@ public class ProcessCodeController {
         processCodeService.updateProcessCode(processCode);
         redirectAttributes.addFlashAttribute("message", "프로세스 코드 정보가 업데이트되었습니다!");
         return "redirect:/processcode";
+    }
+    
+    @RequestMapping(value = "/detail", method = RequestMethod.POST)
+    @ResponseBody
+    public ProcessCodeDTO getProcessCodeDetail(@RequestParam("sequenceNo") int sequenceNo) {
+    	System.out.println("시퀀스 넘버 넘어오나 확인 :" + sequenceNo);
+        return processCodeService.processCodeSelect(sequenceNo);
     }
 }

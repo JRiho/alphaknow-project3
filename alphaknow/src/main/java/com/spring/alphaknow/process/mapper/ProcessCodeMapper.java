@@ -5,7 +5,8 @@ import java.util.List;
 
 public interface ProcessCodeMapper {
     List<ProcessCodeDTO> getAllProcessCodes();
-    void insertProcessCode(ProcessCodeDTO processCode);
+    ProcessCodeDTO processCodeSelect(int sequenceNo);
+    void addProcessCode(ProcessCodeDTO processCode);
     void deleteProcessCode(int sequenceNo);
     void updateProcessCode(ProcessCodeDTO processCode);
 }

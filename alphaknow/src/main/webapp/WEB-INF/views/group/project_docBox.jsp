@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/group.css">
+    <link rel="stylesheet" href="/alphaknow/resources/css/group.css">
 </head>
 <style>
     .menu ul li a.doc_box {
@@ -73,20 +73,20 @@
 <body>
     <div class="side">
         <div class="side_profile">
-            <img src="../img/profile_icon.png" class="profile_img">
+            <img src="/alphaknow/resources/img/profile_icon.png" class="profile_img">
             <div>
                 <font size="5"><b>이민영</b></font>
             </div>
             <div>생산1팀/매니저</div>
             <div>010-5811-9717</div>
-            <div style="margin-top: 20px"><a href="../project_login.jsp" class="logout">정보수정</a></div>
+            <div style="margin-top: 20px"><a href="" class="logout">정보수정</a></div>
         </div>
 
         <div class="vertical_line"></div>
 
         <div class="side_menu">
             <ul>
-                <li><a class="side_cal" href="project_calendar.jsp">일정관리</a></li>
+                <li><a class="side_cal" href="/alphaknow/myprofile/calendar">일정관리</a></li>
                 <li><a class="active">전자결재</a></li>
             </ul>
         </div>
@@ -96,14 +96,14 @@
 
         <div class="menu">
             <ul>
-                <li><a class="ann" href="project_EDSM.jsp">연차내역/신청</a></li>
-                <li><a class="doc_box" href="">결재함</a></li>
+                <li><a class="ann" href="/alphaknow/myprofile/EDSM">연차내역/신청</a></li>
+                <li><a class="doc_box" href="/alphaknow/myprofile/docBox">결재함</a></li>
             </ul>
         </div>
 
         <div class="listDown">
             <button type="button" id="listDown_but">
-                <img src="../img/download_icon.png">
+                <img src="/alphaknow/resources/img/download_icon.png">
             </button>
             <span>목록 다운로드</span>
         </div>

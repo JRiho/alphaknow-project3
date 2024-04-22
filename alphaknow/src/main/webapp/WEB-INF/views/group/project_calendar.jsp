@@ -85,7 +85,7 @@
             <div><font size="5"><b>이민영</b></font></div>
             <div>생산1팀/매니저</div>
             <div>010-5811-9717</div>
-            <div style="margin-top: 20px"><a href="../project_login.jsp" class="logout">정보수정</a></div>
+            <div style="margin-top: 20px"><a href="" class="logout">정보수정</a></div>
         </div>
         
         <div class="vertical_line"></div>
@@ -93,7 +93,7 @@
         <div class="side_menu">
             <ul>
                 <li><a class="active">일정관리</a></li>
-                <li><a class="side_EDSM" href="project_EDSM.jsp">전자결재</a></li>
+                <li><a class="side_EDSM" href="/alphaknow/myprofile/EDSM">전자결재</a></li>
             </ul>
         </div>
     </div>
@@ -102,7 +102,7 @@
         <div class="menu">
             <ul>
                 <li><a class="calendar">캘린더</a></li>
-                <li class="att"><a href="project_attendance.jsp">근태현황</a></li>
+                <li class="att"><a href="/alphaknow/myprofile/attendance">근태현황</a></li>
             </ul>
         </div>
 

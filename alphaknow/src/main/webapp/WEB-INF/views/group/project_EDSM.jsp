@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/group.css">
-    <link rel="stylesheet" href="../css/annual_popup.css">
+    <link rel="stylesheet" href="/alphaknow/resources/css/group.css">
+    <link rel="stylesheet" href="/alphaknow/resources/css/annual_popup.css">
 
 </head>
 
@@ -155,15 +155,15 @@
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var formattedDateElement = document.getElementById('currentDate');
-        var currentDate = new Date();
+    window.addEventListener('load', function () {
+        let formattedDateElement = document.getElementById('currentDate');
+        let currentDate = new Date();
 
-        var year = currentDate.getFullYear();
-        var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-        var day = currentDate.getDate().toString().padStart(2, '0');
+        let year = currentDate.getFullYear();
+        let month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        let day = currentDate.getDate().toString().padStart(2, '0');
 
-        var formattedDate = `${year}.${month}.${day}`;
+        let formattedDate = `${year}.${month}.${day}`;
 
         formattedDateElement.textContent = formattedDate;
     });
@@ -184,20 +184,20 @@
 <body>
     <div class="side">
         <div class="side_profile">
-            <img src="../img/profile_icon.png" class="profile_img">
+            <img src="/alphaknow/resources/img/profile_icon.png" class="profile_img">
             <div>
                 <font size="5"><b>이민영</b></font>
             </div>
             <div>생산1팀/매니저</div>
             <div>010-5811-9717</div>
-            <div style="margin-top: 20px"><a href="../project_login.jsp" class="logout">정보수정</a></div>
+            <div style="margin-top: 20px"><a href="" class="logout">정보수정</a></div>
         </div>
 
         <div class="vertical_line"></div>
 
         <div class="side_menu">
             <ul>
-                <li><a class="side_cal" href="project_calendar.jsp">일정관리</a></li>
+                <li><a class="side_cal" href="/alphaknow/myprofile/calendar">일정관리</a></li>
                 <li><a class="active">전자결재</a></li>
             </ul>
         </div>
@@ -207,8 +207,8 @@
 
         <div class="menu">
             <ul>
-                <li><a class="ann" href="">연차내역/신청</a></li>
-                <li><a class="doc_box" href="project_docBox.jsp">결재함</a></li>
+                <li><a class="ann" href="/alphaknow/myprofile/EDSM">연차내역/신청</a></li>
+                <li><a class="doc_box" href="/alphaknow/myprofile/docBox">결재함</a></li>
             </ul>
         </div>
 
@@ -220,7 +220,7 @@
 
         <div class="info">
             <div>
-                <img src="../img/profile_icon2.png">
+                <img src="/alphaknow/resources/img/profile_icon2.png">
                 <span>이민영 매니저</span>
             </div>
 
@@ -313,7 +313,7 @@
 
             <div>
                 <button type="button" id="close">
-                    <img src="../img/close_icon.png" style="width: 50px; height: 50px;">
+                    <img src="/alphaknow/resources/img/close_icon.png" style="width: 50px; height: 50px;">
                 </button>
             </div>
         </div>
@@ -365,7 +365,7 @@
                 </tr>
                 <tr height="60%">
                     <td>
-                        <img src="../img/approved_icon.png" style="width: 80px; height: 70px;">
+                        <img src="/alphaknow/resources/img/approved_icon.png" style="width: 80px; height: 70px;">
                     </td>
                 </tr>
                 <tr>

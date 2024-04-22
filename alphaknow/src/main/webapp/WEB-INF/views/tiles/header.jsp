@@ -5,7 +5,7 @@
 
 <script>
 function openPopup() {
-    window.open('/alphaknow/myprofile/main', '프로필', 'width=950, height=750');
+    window.open('/alphaknow/myprofile/calendar', '프로필', 'width=950, height=750');
 }
 </script>
 	
