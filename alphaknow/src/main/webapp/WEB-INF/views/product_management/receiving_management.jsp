@@ -54,21 +54,44 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th>1</th>
-					<th><input type="checkbox" class="selectRequestList">
-					</th>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<c:if test="${ not empty list }">
+					<c:forEach var="list" items="${ list }">
+						
+						
+						<input type="hidden" 
+						data-tradecode="${ list.TRADE_CODE }" 
+						data-productcode="${ list.PRODUCT_CODE }"
+						data-productname="${ list.PRODUCT_NAME }"
+						data-lot="${ list.LOT }"
+						data-productamount="${ list.PRODUCT_AMOUNT }"
+						data-afterproductamount="${ list.AFTER_PRODUCT_AMOUNT }"
+						data-requestamount="${ list.REQUEST_AMOUNT }"
+						data-productprice="${ list.PRODUCT_PRICE }"
+						data-productallprice="${ list.PRODUCT_ALL_PRICE }"
+						>
+						
+						
+						<tr>
+							<th>1</th>
+							<th><input type="checkbox" class="selectRequestList"></th>
+							<td>${ list.TRADE_CODE }<input type="hidden" value="${ list.TRADE_CODE }"></td>
+							<td>${ list.COMPANY_NAME }</td>
+							<td>${ list.SIGN_STATUS }</td>
+							<td>${ list.RECEIVING_DATE }</td>
+							<td>${ list.PRODUCT_ALL_PRICE }</td>
+							<td>${ list.REQEUST_DATE }</td>
+							<td>${ list.REQUEST_PERSON }</td>
+							<td>${ list.MODIFY_REQEUST_DATE }</td>
+							<td>${ list.MODIFY_REQUEST_PERSON }</td>
+							<td>${ list.SIGN_PERSON }</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${ empty list }">
+					<tr>
+						<th colspan="12">입고신청한 물품이 없습니다.</th>
+					</tr>
+				</c:if>
 			</tbody>
 		</table>
 	</div>
@@ -105,15 +128,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>1</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>(현재고)</td>
-				<td>(현재고 + 입고신청수량)</td>
-				<td></td>
-				<td></td>
-				<td>(단가x입고신청수량)</td>
+				<th colspan="9">표시할 내용이 없습니다.</th>
 			</tr>
 		</tbody>
 	</table>

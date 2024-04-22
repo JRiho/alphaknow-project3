@@ -1,5 +1,6 @@
 // 클릭한 행의 사원번호 찾기
 $(function () {
+	console.log("test")
 	$(".detailInfo").off("click").on("click", function () {
 		// 사원번호 확보
 		let tr = $(this).parent().parent();

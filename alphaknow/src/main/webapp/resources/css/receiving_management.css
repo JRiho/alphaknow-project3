@@ -5,7 +5,8 @@
 }
 
 /* 입고신청목록, 상세 */
-.receiving_management_list_header, .receiving_management_detail_header {
+.receiving_management_list_header,
+.receiving_management_detail_header {
 	font-size: 20px;
 	font-weight: 500;
 	padding-top: 20px;
@@ -25,7 +26,7 @@
 
 /* 입고신청, 선택삭제 버튼 양 옆으로 배치 */
 .receiving_management_list_buttonset1,
-	.receiving_management_list_buttonset2 {
+.receiving_management_list_buttonset2 {
 	display: flex;
 }
 
@@ -45,27 +46,39 @@
 }
 
 /* 날짜조회와 입고신청한 목록 테이블의 약간의 여백 */
-.receiving_management_list_table_container, /*상세(글자)와 상세 테이블의 약간의 여백 */
-	.receiving_management_detail_table_container,
-	/* 품목리스트 글자와 검색창의 약간의 여백 */ .item_list_buttonset2 {
+.receiving_management_list_table_container,
+/*상세(글자)와 상세 테이블의 약간의 여백 */
+.receiving_management_detail_table_container,
+/* 품목리스트 글자와 검색창의 약간의 여백 */
+.item_list_buttonset2 {
 	padding-top: 5px;
 }
 
 /* 테이블의 넓이 */
-.receiving_management_list_table, .receiving_management_detail_table {
+.receiving_management_list_table,
+.receiving_management_detail_table {
 	width: 97%;
 }
 
+/* 테이블 중앙정렬 */
+.receiving_management_list_table_container,
+.receiving_management_detail_table_container {
+	display: flex;
+	justify-content: center;
+}
+
 /* 품목리스트 전체 넓이 */
-.item_list_wrap, /* 입고신청서 전체 넓이 */ .request_item_wrap {
+.item_list_wrap,
+/* 입고신청서 전체 넓이 */
+.request_item_wrap {
 	width: 80%;
 	/* 테두리 */
 	border: 1px solid red;
 	/* 처음엔 안보이기 */
 	display: none;
 	/* 중앙에 위치하기 */
-	position: fixed;
-	top: 40%;
+	position: relative;
+	top: -345px;
 	/* 화면 세로 중앙 정렬을 위해 top 위치를 50%로 설정 */
 	left: 50%;
 	/* 화면 가로 중앙 정렬을 위해 left 위치를 50%로 설정 */
@@ -75,6 +88,9 @@
 	/* 요소의 맨 위로 올리기 */
 	background-color: white;
 	/* 뒷 요소 비침 방지 */
+}
+.request_item_wrap {
+	top: -600px;
 }
 
 /* 품목리스트와 닫기버튼 양 옆 배치 */
@@ -95,12 +111,16 @@
 }
 
 /* 품목리스트 테이블 넓이 */
-.item_list_table, /* 입고신청서 테이블 넓이 */ .request_item_table {
+.item_list_table,
+/* 입고신청서 테이블 넓이 */
+.request_item_table {
 	width: 100%;
 }
 
 /* 입고신청서 작성 버튼 div */
-.show_request_item_div, /* 입고신청서 작성완료 버튼 div */ .done_request_item_div {
+.show_request_item_div,
+/* 입고신청서 작성완료 버튼 div */
+.done_request_item_div {
 	/* 상 하단 여백 */
 	padding: 10px 0px;
 	/* 중앙정렬 */
@@ -123,5 +143,5 @@
 
 /* 입고신청서 작성창 */
 .request_item_table_container {
-	min-height: 700px;
+	min-height: 500px;
 }

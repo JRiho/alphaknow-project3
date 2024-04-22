@@ -19,8 +19,8 @@
 		<li>재고관리
 			<ul>
 				<li><a href="/alphaknow/receivingManagement/list">입고관리</a></li>
-				<li>보유재고관리</li>
-				<li>출고관리</li>
+				<li><a href="/alphaknow/inventoryManagement/list">보유재고관리</a></li>
+				<li><a href="/alphaknow/deliveringManagement/list">출고관리</a></li>
 			</ul>
 		</li>
 		<li>생산관리

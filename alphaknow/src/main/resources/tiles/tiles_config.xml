@@ -84,5 +84,17 @@
 			<put-attribute name="title" value="입고관리" />
 			<put-attribute name="content" value="/WEB-INF/views/product_management/receiving_management.jsp" />
 		</definition>
+		
+		<!-- 보유재고관리 -->
+		<definition name="inventoryManagement" extends="baseLayout">
+			<put-attribute name="title" value="보유재고관리" />
+			<put-attribute name="content" value="/WEB-INF/views/product_management/inventory_management.jsp" />
+		</definition>
+		
+		<!-- 출고관리 -->
+		<definition name="deliveringManagement" extends="baseLayout">
+			<put-attribute name="title" value="출고관리" />
+			<put-attribute name="content" value="/WEB-INF/views/product_management/delivering_management.jsp" />
+		</definition>
 
 </tiles-definitions>

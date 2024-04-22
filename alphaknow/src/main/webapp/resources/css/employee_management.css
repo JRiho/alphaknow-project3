@@ -45,6 +45,7 @@
     
     font-weight: bold;
     font-size: 15px;
+    cursor: pointer;
 }
 /* 버튼호버 색 */
 #show_employee_regedit:hover {
