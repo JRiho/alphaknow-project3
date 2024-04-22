@@ -30,20 +30,21 @@
 
 
 	<!-- 프로세스 코드 추가 -->
-	<insert id="insertProcessCode">
-		INSERT INTO ProcessCode (sequence_no, code, error_code,
-		process_abbreviation,
-		process_alias, process_type, standard, standard_working_time,
-		fake_fault_warning, genuine_fault_warning, repeatable)
-		VALUES (#{sequenceNo}, #{code}, #{errorCode}, #{processAbbreviation},
-		#{processAlias}, #{processType}, #{standard}, #{standardWorkingTime},
-		#{fakeFaultWarning}, #{genuineFaultWarning}, #{repeatable})
+	<insert id="insertProcessCode" parameterType="com.spring.alphaknow.dto.processcodeDTO.ProcessCodeDTO">
+	    INSERT INTO ProcessCode (sequence_no, code, error_code, process_abbreviation,
+	    process_alias, process_type, standard, standard_working_time,
+	    fake_fault_warning, genuine_fault_warning, repeatable)
+	    VALUES (#{sequenceNo}, #{code}, #{errorCode}, #{processAbbreviation},
+	    #{processAlias}, #{processType}, #{standard}, #{standardWorkingTime},
+	    #{fakeFaultWarning}, #{genuineFaultWarning}, #{repeatable})
 	</insert>
 
+
 	<!-- 프로세스 코드 삭제 -->
-	<delete id="deleteProcessCode">
-		DELETE FROM ProcessCode WHERE sequence_no = #{sequenceNo}
+	<delete id="deleteProcessCode" parameterType="int">
+   		 DELETE FROM ProcessCode WHERE sequence_no = #{sequenceNo}
 	</delete>
+	
 
 	<!-- 프로세스 코드 정보 업데이트 -->
 	<update id="updateProcessCode">
@@ -57,4 +58,39 @@
 		#{repeatable}
 		WHERE sequence_no = #{sequenceNo}
 	</update>
+	
+	<select id="processCodeSelect" parameterType="processCodeDTO" resultMap="processCodeResultMap">
+    SELECT
+	        sequence_no,
+	        code,
+	        error_code,
+	        process_abbreviation,
+	        process_alias,
+	        process_type,
+	        standard,
+	        standard_working_time,
+	        fake_fault_warning,
+	        genuine_fault_warning,
+	        repeatable
+	    FROM
+	        PROCESSCODE
+	    WHERE
+	        sequence_no = #{sequenceNo}
+	</select>
+	
+	<update id="processCodeUpdate" parameterType="processCodeDTO">
+	    UPDATE 
+	        PROCESSCODE
+	    SET
+	        code = #{code},
+	        error_code = #{errorCode},
+	        process_abbreviation = #{processAbbreviation},
+	        process_alias = #{processAlias},
+	        process_type = #{processType},
+	        standard = #{standard},
+	        standard_working_time = #{standardWorkingTime}
+	    WHERE 
+	        sequence_no = #{sequenceNo}
+	</update>
+	
 </mapper>
