@@ -1,0 +1,127 @@
+/* 입고관리 */
+.receiving_management_header {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+/* 입고신청목록, 상세 */
+.receiving_management_list_header, .receiving_management_detail_header {
+	font-size: 20px;
+	font-weight: 500;
+	padding-top: 20px;
+}
+
+/* 입고관리와 입고신청목록의 약간의 여백 */
+.receiving_management_list_container {
+	padding-top: 10px;
+	min-height: 350px;
+}
+
+/* 전체,결제대기,결재완료,반려 & 입고신청,선택삭제 버튼 양 옆으로 배치 */
+.receiving_management_list_buttonset_container {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 입고신청, 선택삭제 버튼 양 옆으로 배치 */
+.receiving_management_list_buttonset1,
+	.receiving_management_list_buttonset2 {
+	display: flex;
+}
+
+/* 각 div 간격 벌리기 */
+.receiving_management_list_buttonset1>div {
+	border: 1px solid red;
+	padding: 0px 5px;
+}
+
+.receiving_management_list_buttonset2>div {
+	padding: 0px 5px;
+}
+
+/* 전체,결제대기,결재완료,반려 & 입고신청,선택삭제 버튼과 날짜, 선택날짜조회의 약간의 여백  */
+.date_search_set {
+	padding-top: 10px;
+}
+
+/* 날짜조회와 입고신청한 목록 테이블의 약간의 여백 */
+.receiving_management_list_table_container, /*상세(글자)와 상세 테이블의 약간의 여백 */
+	.receiving_management_detail_table_container,
+	/* 품목리스트 글자와 검색창의 약간의 여백 */ .item_list_buttonset2 {
+	padding-top: 5px;
+}
+
+/* 테이블의 넓이 */
+.receiving_management_list_table, .receiving_management_detail_table {
+	width: 97%;
+}
+
+/* 품목리스트 전체 넓이 */
+.item_list_wrap, /* 입고신청서 전체 넓이 */ .request_item_wrap {
+	width: 80%;
+	/* 테두리 */
+	border: 1px solid red;
+	/* 처음엔 안보이기 */
+	display: none;
+	/* 중앙에 위치하기 */
+	position: fixed;
+	top: 40%;
+	/* 화면 세로 중앙 정렬을 위해 top 위치를 50%로 설정 */
+	left: 50%;
+	/* 화면 가로 중앙 정렬을 위해 left 위치를 50%로 설정 */
+	transform: translate(-50%, -50%);
+	/* 요소의 중심을 화면 중앙으로 이동 */
+	z-index: 10;
+	/* 요소의 맨 위로 올리기 */
+	background-color: white;
+	/* 뒷 요소 비침 방지 */
+}
+
+/* 품목리스트와 닫기버튼 양 옆 배치 */
+.item_list_buttonset1 {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 리스트 검색 중앙에 위치 */
+.item_list_buttonset2 {
+	display: flex;
+	justify-content: center;
+}
+
+/* 품목리스트 테이블 div 상단에 여백 */
+.item_list_table_container {
+	padding-top: 10px;
+}
+
+/* 품목리스트 테이블 넓이 */
+.item_list_table, /* 입고신청서 테이블 넓이 */ .request_item_table {
+	width: 100%;
+}
+
+/* 입고신청서 작성 버튼 div */
+.show_request_item_div, /* 입고신청서 작성완료 버튼 div */ .done_request_item_div {
+	/* 상 하단 여백 */
+	padding: 10px 0px;
+	/* 중앙정렬 */
+	display: flex;
+	justify-content: center;
+}
+
+/* 입고신청서 글자랑 닫기버튼 좌우정렬 */
+.request_item_buttonset {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 중앙구분선 */
+.center_line {
+	/* 상단에 여백 */
+	margin-top: 30px;
+	border-top: 1px solid gray;
+}
+
+/* 입고신청서 작성창 */
+.request_item_table_container {
+	min-height: 700px;
+}

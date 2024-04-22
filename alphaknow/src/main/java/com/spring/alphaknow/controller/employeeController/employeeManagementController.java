@@ -1,4 +1,4 @@
-package com.spring.alphaknow.contorller.employeeController;
+package com.spring.alphaknow.controller.employeeController;
 
 import java.util.List;
 

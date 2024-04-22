@@ -1,94 +1,155 @@
-window.addEventListener('load', function () {
-      let customer_new_register = document.getElementById("process_new_register");
+document.addEventListener('DOMContentLoaded', function () {
+    let processNewRegister = document.getElementById("process_new_register");
 
-      document.getElementById("new_process_button").addEventListener("click", function () {
-        customer_new_register.style.display = "block"; // pop-up 창을 띄우는 부분
-        document.querySelectorAll('.text').forEach(function (input) { input.value = ''; });
-      });
-
-      document.getElementById("close").addEventListener("click", function () {
-        customer_new_register.style.display = "none"; // pop-up 창을 숨기는 부분
-        document.querySelectorAll('.text').forEach(function (input) { input.value = ''; });
-      });
-      document.getElementById("delete_last_row").addEventListener("click", function () {
-        deleteLastRow();
-      });
-
-      // 'save' 버튼에 대한 이벤트 리스너를 여기로 이동
-      document.getElementById("save").addEventListener("click", function () {
-        let table = document.getElementById("process_board").getElementsByTagName('tbody')[0];
-        let newRow = table.insertRow(-1); // 새 행 추가
-
-        // 마지막 행의 '순서' 값을 기반으로 새 순서 값을 계산
-        let lastRow = table.rows[table.rows.length - 2]; // 마지막 행 바로 위 행 참조 (-1이 마지막 행이므로, -2는 그 전 행)
-        let lastOrderCell = lastRow ? lastRow.cells[0].textContent : "0"; // 첫 번째 셀이 '순서'를 포함, 행이 없을 경우 '0'으로 시작
-        let newOrder = parseInt(lastOrderCell, 10) + 1; // 순서 값에 1 더하기
-
-        let orderCell = newRow.insertCell(0);
-        orderCell.textContent = newOrder.toString();
-
-        // 정보 입력 셀 추가
-        addTextCell(newRow, "progress_code");
-        addTextCell(newRow, "error_code");
-        addTextCell(newRow, "process_nickname1");
-        addTextCell(newRow, "process_nickname2");
-        addTextCell(newRow, "process_division");
-        addTextCell(newRow, "process_standard");
-        addTextCell(newRow, "st_code");
-        addTextCell(newRow, "bad_code1");
-        addTextCell(newRow, "bad_code2");
-        addTextCell(newRow, "repeat");
-
-        updateCounts();
-        document.querySelectorAll('.text').forEach(function (input) { input.value = ''; });
-      });
-
-      updateCounts();
-
+    // 공정 신규 추가 버튼
+    document.getElementById("new_process_button").addEventListener("click", function () {
+        processNewRegister.style.display = "block";
+        clearInputs();
     });
 
-    // 텍스트 셀을 추가하는 함수
-    function addTextCell(row, inputId) {
-      let cell = row.insertCell(-1);
-      let inputValue = document.getElementById(inputId).value;
-      cell.textContent = inputValue;
+    // 팝업 닫기 버튼
+    document.getElementById("close").addEventListener("click", function () {
+        processNewRegister.style.display = "none";
+        clearInputs();
+    });
+
+
+    // 공정 정보 저장 버튼
+    document.getElementById("save").addEventListener("click", saveNewProcess);
+
+    // 각 수정 버튼 이벤트 리스너
+   document.querySelectorAll('.edit_button').forEach(button => {
+        button.addEventListener('click', function() {
+            let sequenceNo = this.getAttribute('data-id');
+            loadProcessData(sequenceNo);
+            showAddForm();
+        });
+    });
+
+    updateCounts();
+});
+
+document.getElementById("edit_button").addEventListener("click", function() {
+    // 선택된 체크박스 확인
+    let selectedCheckbox = document.querySelector('input[name="selectedProcess"]:checked');
+    if (!selectedCheckbox) {
+        alert("공정을 선택해주세요.");
+        return;
     }
 
-    function deleteLastRow() {
-      let table = document.getElementById("process_board").getElementsByTagName('tbody')[0];
-      if (table.rows.length > 0) {
+    let sequenceNo = selectedCheckbox.value;
+    fetch(`/processcode?sequenceNo=${sequenceNo}`)
+        .then(response => response.json())
+        .then(data => {
+            // 데이터를 폼에 채우기
+            document.querySelector('input[name="code"]').value = data.code;
+            document.querySelector('input[name="errorCode"]').value = data.errorCode;
+            document.querySelector('input[name="processAbbreviation"]').value = data.processAbbreviation;
+            document.querySelector('input[name="processAlias"]').value = data.processAlias;
+            document.querySelector('input[name="processType"]').value = data.processType;
+            document.querySelector('input[name="standard"]').value = data.standard;
+            document.querySelector('input[name="standardWorkingTime"]').value = data.standardWorkingTime;
+            document.querySelector('input[name="fakeFaultWarning"]').value = data.fakeFaultWarning;
+            document.querySelector('input[name="genuineFaultWarning"]').value = data.genuineFaultWarning;
+            document.querySelector('input[name="repeatable"]').value = data.repeatable;
+            
+            // 팝업 표시
+            document.getElementById('process_new_register').style.display = 'block';
+        })
+        .catch(error => console.error('Error loading the process data:', error));
+});
+
+
+function clearInputs() {
+    document.querySelectorAll('.text').forEach(input => input.value = '');
+}
+
+function saveNewProcess() {
+    let formData = {
+        sequenceNo: document.querySelector("#sequenceNo").value, // 확인 후 ID 조정
+        code: document.querySelector("#code").value,
+        errorCode: document.querySelector("#errorCode").value,
+        processAbbreviation: document.querySelector("#processAbbreviation").value,
+        processAlias: document.querySelector("#processAlias").value,
+        processType: document.querySelector("#processType").value,
+        standard: document.querySelector("#standard").value,
+        standardWorkingTime: document.querySelector("#standardWorkingTime").value,
+        fakeFaultWarning: document.querySelector("#fakeFaultWarning").value,
+        genuineFaultWarning: document.querySelector("#genuineFaultWarning").value,
+        repeatable: document.querySelector("#repeatable").value
+    };
+
+    // AJAX 호출
+    fetch("/alphaknow/processcode/insert", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }).then(response => response.json())
+      .then(data => {
+          alert('공정 정보가 저장되었습니다.');
+          location.reload(); // 페이지 새로고침
+      }).catch(error => {
+          console.error("Error saving process:", error);
+          alert('공정 정보 저장에 실패했습니다.');
+      });
+}
+
+function deleteLastRow() {
+    let table = document.getElementById("process_board").getElementsByTagName('tbody')[0];
+    if (table.rows.length > 0) {
         table.deleteRow(-1);
-      }
-      updateCounts();
     }
+    updateCounts();
+}
+function loadProcessData(sequenceNo) {
+    // 선택한 공정의 데이터를 서버로부터 가져와서 폼에 세팅
+    fetch(`/processcode?sequenceNo=${sequenceNo}`)
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('input[name="sequenceNo"]').value = data.sequenceNo;
+            document.querySelector('input[name="code"]').value = data.code;
+            document.querySelector('input[name="errorCode"]').value = data.errorCode;
+            document.querySelector('input[name="processAbbreviation"]').value = data.processAbbreviation;
+            document.querySelector('input[name="processAlias"]').value = data.processAlias;
+            document.querySelector('input[name="processType"]').value = data.processType;
+            document.querySelector('input[name="standard"]').value = data.standard;
+            document.querySelector('input[name="standardWorkingTime"]').value = data.standardWorkingTime;
+            document.querySelector('input[name="fakeFaultWarning"]').value = data.fakeFaultWarning;
+            document.querySelector('input[name="genuineFaultWarning"]').value = data.genuineFaultWarning;
+            document.querySelector('input[name="repeatable"]').value = data.repeatable;
+        })
+        .catch(error => console.error('Error loading the process data:', error));
+}
 
-    function updateRowCount() {
-      let table = document.getElementById("process_board").getElementsByTagName('tbody')[0];
-      document.getElementById("process_code_count").value = table.rows.length;
-    }
+function showAddForm() {
+    document.getElementById('process_new_register').style.display = 'block';
+}
 
-    function updateSTCount() {
-      let table = document.getElementById("process_board").getElementsByTagName('tbody')[0]; // 'process_board' 테이블의 tbody를 찾음
-      let totalST = 0; // ST 합계 초기화
-
-      // 각 행에 대해 반복
-      for (let i = 0; i < table.rows.length; i++) {
-        let row = table.rows[i];
-        // ST 값과 반복 값을 적절한 셀 인덱스로부터 추출
-        let stValue = parseFloat(row.cells[7].textContent || 0); // 예시에서는 8번째 셀에 ST 값이 있다고 가정
-        let repeatValue = parseFloat(row.cells[10].textContent || 1); // 예시에서는 11번째 셀에 반복 값이 있다고 가정
-
-        // ST 값이 유효한 숫자인지 확인 (NaN 체크)
-        if (!isNaN(stValue) && !isNaN(repeatValue)) {
-          totalST += stValue * repeatValue; // 유효한 경우, ST와 반복 값을 곱하여 합계에 추가
+// 폼 제출 핸들러
+function updateProcess() {
+    let form = document.querySelector('form');
+    let formData = new FormData(form);
+    fetch('/processcodeUpdate', {
+        method: 'POST',
+        body: formData
+    }).then(response => {
+        if (response.ok) {
+            alert('공정 정보가 수정되었습니다.');
+            location.reload();
         }
-      }
-
-      // 결과를 'process_st_count' input 요소에 설정
-      document.getElementById("process_st_count").value = totalST.toFixed(2); // 결과를 소수점 두 자리까지 표시
-    }
-
-    function updateCounts() {
-      updateRowCount();
-      updateSTCount();
-    }
+    }).catch(error => {
+        alert('공정 정보 수정에 실패했습니다.');
+        console.error('Error updating the process:', error);
+    });
+}
+function updateCounts() {
+    let table = document.getElementById("process_board").getElementsByTagName('tbody')[0];
+    document.getElementById("process_code_count").value = table.rows.length;
+    let totalST = Array.from(table.rows).reduce((total, row) => {
+        let st = parseFloat(row.cells[8].textContent || 0);
+        return total + st;
+    }, 0);
+    document.getElementById("process_st_count").value = totalST.toFixed(2);
+}
