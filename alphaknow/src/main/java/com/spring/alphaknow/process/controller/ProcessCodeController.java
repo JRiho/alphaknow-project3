@@ -24,14 +24,14 @@ public class ProcessCodeController {
     @Autowired
     private ProcessCodeService processCodeService;  // 서비스 자동 주입
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     public String listProcessCodes(Model model) {
         List<ProcessCodeDTO> processCodeList = processCodeService.getAllProcessCodes();
         model.addAttribute("processCodeList", processCodeList);
         return "processCode";  // 포워드할 JSP 페이지
     }
 
-    @RequestMapping(params = "action=add", method = RequestMethod.POST)
+    @RequestMapping(value = "/processcode", params = "action=add", method = RequestMethod.POST)
     public String addProcessCode(@ModelAttribute ProcessCodeDTO processCode, RedirectAttributes redirectAttributes) {
         processCodeService.addProcessCode(processCode);
         redirectAttributes.addFlashAttribute("message", "프로세스 코드가 성공적으로 추가되었습니다!");

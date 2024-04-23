@@ -16,11 +16,13 @@
 			<div class="title_select_container">
 				<h1>공정코드관리</h1>
 			</div>
+			<form action="/processcode?action=add" method="post">
 			<div id="process_code_button">
 				<button type="button" class="change_button" id="new_process_button">추가</button>
                 <button type="button" class="edit_button" data-id="${process.sequenceNo}">수정</button>
                 <button type="button" onclick="deleteSelectedProcess();">삭제</button>
 			</div>
+			</form>
 		</div>
 		<div>
 			공정수 : <input type="text" id="process_code_count"> 총 ST : <input
@@ -90,7 +92,7 @@
 	<div id="process_new_register" style="display:none;">
         <div id="process_title">공정명 등록/수정</div>
         <div id="table_wrap">
-            <form action="/processcode" method="get">
+            <form action="/processcode" method="post">
                 <input type="hidden" name="_method" value="post" id="form_method">
                 <table id="new_process">
                     <colgroup>
