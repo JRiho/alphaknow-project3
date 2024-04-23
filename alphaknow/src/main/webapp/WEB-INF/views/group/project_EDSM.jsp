@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/alphaknow/resources/css/group.css">
     <link rel="stylesheet" href="/alphaknow/resources/css/annual_popup.css">
+    <script src="/alphaknow/resources/js/EDSM.js"></script>
 
 </head>
 
@@ -19,12 +20,12 @@
         cursor: pointer;
     }
 
-    #currentDate {
-        text-align: center;
-        font-size: 33px;
+    .year_month {
+		text-align: center;
+        font-size: 32px;
         font-weight: bold;
         margin-top: 10px;
-    }
+	}
 
     .info {
         position: relative;
@@ -38,17 +39,23 @@
 
     .info img {
         position: absolute;
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         margin-top: 20px;
-        margin-left: 40px;
+        margin-left: 30px;
     }
 
     .info span {
         position: absolute;
         margin-top: 4%;
         margin-left: 12%;
-        font-size: 20px;
+        font-size: 18px;
+    }
+    
+    .info p {
+        font-size: 35px;
+        color: rgb(26, 188, 156);
+        margin-top: 10px;
     }
 
     .line1 {
@@ -80,12 +87,6 @@
         margin-left: 80%;
     }
 
-    .info p {
-        font-size: 35px;
-        color: rgb(26, 188, 156);
-        margin-top: 10px;
-    }
-
     .line2 {
         position: absolute;
         height: 70%;
@@ -103,7 +104,7 @@
     }
 
     .ann_date {
-        width: 50%;
+        width: 80%;
         margin: 3%;
     }
 
@@ -152,34 +153,21 @@
     .create_his th {
         border-bottom: 2px solid #777;
     }
+    
+    button {
+        width: 80px;
+        height: 30px;
+        border: 0;
+        background-color: #1abd9c;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #15a084;
+    }
 </style>
-
-<script>
-    window.addEventListener('load', function () {
-        let formattedDateElement = document.getElementById('currentDate');
-        let currentDate = new Date();
-
-        let year = currentDate.getFullYear();
-        let month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-        let day = currentDate.getDate().toString().padStart(2, '0');
-
-        let formattedDate = `${year}.${month}.${day}`;
-
-        formattedDateElement.textContent = formattedDate;
-    });
-
-    window.addEventListener('load', function () {
-        let ann_leave_app = document.getElementById("ann_leave_app");
-        document.getElementById("ann_application").addEventListener("click", function () {
-            ann_leave_app.style.display = "block";
-        });
-
-        document.getElementById("close").addEventListener("click", function () {
-            ann_leave_app.style.display = "none";
-        });
-    });
-
-</script>
 
 <body>
     <div class="side">
@@ -212,7 +200,7 @@
             </ul>
         </div>
 
-        <div id="currentDate"></div>
+        <div class="year_month"></div>
 
         <div style="float: right; margin-right: 30px;">
             <button type="button" id="ann_application">연차신청</button>

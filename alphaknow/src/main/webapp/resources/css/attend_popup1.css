@@ -1,11 +1,3 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
 #attend_popup_1 {
     display: none;
     position: fixed;
