@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const initialDowntimeRate = 100 - initialOperatingRate;
     currentData = [initialOperatingRate, initialDowntimeRate];
     updatePieChart(currentData, 'PCB 로더');
-    updateOperationStats(initialOperatingRate, initialDowntimeRate);
 
     // 파이 차트 업데이트 함수
     function updatePieChart(data, deviceName) {
@@ -91,8 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const millsec = now - startTime;
         const totalOperationHours = Math.floor(millsec / (1000 * 60 * 60)); // 시간 단위
         const totalOperationMins = Math.floor((millsec % (1000 * 60 * 60)) / (1000 * 60)); // 분 단위
-        operationStats.querySelector('#totalOperationTime').textContent = 
-        `${totalOperationHours}시간 ${totalOperationMins}분`;
     }
 
     // 페이지가 로드될 때

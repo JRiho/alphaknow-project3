@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
-<link rel="stylesheet" href="css/login.css">
-<script src="js/loginScript.js"></script>
+<link rel="stylesheet" href="/alphaknow/resources/css/login.css">
+<script src="/alphaknow/resources/js/loginScript.js"></script>
 <script>
     window.onload = function() {
         // 서버로부터 받은 오류 메시지를 가져옵니다.
@@ -38,7 +38,7 @@
 					<div class="login">
 						<div>
 							<div class="id_container">
-								<img src="${pageContext.request.contextPath}/img/id_icon.png" ondragstart="return false;"> <input
+								<img src="/alphaknow/resources/img/id_icon.png" ondragstart="return false;"> <input
 									type="text" name="userId" placeholder="사원아이디" id="id">
 							</div>
 							<!-- 로그인 버튼 -->
@@ -46,7 +46,7 @@
 								onclick="login()" tabindex="-1">
 						</div>
 						<div class="pass_container">
-							<img src="${pageContext.request.contextPath}/img/pass_icon.png" ondragstart="return false;"> <input
+							<img src="/alphaknow/resources/img/pass_icon.png" ondragstart="return false;"> <input
 								type="password" name="password" placeholder="비밀번호" id="pass">
 						</div>
 						<div id="login_error" style="color: red; display: none;">
@@ -68,7 +68,7 @@
 				</div>
 
 				<div id="qr_login">
-					<img src="${pageContext.request.contextPath}/img/qrcode.png">
+					<img src="/alphaknow/resources/img/qrcode.png">
 					<p>QR코드를 스캔해주세요.</p>
 				</div>
 

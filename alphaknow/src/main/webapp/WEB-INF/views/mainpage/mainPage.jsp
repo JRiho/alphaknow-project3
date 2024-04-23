@@ -3,7 +3,6 @@
 
 <link rel="stylesheet" href="/alphaknow/resources/css/styles.css">
 <link rel="stylesheet" href="/alphaknow/resources/css/gumin.css">
-<script src="/alphaknow/resources/js/script.js"></script>
 <script src="/alphaknow/resources/js/gumin.js"></script>
 
 

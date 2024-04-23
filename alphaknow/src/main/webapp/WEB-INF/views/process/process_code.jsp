@@ -15,7 +15,6 @@
 		<div class="top_section">
 			<div class="title_select_container">
 				<h1>공정코드관리</h1>
-				
 			</div>
 			<div id="process_code_button">
 				<button type="button" class="change_button" id="new_process_button">추가</button>

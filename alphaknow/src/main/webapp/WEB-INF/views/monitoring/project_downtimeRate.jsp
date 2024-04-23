@@ -9,7 +9,6 @@
     <title>MainPage</title>
     <link rel="stylesheet" href="/alphaknow/resources/css/downtimeRate.css">
     <link rel="stylesheet" href="/alphaknow/resources/css/styles.css">
-    <script src="/alphaknow/resources/js/script.js"></script>
     <script src="/alphaknow/resources/js/downtimeRate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>

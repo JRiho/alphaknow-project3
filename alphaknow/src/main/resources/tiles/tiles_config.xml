@@ -10,6 +10,10 @@
 		<put-attribute name="content" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
+	<!-- 로그인 페이지 -->
+	<definition name="login" template="/WEB-INF/views/login/project_login.jsp">
+		<put-attribute name="body" value=""/>
+	</definition>
 	
 	<!-- 메인페이지 -->
 	<definition name="mainpage" extends="baseLayout">
@@ -64,8 +68,12 @@
 			<put-attribute name="title" value="작업표준서" />
 			<put-attribute name="content" value="/WEB-INF/views/process/{1}.html" />
 		</definition>
-	
-	
+		
+		<!-- 제품관리 -->
+		<definition name="processProduct" extends="baseLayout">
+			<put-attribute name="title" value="제품관리" />
+			<put-attribute name="content" value="/WEB-INF/views/process/process_product.jsp" />
+		</definition>
 	
 	<!-- 사원관리 -->
 	<definition name="employeeManagement" extends="baseLayout">
