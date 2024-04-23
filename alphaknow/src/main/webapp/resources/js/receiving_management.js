@@ -303,6 +303,7 @@ $(function() {
     })
 })
 
+// 입고신청완료시 insert
 $(function() {
     $("#done_request_btn").off("click").on("click", function() {
 
@@ -324,4 +325,12 @@ $(function() {
     })
 })
 
-
+// 선택삭제시 delete
+$(function() {
+    $(".delete_item_list").off("click").on("click", function() {
+        let isConfirm = confirm("삭제시 되돌릴 수 없습니다.\n목록을 삭제하시겠습니까?")
+        if(isConfirm) {
+            $("#deleteForm").submit();
+        }
+    })
+})

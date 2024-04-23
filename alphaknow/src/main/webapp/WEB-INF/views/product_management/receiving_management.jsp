@@ -25,7 +25,7 @@
 				<button type="button">선택수정</button>
 			</div>
 			<div>
-				<button type="button">선택삭제</button>
+				<button type="button" class="delete_item_list">선택삭제</button>
 			</div>
 		</div>
 	</div>
@@ -59,6 +59,7 @@
 						
 						
 						<input type="hidden" 
+						data-tradeseq="${ list.TRADE_SEQ }"
 						data-tradecode="${ list.TRADE_CODE }" 
 						data-productcode="${ list.PRODUCT_CODE }"
 						data-productname="${ list.PRODUCT_NAME }"
@@ -70,16 +71,17 @@
 						data-productallprice="${ list.PRODUCT_ALL_PRICE }"
 						>
 						
-						
 						<tr>
 							<th>1</th>
-							<th><input type="checkbox" class="selectRequestList"></th>
+						<form id="deleteForm" method="get" action="/alphaknow/receivingManagement/delete">
+							<th><input type="checkbox" class="selectRequestList" name="trade_seq" value="${ list.TRADE_SEQ }"></th>
+						</form>
 							<td>${ list.TRADE_CODE }<input type="hidden" value="${ list.TRADE_CODE }"></td>
 							<td>${ list.COMPANY_NAME }</td>
 							<td>${ list.SIGN_STATUS }</td>
 							<td>${ list.RECEIVING_DATE }</td>
 							<td>${ list.PRODUCT_ALL_PRICE }</td>
-							<td>${ list.REQEUST_DATE }</td>
+							<td>${ list.REQUEST_DATE }</td>
 							<td>${ list.REQUEST_PERSON }</td>
 							<td>${ list.MODIFY_REQEUST_DATE }</td>
 							<td>${ list.MODIFY_REQUEST_PERSON }</td>

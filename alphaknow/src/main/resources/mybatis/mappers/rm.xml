@@ -20,7 +20,7 @@
 			ON company_and_product_temp.COMPANY_SEQ = receiving_company_list.COMPANY_SEQ
 		JOIN product_temp 
 			ON company_and_product_temp.PRODUCT_SEQ = product_temp.PRODUCT_SEQ
-		JOIN inventory 
+		LEFT OUTER JOIN inventory 
 			ON product_temp.PRODUCT_SEQ = inventory.PRODUCT_SEQ
 	</select>
 	
@@ -84,5 +84,13 @@
 			'결재대기'
 		)
 	</insert>
+	
+	<!-- 입고목록 삭제 -->
+	<delete id="receivingManagementDelete" parameterType="com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO">
+		DELETE FROM 
+			RECEIVING_MANAGEMENT
+		WHERE 
+			TRADE_SEQ = #{trade_seq}
+	</delete>
 
 </mapper>

@@ -76,16 +76,26 @@ public class ReceivingManagementController {
 			
 			System.out.println(dto);
 			
-			receivingManagementService.rmInsert();
-			try {
-				ps.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			receivingManagementService.rmInsert(dto);
 		}
 		
-		return "redirect:/receivingManagement";
+		return "redirect:/receivingManagement/list";
+	}
+	
+	@RequestMapping("/receivingManagement/delete")
+	public String receivingManagementDelete (
+			@RequestParam("trade_seq") int[] trade_seq
+			) {
+		
+		ReceivingManagementDTO dto = new ReceivingManagementDTO();
+		
+		for(int i=0; i<trade_seq.length; i++) {
+			dto.setTrade_seq(trade_seq[i]);
+			
+			receivingManagementService.rmDelete(dto);
+		}
+		
+		return "redirect:/receivingManagement/list";
 	}
 	
 	// Ajax 입고신청 클릭이벤트

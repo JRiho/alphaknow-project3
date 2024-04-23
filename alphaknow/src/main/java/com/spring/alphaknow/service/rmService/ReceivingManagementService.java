@@ -9,6 +9,7 @@ import com.spring.alphaknow.dao.rmDAO.ReceivingManagementDAO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax2DTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
 
 @Service
 public class ReceivingManagementService {
@@ -19,8 +20,12 @@ public class ReceivingManagementService {
 		return receivingManagementDAO.receivingManagementSelect();
 	}
 	
-	public void rmInsert() {
-		receivingManagementDAO.receivingManagementInsert();
+	public void rmInsert(ReceivingManagementInsertDTO dto) {
+		receivingManagementDAO.receivingManagementInsert(dto);
+	}
+	
+	public void rmDelete(ReceivingManagementDTO dto) {
+		receivingManagementDAO.receivingManagementDelete(dto);
 	}
 	
 	public List<ReceivingManagementAjaxDTO> rmAjaxList() {
