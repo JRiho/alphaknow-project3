@@ -1,0 +1,136 @@
+body {
+	overflow: hidden;
+}
+
+.menu ul li a.calendar {
+	background: rgb(26, 188, 156);
+	color: #fff;
+	border: 0;
+	cursor: pointer;
+}
+
+.year_month {
+	font-size: 32px;
+	font-weight: bold;	
+}
+
+.calDate {
+	position: relative;
+	align-items: center;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.calDate img {
+	position: absolute;
+}
+
+.arrow1 {
+	max-height: 100%;
+	transform: scaleX(-1);
+	width: 30px;
+	height: 30px;
+	left: 37%;
+	top: 20%;
+	cursor: pointer;
+}
+
+.arrow2 {
+	max-height: 100%;
+	width: 30px;
+	height: 30px;
+	right: 37%;
+	top: 20%;
+	cursor: pointer;
+}
+
+.cal {
+    width: 120%;
+    height: 70vh;
+    margin: 0;
+    flex-direction: column;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.days {
+    display: flex;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+    border-top: 2px solid #777;
+    border-bottom: 2px solid #777;
+    border-bottom: none;
+}
+
+.day {
+    width: calc(100% / 7);
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.dates {
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    border-top: 2px solid #777;
+}
+
+.date {
+    width: calc(100% / 7);
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid #777;
+    box-sizing: border-box;
+    height: 10vh;
+}
+
+.day:nth-child(1),
+.date:nth-child(7n + 1) {
+    color: #d13e3e;
+}
+
+.day:nth-child(7),
+.date:nth-child(7n + 7) {
+    color: blue;
+}
+
+.other {
+    opacity: 0.3;
+}
+
+.today {
+    position: relative;
+    color: #ffffff;
+}
+
+.today:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-color: rgb(26, 188, 156);
+    border-radius: 50%;
+    content: '';
+}
+
+.save_but {
+	position: relative;
+	right: 5%;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bold;
+	width: 120px;
+	height: 40px;
+	border: 0;
+	text-align: center;
+	line-height: 40px;
+	background-color: rgb(190, 190, 190);
+	color: #fff;
+	border-radius: 10px;
+	cursor: pointer;
+}

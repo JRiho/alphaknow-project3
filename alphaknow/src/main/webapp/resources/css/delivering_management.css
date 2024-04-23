@@ -1,0 +1,70 @@
+/* 출고관리 */
+.delivering_management_header {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+/* 출고요청목록, 상세 */
+.delivering_management_list_header,
+.delivering_management_detail_header {
+    font-size: 20px;
+    font-weight: 500;
+    padding-top: 20px;
+}
+
+
+/* 상태 구분버튼 & 반려,접수버튼 양옆으로 띄우기 */
+.delivering_management_list_buttonset {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* 상태 구분 버튼 */
+.delivering_management_list_buttonset1 {
+    display: flex;
+}
+
+.delivering_management_list_buttonset1>div {
+    border: 1px solid red;
+    padding: 0px 5px;
+}
+
+
+/* 위 버튼들이랑 테이블 여백 */
+.delivering_management_list_container {
+    padding-top: 10px;
+    min-height: 350px;
+}
+
+/* 날짜검색기능 위에 여백 */
+.date_search_set {
+    padding-top: 10px;
+}
+
+
+/* 날짜검색기능이랑 테이블 여백 */
+.delivering_management_list_table_container,
+/* 상세글자랑 위에 중앙분리선 여백 */
+.delivering_management_detail_table_container {
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* 목록테이블 넓이 */
+.delivering_management_list_table,
+/* 상세테이블 넓이 */
+.delivering_management_detail_table {
+    width: 97%;
+}
+
+
+
+/* 중앙구분선 */
+.center_line {
+    margin-top: 30px;
+    border-top: 1px solid gray;
+}

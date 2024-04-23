@@ -1,0 +1,94 @@
+#ann_leave_app {
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 800px;
+    text-align: center;
+    border: 1px solid;
+    background-color: #fff;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #dfdfdf;
+}
+
+.table1 {
+    float: left;
+    width: 300px;
+    height: 120px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.table2 {
+    float: right;
+    width: 200px;
+    height: 150px;
+    margin-right: 20px;
+}
+
+.table3 {
+    float: right;
+    width: 100px;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.top {
+    margin-top: 30px;
+}
+
+.table4 {
+    position: absolute;
+    width: 96%;
+    height: 450px;
+    margin-top: 180px;
+    margin-left: 20px;
+}
+
+.table1 input[type="text"] {
+    width: 220px;
+    border: none;
+    outline: none;
+}
+
+.table4 input[type="text"] {
+    width: 800px;
+    border: none;
+    outline: none;
+    text-align: left;
+}
+
+#ann_reason {
+    width: 800px;
+    height: 100px;
+    border: none;
+    outline: none;
+}
+
+#save {
+    margin-top: 66%;
+}
+
+#close {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border: none;
+}
+
+#close img {
+    max-width: 100%;
+    max-height: 100%;
+}

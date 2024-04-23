@@ -1,0 +1,512 @@
+.main_box {
+	width: 95%;
+	height: auto;
+	border: 1px solid black;
+	margin: 0 auto;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 1;
+	background-color: #fff;
+}
+
+/* .left-box {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid black;
+    box-sizing: border-box;
+} */
+
+
+#header {
+	width: 100%;
+	height: 7vh;
+	border-bottom: 1px solid black;
+	z-index: 2;
+}
+
+#header ul {
+	list-style: none;
+	display: flex;
+	height: 100%;
+	margin-top: auto;
+	padding-left: 0;
+
+}
+
+#li_icon {
+	width: 20%;
+}
+
+#icon {
+	width: 70%;
+	height: 100%;
+	margin-left: 6%;
+}
+
+#li_search {
+	width: 50%;
+	position: relative;
+	/* border: 1px solid; */
+}
+
+#search {
+	display: flex;
+	width: 100%;
+	height: 80%;
+	border: 2px solid rgb(26, 188, 156);
+	border-radius: 10px;
+	line-height: 380%;
+	margin-top: 1%;
+	box-sizing: border-box;
+
+}
+
+
+#search_size {
+	width: 90%;
+	height: 100%;
+	outline: none;
+	display: inline-block;
+	box-sizing: border-box;
+	/* border: 1px solid red; */
+
+	display: flex;
+	align-items: center;
+}
+
+#search_txt {
+	width: 100%;
+	height: 80%;
+	font-size: 25px;
+	/* outline: none: removal of outine of (input type="text") */
+	outline: none;
+	/* border-width: removal border of (input type="text") */
+	border-width: 0;
+	border-radius: 15px;
+	box-sizing: border-box;
+	/* border: 1px solid purple; */
+}
+
+#search_img {
+	width: 7%;
+	/* border:1px solid blue; */
+	/* box-sizing: border-box; */
+	position: inherit;
+}
+
+#search_img1 {
+	width: 100%;
+	cursor: pointer;
+	height: 100%;
+}
+
+#search_img2 {
+	width: 100%;
+	box-sizing: border-box;
+	position: relative;
+	height: 100%;
+}
+
+.search_menu {
+	width: 100%;
+	text-align: center;
+	display: flex;
+	position: absolute;
+	background-color: rgb(26, 188, 156);
+	height: 30px;
+	line-height: 30px;
+}
+
+.search_menu div {
+	width: calc(100%/4);
+	color: #fff;
+	opacity: 1;
+}
+
+#li_user_icon {
+	width: 30%;
+}
+
+#user_icon {
+	width: 13%;
+	height: 95%;
+	margin-left: 70%;
+}
+
+#li_user_name {
+	margin-left: 7%;
+	margin-top: 1.5%;
+	font-size: 1.1em;
+}
+
+/* 메뉴보드 */
+#menu_board {
+	width: 100%;
+	height: 6%;
+	border-bottom: 1px solid black;
+	display: flex;
+}
+
+
+#menu_board div {
+	cursor: pointer;
+	width: 12.5%;
+	text-align: center;
+	line-height: 350%;
+	/* margin-top: 1.2%; */
+	border-right: 1px solid black;
+	height: 100%;
+}
+
+#menu_board #store {
+	border: none;
+}
+
+#menu_board div a {
+	text-decoration: none;
+	color: black;
+}
+
+/* 메뉴보드 끝 */
+/* 메뉴세부사항 css */
+#monitering {
+
+	width: 100%;
+	line-height: 330%;
+	display: flex;
+	position: absolute;
+	display: none;
+	background-color: rgb(26, 188, 156);
+	z-index: 2;
+
+}
+
+#monitering div {
+	width: 25%;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+
+}
+
+#monitering div a {
+	color: #fff;
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+#moniter1 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#moniter2 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#moniter3 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#moniter4 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+.monitering_child {
+	width: 320px;
+	display: block;
+}
+
+#criteria {
+	width: 100%;
+	line-height: 330%;
+	display: flex;
+	position: absolute;
+	display: none;
+	background-color: rgb(26, 188, 156);
+	z-index: 2;
+}
+
+#criteria div {
+	width: calc(100%/4);
+	text-align: center;
+	cursor: pointer;
+	/* overflow: hidden; */
+}
+
+#criteria div a {
+	color: #fff;
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+#standard1 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#standard2 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#standard3 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#standard4 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#standard5 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#planning {
+	width: 100%;
+	line-height: 330%;
+	display: flex;
+	position: absolute;
+	display: none;
+	background-color: rgb(26, 188, 156);
+	z-index: 2;
+}
+
+#planning div {
+	width: 25%;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+
+}
+
+#planning div a {
+	color: #fff;
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+#planning1 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#planning2 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#planning3 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#planning4 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#planning5 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#performing {
+	width: 100%;
+	line-height: 330%;
+	display: flex;
+	position: absolute;
+	display: none;
+	background-color: rgb(26, 188, 156);
+	z-index: 2;
+}
+
+#performing div {
+	width: 33%;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+
+}
+
+#performing div a {
+	color: #fff;
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+#perform1 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#perform2 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#perform3 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#predicting {
+	width: 100%;
+	line-height: 330%;
+	display: flex;
+	position: absolute;
+	display: none;
+	background-color: rgb(26, 188, 156);
+	z-index: 2;
+}
+
+#predicting div {
+	width: calc(100%/3);
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+
+}
+
+#predicting div a {
+	color: #fff;
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+#predicting1 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#predicting2 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#predicting3 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#predicting4 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#predicting5 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#invent {
+
+	width: 100%;
+	line-height: 330%;
+	display: flex;
+	position: absolute;
+	display: none;
+	background-color: rgb(26, 188, 156);
+	z-index: 2;
+}
+
+#invent div {
+	width: 33%;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+
+}
+
+#invent div a {
+	color: #fff;
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+#invent1 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#invent2 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#invent3 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#storing {
+	width: 100%;
+	line-height: 330%;
+	display: flex;
+	position: absolute;
+	display: none;
+	background-color: rgb(26, 188, 156);
+	z-index: 2;
+}
+
+#storing div {
+	width: calc(100%/3);
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+
+}
+
+#storing div a {
+	color: #fff;
+	text-decoration: none;
+	opacity: 0.7;
+}
+
+#storing1 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#storing2 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#storing3 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+#storing4 a:hover {
+	color: #fff;
+	opacity: 1;
+}
+
+/* 세부메뉴바의 폰트를 더 진하게 바꿈 end*/
+
+/* @media 600px */
+@media screen and(max-width:600px) {}
+
+/*  */
+/* 여기서부터 메뉴바 하단부 코딩(세부메뉴 코딩) */
+#content {
+	height: auto;
+	width: 100%;
+	border: 1px solid transparent;
+	box-sizing: border-box;
+
+}
+
+#content_box1 {
+	/* border: 1px solid red; */
+	height: auto;
+	display: flex;
+
+}
