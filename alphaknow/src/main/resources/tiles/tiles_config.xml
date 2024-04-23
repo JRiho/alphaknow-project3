@@ -10,7 +10,9 @@
 		<put-attribute name="content" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
+	
 	<!-- 로그인 페이지 -->
+	
 	<definition name="login" template="/WEB-INF/views/login/project_login.jsp">
 		<put-attribute name="body" value=""/>
 	</definition>

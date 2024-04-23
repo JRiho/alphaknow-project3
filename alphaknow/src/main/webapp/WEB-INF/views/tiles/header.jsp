@@ -13,8 +13,19 @@
 		<img src="/alphaknow/resources/img/mainprofile.png">
 		<div id="myDropdown" class="dropdown-content" style="display:none;">
 			<!-- 드롭다운 메뉴 아이템들 -->
+			<div id="username">
+			<% 
+                    // 세션에서 사용자 이름 가져오기
+                    String userName = (String)session.getAttribute("userName");
+					String department = (String)session.getAttribute("department");
+                    if(userName != null) {
+                        out.println(department+"팀 "+userName+"님<br>"); // 사용자 이름 출력
+                    } else {
+                        out.print("게스트"); // 세션이 없는 경우 게스트로 표시
+                    }
+             %>
+			</div>
 			<a href="javascript:void(0);" onclick="openPopup()">내 프로필</a>
-			<a href="/path/to/settings">설정</a>
 			<a href="/path/to/logout">로그아웃</a>
 		</div>
 	</div>
