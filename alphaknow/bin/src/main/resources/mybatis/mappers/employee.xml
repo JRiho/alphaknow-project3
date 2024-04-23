@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.employee">
+
+	<resultMap id="employeeResultMap" type="employeeDTO">
+	    <id property="employeeKey" column="EMPLOYEE_KEY"/>
+	    <result property="employeeName" column="EMPLOYEE_NAME"/>
+	    <result property="employeePhone" column="EMPLOYEE_PHONE"/>
+	    <result property="employeeDate" column="EMPLOYEE_DATE"/>
+	    <result property="jobGrade" column="JOB_GRADE"/>
+	    <result property="employeeId" column="EMPLOYEE_ID"/>
+	    <result property="employeePw" column="EMPLOYEE_PW"/>
+	    <result property="employeeStatus" column="EMPLOYEE_STATUS"/>
+	    <result property="departmentName" column="DEPARTMENT_NAME"/>
+	</resultMap>
+
+	<select id="employeeSelect" resultMap="employeeResultMap">
+		SELECT 
+			EMPLOYEE_KEY, 
+			EMPLOYEE_NAME,
+			EMPLOYEE_PHONE,
+			EMPLOYEE_DATE, 
+			JOB_GRADE,
+			EMPLOYEE_ID,
+			EMPLOYEE_PW,
+			EMPLOYEE_STATUS,
+			DEPARTMENT_NAME
+    	FROM 
+    		EMPLOYEE
+	</select>
+	
+	<insert id="employeeInsert" parameterType="employeeDTO">
+	    INSERT INTO ALPHAKNOW.EMPLOYEE(
+	    	EMPLOYEE_KEY,
+	    	EMPLOYEE_NAME,
+	    	EMPLOYEE_PHONE,
+	    	EMPLOYEE_DATE,
+	    	JOB_GRADE,
+	    	EMPLOYEE_ID,
+	    	EMPLOYEE_PW,
+	    	EMPLOYEE_STATUS,
+	    	DEPARTMENT_NAME
+	    )
+		VALUES(
+			employee_seq.NEXTVAL,
+			#{employeeName},
+			#{employeePhone},
+			TO_DATE(TO_CHAR(sysdate, 'YYYY-MM-DD'), 'YYYY-MM-DD'),
+			'인턴',
+			#{employeeId},
+			#{employeePw},
+			'신규',
+			#{departmentName}
+		)	
+	</insert>
+	
+	<delete id="employeeDelete" parameterType="int">
+		DELETE FROM ALPHAKNOW.EMPLOYEE
+	    WHERE EMPLOYEE_KEY = #{employeeKey}
+	</delete>
+
+	<!-- 아작스 -->
+	<!-- 사원 세부정보 열람 -->
+	<select id="employeeAjax" parameterType="employeeDTO" resultMap="employeeResultMap">
+		SELECT 
+			EMPLOYEE_KEY, 
+			EMPLOYEE_NAME,
+			EMPLOYEE_PHONE,
+			EMPLOYEE_DATE, 
+			JOB_GRADE,
+			EMPLOYEE_ID,
+			EMPLOYEE_PW,
+			EMPLOYEE_STATUS,
+			DEPARTMENT_NAME
+    	FROM 
+    		EMPLOYEE
+    	WHERE
+    		EMPLOYEE_KEY = #{employeeKey}
+	</select>
+	
+	<!-- 사원 수정 -->
+	<update id="employeeAjaxUpdate" parameterType="employeeDTO">
+    UPDATE 
+    	ALPHAKNOW.EMPLOYEE
+    SET
+        EMPLOYEE_NAME = #{employeeName},
+        EMPLOYEE_PHONE = #{employeePhone},
+        JOB_GRADE = #{jobGrade},
+        EMPLOYEE_ID = #{employeeId},
+        EMPLOYEE_PW = #{employeePw},
+        EMPLOYEE_STATUS = #{employeeStatus},
+        DEPARTMENT_NAME = #{departmentName}
+    WHERE 
+    	EMPLOYEE_KEY = #{employeeKey}
+</update>
+
+</mapper>
