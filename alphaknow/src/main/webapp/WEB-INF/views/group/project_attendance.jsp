@@ -42,7 +42,7 @@
 	transform: scaleX(-1);
 	width: 30px;
 	height: 30px;
-	left: 35%;
+	left: 37%;
 	top: 20%;
 	cursor: pointer;
 }
@@ -51,7 +51,7 @@
 	max-height: 100%;
 	width: 30px;
 	height: 30px;
-	right: 35%;
+	right: 37%;
 	top: 20%;
 	cursor: pointer;
 }
