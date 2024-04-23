@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<form action="login" method="post">
+	<form action="/alphaknow/login" method="post">
 		<div id="mainbox">
 			<div class="screen">
 				<!-- 로그인 타입 선택; id/qr -->
@@ -42,8 +42,7 @@
 									type="text" name="userId" placeholder="사원아이디" id="id">
 							</div>
 							<!-- 로그인 버튼 -->
-							<input type="submit" id="login" class="login_but" value="로그인"
-								onclick="login()" tabindex="-1">
+							<input type="submit" id="login" class="login_but" value="로그인" tabindex="-1">
 						</div>
 						<div class="pass_container">
 							<img src="/alphaknow/resources/img/pass_icon.png" ondragstart="return false;"> <input
