@@ -176,7 +176,16 @@
 			<img src="/alphaknow/resources/img/profile_icon.png"
 				class="profile_img">
 			<div>
-				<font size="5"><b>이민영</b></font>
+				<font size="5">
+					<b>
+						<%
+							String userName = (String)session.getAttribute("userName");
+							if(userName != null) {
+		                        out.println(userName); // 사용자 이름 출력
+		                    }
+						%>
+					</b>
+				</font>
 			</div>
 			<div>생산1팀/매니저</div>
 			<div>010-5811-9717</div>
