@@ -20,6 +20,10 @@ $(function () {
                         data[i].PRODUCT_AMOUNT = 0;
                     }
                     let htmlString = `<tr>
+                                        <input type="hidden" value="${data[i].COMPANY_AND_PRODUCT_TEMP_SEQ}"
+                                            class="captseq">
+                                        <input type="hidden" value="${data[i].COMPANY_SEQ}"
+                                            class="companySeq">
                                         <th>${i+1}</th>
                                         <th><input type="checkbox" class="selectItemList"></th>
                                         <td>${data[i].PRODUCT_CODE} <input type="hidden" value="${data[i].PRODUCT_CODE}"
@@ -58,8 +62,8 @@ $(function () {
         // 선택된 체크박스의 거래처명 배열에 담기
         let selectedTr = $(".selectItemList:checked").parent().parent()
         for (let i = 0; i < selectedTr.length; i++) {
-            console.log($(selectedTr[i]).find(".itemListCompany").val())
-            selCompanyNames.push($(selectedTr[i]).find(".itemListCompany").val())
+            console.log($(selectedTr[i]).find(".companySeq").val())
+            selCompanyNames.push($(selectedTr[i]).find(".companySeq").val())
         }
         console.log(selCompanyNames)
 
@@ -87,27 +91,35 @@ $(function () {
                 let minutes = currentDate.getMinutes().toString().padStart(2, '0');
                 let seconds = currentDate.getSeconds().toString().padStart(2, '0');
 
-                let formattedDateTime = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+                let formattedDateTime = [];
+                let formattedDateTimeSpacing = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+                let formattedDateTimeNoSpacing = year + month + day + hours + minutes + seconds;
+
+                formattedDateTime.push({formattedDateTimeSpacing: formattedDateTimeSpacing,
+                                        formattedDateTimeNoSpacing: formattedDateTimeNoSpacing})
                 return formattedDateTime;
             }
             // 신청일에 자동 기입하기
             let currentDateTime = getCurrentDateTime();
-            $("#requestDateTd").text(currentDateTime);
-            $("#requestDate").val(currentDateTime);
-            // 거래처명 자동 기입
-            $("#companyNameTd").text(selCompanyNames[0]);
-            $("#companyName").val(selCompanyNames[0])
+            $("#requestDateTd").text(currentDateTime[0].formattedDateTimeSpacing);
+            $("#requestDate").val(currentDateTime[0].formattedDateTimeSpacing);
+            // 거래번호 <input hidden tradecode>
+            $("#tradecode").val("TC" + currentDateTime[0].formattedDateTimeNoSpacing);
+            
 
 
             // 담당자 & 거래처주소는 아작스로 가져오기
             $.ajax({
-                url: '/alphaknow/receivingManagement/ajax.doSelect2?company_name='+selCompanyNames[0],
+                url: '/alphaknow/receivingManagement/ajax.doSelect2?company_seq='+selCompanyNames[0],
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
                     console.log('data:', data);
-            
+                    
                     // JSON 데이터를 활용하여 필요한 작업 수행
+                        // 거래처명 자동 기입
+                        $("#companyNameTd").text(data[0].COMPANY_NAME);
+                        $("#companyName").val(data[0].COMPANY_NAME);
                     for (let i = 0; i < data.length; i++) {
                         console.log('data[i].COMPANY_EMPLOYEE:', data[i].COMPANY_EMPLOYEE);
                         console.log('data[i].ADDRESS:', data[i].ADDRESS);
@@ -131,6 +143,7 @@ $(function () {
                 // 각 행을 동적으로 생성하여 tbody에 추가
                 let htmlString = `
                     <tr>
+                        <input type="hidden" name="captseq" value="${$(selectedTr[i]).find(".captseq").val()}">
                         <td>
                             ${$(selectedTr[i]).find(".itemListCode").val()}
                             <input type="hidden" name="itemCode" class="itemCode">
@@ -168,7 +181,7 @@ $(function () {
                 if (isNaN(itemAmount) || $(".itemAmount").val() == undefined || isNaN(price)) {
                     $(this).parent().parent().find(".itemAllPrice").text("");
                 } else {
-                    $(this).parent().parent().find(".itemAllPrice").html(itemAllPrice + '<input type="hidden" name="itemAllPrice">')
+                    $(this).parent().parent().find(".itemAllPrice").html(itemAllPrice + '<input type="hidden" name="itemAllPrice" value="'+itemAllPrice+'">')
                 }
             })
         } else if (selCompanyNames.length == 0) {    // 하나도 선택하지 않았으면
@@ -289,3 +302,26 @@ $(function() {
         }
     })
 })
+
+$(function() {
+    $("#done_request_btn").off("click").on("click", function() {
+
+        // // json 생성
+        // let jsonData = {};
+
+
+        // // 폼 데이터 읽기
+        // let formData = new FormData(document.querySelector("#insertForm"))
+        // for (const pair of formData.entries()) {
+        //     console.log('?' + pair[0] + '=' + pair[1] + '&');
+        // }
+
+        let isConfirm = confirm("입고를 신청하시겠습니까?")
+        if(isConfirm) {
+            $("#insertForm").submit();
+        }
+
+    })
+})
+
+

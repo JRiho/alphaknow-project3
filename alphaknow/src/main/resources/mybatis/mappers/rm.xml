@@ -27,6 +27,7 @@
 	<!-- ajax 입고신청 -->
 	<select id="receivingManagementAjaxSelect" resultType="map">
 		SELECT 
+			company_and_product_temp.COMPANY_AND_PRODUCT_TEMP_SEQ,
 			company_and_product_temp.COMPANY_SEQ, 
 			company_and_product_temp.PRODUCT_SEQ, 
 			product_temp.PRODUCT_CODE, 
@@ -43,14 +44,45 @@
 			ON inventory.PRODUCT_SEQ = product_temp.PRODUCT_SEQ
 	</select>
 	
+	<!-- 입고신청란 -->
 	<select id="receivingManagementAjaxSelect2" resultType="map">
 		SELECT 
+			COMPANY_NAME,
 			COMPANY_EMPLOYEE, 
 			ADDRESS 
 		FROM 
 			RECEIVING_COMPANY_LIST
 		WHERE 
-			COMPANY_NAME = #{COMPANY_NAME}
+			COMPANY_SEQ = #{COMPANY_SEQ}
 	</select>
+	
+	<!-- 입고신청 올리기 -->
+	<insert id="receivingManagementInsert" parameterType="com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO">
+		INSERT INTO 
+			RECEIVING_MANAGEMENT (
+				TRADE_SEQ,
+				TRADE_CODE,
+				REQUEST_DATE,
+				REQUEST_PERSON,
+				REQUEST_ADDR,
+				COMPANY_AND_PRODUCT_TEMP_SEQ,
+				REQUEST_AMOUNT,
+				PRODUCT_ALL_PRICE,
+				LOT,
+				SIGN_STATUS
+			)
+		VALUES (
+			TRADE_SEQ.NEXTVAL,
+			#{trade_code},
+			#{request_date},
+			#{request_person},
+			#{request_addr},
+			#{company_and_product_temp_seq},
+			#{request_amount},
+			#{product_all_price},
+			'PD'||TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')||'LOT',
+			'결재대기'
+		)
+	</insert>
 
 </mapper>

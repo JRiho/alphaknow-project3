@@ -9,5 +9,6 @@ import lombok.ToString;
 @ToString
 public class ReceivingManagementAjax2DTO {
 	String company_name;
+	String company_employee;
 	String address;
 }

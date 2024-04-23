@@ -183,6 +183,7 @@
 
 <!-- 입고신청서 작성 팝업창 -->
 <div class="request_item_wrap">
+	<form id="insertForm" method="get" action="/alphaknow/receivingManagement/insert">
 	<div class="request_item_buttonset">
 		<div>입고신청서</div>
 		<div>
@@ -195,10 +196,10 @@
 				<tr>
 					<th>입고신청일</th>
 					<td colspan="2" id="requestDateTd"></td>
-					<input type="hidden" value="" name="requestDate" id="requestDate">
+					<input type="hidden" name="requestDate" id="requestDate">
 					<th>입고신청자</th>
-					<td colspan="2"><input type="text" name="reqeustPerson"
-						id="reqeustPerson"></td>
+					<td colspan="2"><input type="text" name="requestPerson"
+						id="requestPerson"></td>
 				</tr>
 
 				<tr>
@@ -239,6 +240,13 @@
 		</table>
 	</div>
 	<div class="done_request_item_div">
-		<button type="button">작성완료</button>
+		<button type="button" id="done_request_btn">작성완료</button>
 	</div>
+	
+	
+	<div class="leakedInfo">
+		<input type="hidden" name="tradecode" id="tradecode">
+	</div>
+	
+	</form>
 </div>

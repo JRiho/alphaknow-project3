@@ -19,11 +19,15 @@ public class ReceivingManagementService {
 		return receivingManagementDAO.receivingManagementSelect();
 	}
 	
+	public void rmInsert() {
+		receivingManagementDAO.receivingManagementInsert();
+	}
+	
 	public List<ReceivingManagementAjaxDTO> rmAjaxList() {
 		return receivingManagementDAO.receivingManagementAjaxSelect();
 	}
 	
-	public List<ReceivingManagementAjax2DTO> rmAjaxList2(String company_name) {
-		return receivingManagementDAO.receivingManagementAjaxSelect2(company_name);
+	public List<ReceivingManagementAjax2DTO> rmAjaxList2(String company_seq) {
+		return receivingManagementDAO.receivingManagementAjaxSelect2(company_seq);
 	}
 }
