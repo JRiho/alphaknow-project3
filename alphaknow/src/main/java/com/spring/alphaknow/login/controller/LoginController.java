@@ -34,8 +34,9 @@ public class LoginController {
     	
         Employee employee = loginMapper.authenticate(userId, password);
         if (employee != null) {
-        	session.setAttribute("userName", employee.getEmployeeName());
-            session.setAttribute("department", employee.getDepartmentName());
+        	session.setAttribute("userName", employee.getEmployee_name());
+            session.setAttribute("department", employee.getDepartment_name());
+            session.setAttribute("jobgrade", employee.getJob_grade());
             session.setMaxInactiveInterval(60*30); // 30분 동안 세션 유지
             if ("관리".equals(employee.getDepartmentName())) {
                 session.setAttribute("userType", "admin");
