@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.alphaknow.login.mapper.LoginMapper">
     <select id="authenticate" parameterType="map" resultType="com.spring.alphaknow.login.model.Employee">
-        SELECT DEPARTMENT_NAME, EMPLOYEE_NAME 
+        SELECT *
         FROM employee 
         WHERE EMPLOYEE_ID = #{userId} AND EMPLOYEE_PW = #{password}
     </select>
