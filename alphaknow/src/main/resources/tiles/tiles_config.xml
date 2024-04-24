@@ -14,6 +14,12 @@
 	<!-- 로그인 페이지 -->
 	
 	<definition name="login" template="/WEB-INF/views/login/project_login.jsp">
+		<put-attribute name="title" value="로그인" />
+		<put-attribute name="body" value=""/>
+	</definition>
+	
+	<definition name="logout" template="/WEB-INF/views/login/logout.jsp">
+		<put-attribute name="title" value="로그아웃" />
 		<put-attribute name="body" value=""/>
 	</definition>
 	
@@ -126,4 +132,10 @@
 			<put-attribute name="content" value="/WEB-INF/views/product_management/delivering_management.jsp" />
 		</definition>
 
+
+	<!-- 접근제어 -->
+	<definition name="accessdenied" extends="baseLayout">
+		<put-attribute name="title" value="접근제어" />
+		<put-attribute name="content" value="/WEB-INF/views/mainpage/accessDenied.jsp" />
+	</definition>
 </tiles-definitions>

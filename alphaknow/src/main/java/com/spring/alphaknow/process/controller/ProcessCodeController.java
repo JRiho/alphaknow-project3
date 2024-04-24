@@ -54,15 +54,14 @@ public class ProcessCodeController {
     }
     
     @RequestMapping(value= "/deleteProcessCode", method = RequestMethod.POST)
-    public ResponseEntity<?> deleteProcessCodes(@RequestParam ("sequenceNo") int sequenceNo) {
+    public ResponseEntity<?> deleteProcessCodes(@RequestBody List<Integer> sequenceNos) {
         try {
-            processCodeService.deleteProcessCode(sequenceNo);
+            processCodeService.deleteProcessCodes(sequenceNos);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
     
     @RequestMapping(value = "/detail", method = RequestMethod.POST)
     @ResponseBody

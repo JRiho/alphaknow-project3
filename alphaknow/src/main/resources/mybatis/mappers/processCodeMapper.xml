@@ -26,6 +26,15 @@
         DELETE FROM ProcessCode WHERE sequenceNo = #{sequenceNo}
     </delete>
 
+
+	<delete id="deleteProcessCodes" parameterType="list">
+	    DELETE FROM ProcessCode WHERE sequenceNo IN
+	    <foreach item="sequenceNo" collection="list" open="(" separator="," close=")">
+	        #{sequenceNo}
+	    </foreach>
+	</delete>
+
+	
     <!-- 프로세스 코드 정보 업데이트 -->
     <update id="updateProcessCode">
         UPDATE ProcessCode
@@ -46,12 +55,6 @@
 	</select>
 
 
-    <update id="processCodeUpdate" parameterType="processCodeDTO">
-        UPDATE PROCESSCODE
-        SET code = #{code}, errorCode = #{errorCode}, processAbbreviation = #{processAbbreviation},
-        processAlias = #{processAlias}, processType = #{processType}, standard = #{standard},
-        standardWorkingTime = #{standardWorkingTime}
-        WHERE sequenceNo = #{sequenceNo}
-    </update>
+    
 
 </mapper>

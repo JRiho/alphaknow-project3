@@ -50,7 +50,7 @@ public class QR {
 
 		try {
 			// QR 저장할 폴더 지정
-			File dir = new File("C:\\file_repo");
+			File dir = new File("D:\\workspace\\alphaknow3\\alphaknow\\src\\main\\webapp\\resources\\img");
 			
 			// 없으면 만들어주기
 			if (!dir.exists()) {

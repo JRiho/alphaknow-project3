@@ -14,9 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.spring.alphaknow.QRcode.FileDownload;
-import com.spring.alphaknow.QRcode.QR;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Handles requests for the application home page.
@@ -46,6 +44,19 @@ public class HomeController {
 
 		return "home";
 	}
+	
+	@RequestMapping("/generateQR")
+	@ResponseBody
+	public String generateAndDownloadQR(@RequestParam("data") String data) throws Exception {
+	    String fileName = "qr_bom.png";  // 파일명
+	    String filePath = "/alphaknow/resources/img/" + fileName; // 웹 접근 가능한 경로
+	    QR qr = new QR();
+	    qr.create(data, fileName, "png");
+	    return filePath;  
+	}
+
+
+	
 	
 	@RequestMapping("/download")
 	public void download(HttpServletResponse response, 

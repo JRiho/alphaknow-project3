@@ -74,6 +74,7 @@ $(document).ready(function() {
 		});
     });
 
+	
 
     updateCounts();
 });
@@ -116,32 +117,33 @@ function loadProcessData(sequenceNo) {
 }
 // "삭제" 버튼 이벤트 처리
 function deleteSelectedProcess() {
-    var selectedId = [];
+    var selectedIds = [];
     $('input[name="selectedProcess"]:checked').each(function() {
-        selectedId.push($(this).val());
+        selectedIds.push(parseInt($(this).val(), 10));
     });
 
-    if (selectedId.length === 0) {
+    if (selectedIds.length === 0) {
         alert('삭제할 공정 코드를 선택하세요.');
         return;
     }
 
     if (confirm('선택한 공정 코드를 정말 삭제하시겠습니까?')) {
         $.ajax({
-            url: '/alphaknow/processcode/deleteProcessCode',
+            url: '/alphaknow/processcode/deleteProcessCode',  // 실제 서버 URL 경로에 맞게 수정
             type: 'POST',
-            data: JSON.stringify(selectedId),
             contentType: 'application/json',
+            data: JSON.stringify(selectedIds),
             success: function(response) {
                 alert('성공적으로 삭제되었습니다.');
                 location.reload(); // 페이지를 다시 불러옴
             },
             error: function(error) {
-                alert('삭제 중 오류가 발생했습니다.');
+                alert('삭제 중 오류가 발생했습니다: ' + error.statusText);
             }
         });
     }
 }
+
 
 
 

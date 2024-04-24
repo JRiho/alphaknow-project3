@@ -1,10 +1,13 @@
 package com.spring.alphaknow.process.service;
 
-import com.spring.alphaknow.dto.processcodeDTO.ProcessCodeDTO;
-import com.spring.alphaknow.process.mapper.ProcessCodeMapper;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.spring.alphaknow.dto.processcodeDTO.ProcessCodeDTO;
+import com.spring.alphaknow.process.mapper.ProcessCodeMapper;
 
 @Service
 public class ProcessCodeService {
@@ -33,5 +36,10 @@ public class ProcessCodeService {
 
     public void deleteProcessCode(int sequenceNo) {
         processCodeMapper.deleteProcessCode(sequenceNo);
+    }
+    
+    @Transactional
+    public void deleteProcessCodes(List<Integer> sequenceNos) {
+        processCodeMapper.deleteProcessCodes(sequenceNos);
     }
 }

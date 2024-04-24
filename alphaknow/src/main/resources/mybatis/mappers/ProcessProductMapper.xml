@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.alphaknow.process.mapper.ProcessProductMapper">
+
+    <!-- Select Components (부품) -->
+    <select id="selectComponents" resultType="com.spring.alphaknow.dto.productDTO.ProductDTO">
+        SELECT product_seq AS productSeq,
+               product_code AS productCode,
+               product_name AS productName,
+               product_price AS productPrice,
+               product_type AS productType
+        FROM product_temp
+        WHERE product_type = '부품'
+    </select>
+
+    <!-- Select Finished Products (완품) -->
+    <select id="selectFinishedProducts" resultType="com.spring.alphaknow.dto.productDTO.ProductDTO">
+        SELECT product_seq AS productSeq,
+               product_code AS productCode,
+               product_name AS productName,
+               product_price AS productPrice,
+               product_type AS productType
+        FROM product_temp
+        WHERE product_type = '완품'
+    </select>
+
+</mapper>

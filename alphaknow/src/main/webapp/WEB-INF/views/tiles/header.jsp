@@ -26,7 +26,7 @@
              %>
 			</div>
 			<a href="javascript:void(0);" onclick="openPopup()">내 프로필</a>
-			<a href="/path/to/logout">로그아웃</a>
+			<a href="/alphaknow/logout">로그아웃</a>
 		</div>
 	</div>
 
