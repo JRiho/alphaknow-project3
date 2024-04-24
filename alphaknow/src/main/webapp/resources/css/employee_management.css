@@ -1,84 +1,263 @@
-/* 처음에 안보여야 하는 요소들 */
-/* 사원등록 */
-.employee_regedit, 
-/* 사원세부정보 */ 
-.employee_infoDetail, 
-/* 수정완료버튼 */
-.modifyEmployeeEnd {
-	display: none;
-}
-
 /* 제이쿼리 요소 숨기기 보이기 */
 .show {
-	display: block;
+    display: block;
 }
 
 .hide {
-	display: none;
+    display: none;
 }
 
-/* 사원관리 헤더 */
-.management_header{
-	display: flex;
-	justify-content: space-between;
+
+
+/* 스타일을 적용할 요소 선택자들 */
+.management_header {
+    padding: 10px;
+    /* 내부 여백 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
 }
+
+.employee_info {
+    margin-top: 20px;
+}
+
 .header_text {
-	font-size: 30px;
-	font-weight: bold;
-	padding: 30px 30px;
+    font-size: 24px;
+    /* 헤더 텍스트 크기 */
 }
-/* 사원등록 버튼 */
+
 #show_employee_regedit {
-	/* 위치조정 */
-	width: 7%;
-    height: 40px;
-    margin-top: 32px;
-    margin-right: 100px;
     border-radius: 10px;
-    
-    /* 버튼 스타일 */
-    color: #fff;
-    background-color: #337ab7;
-    border: 1px solid #f0f0f0;
-    
-    transition: all 0.3s ease;
-    
+    background-color: #007bff; /* 푸른색 계열 배경색 */
+    color: white; /* 등록 버튼 텍스트 색상 */
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 배경색 변경 시 부드러운 전환 효과 */
+}
+
+#show_employee_regedit:hover {
+    background-color: #0056b3; /* hover 시 배경색 변경 */
+}
+
+.employee_info_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee_info_table th,
+.employee_info_table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.employee_info_table th {
+    background-color: #f8f9fa;
+    /* 테이블 헤더 배경색 */
+    color: #343a40;
+    /* 테이블 헤더 텍스트 색상 */
+}
+
+.employee_info_table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+    /* 짝수 행 배경색 */
+}
+
+.employee_info_table tbody tr:hover {
+    background-color: #e9ecef;
+    /* 호버 행 배경색 */
+}
+
+.detailInfo {
+    border-radius: 10px;
+    background-color: #87CEEB; /* 파스텔톤 푸른색 계열 배경색 */
+    color: #212529; /* 상세정보 버튼 텍스트 색상 */
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 배경색 변경 시 부드러운 전환 효과 */
+}
+
+.detailInfo:hover {
+    background-color: #6CA6CD; /* hover 시 배경색 변경 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 사원등록표 */
+/* 전체 팝업 스타일 */
+.employee_regedit {
+    display: none;
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+/* 팝업 헤더 */
+.regedit_header {
+    font-size: 20px;
     font-weight: bold;
-    font-size: 15px;
+    color: #343a40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.regedit_header button {
+    background-color: transparent;
+    border: none;
+    color: #6c757d;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.regedit_header button:hover {
+    color: #212529;
+}
+
+/* 입력 요소와 테이블 스타일 */
+.employee_regedit table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.employee_regedit table td {
+    padding: 10px;
+}
+
+.employee_regedit input[type="text"],
+.employee_regedit input[type="password"],
+.employee_regedit select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.employee_regedit select {
     cursor: pointer;
 }
-/* 버튼호버 색 */
-#show_employee_regedit:hover {
-    border-color: #004dc1;
-    background-color: white;
-    color: #004dc1;
-}
-#show_employee_regedit:active {
-    border-color: #004dc1;
-    background-color: #076bbc;
+
+/* 등록하기, 다시쓰기 버튼 */
+.employee_regedit button[type="submit"],
+.employee_regedit button[type="reset"] {
+    background-color: #007bff;
     color: white;
-    
-    transition: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
-/* 사원정보 테이블 */
-.employee_info_table {
-	width: 100%;
+.employee_regedit button[type="submit"]:hover,
+.employee_regedit button[type="reset"]:hover {
+    background-color: #0056b3;
 }
 
-/* 사원정보 테이블 테두리 */
-.employee_info_table, 
-.employee_info_table th, 
-.employee_info_table td {
-  	border: 1px solid black;
-  	border-collapse: collapse;
+
+
+
+
+
+
+
+
+
+/* 사원세부정보 팝업 */
+/* 전체 팝업 스타일 */
+.employee_infoDetail {
+    display: none;
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
-table,
-tr,
-td,
-th {
-	border: 1px solid black;
-  	border-collapse: collapse;
-  	padding: 10px;
+/* 팝업 헤더 */
+.infoDetail_header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #343a40;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.infoDetail_header button {
+    background-color: transparent;
+    border: none;
+    color: #6c757d;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.infoDetail_header button:hover {
+    color: #212529;
+}
+
+/* 테이블 스타일 */
+.employee_infoDetail table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.employee_infoDetail table td {
+    padding: 10px;
+}
+
+/* 수정, 수정완료, 삭제 버튼 */
+.employee_infoDetail button.modifyEmployee,
+.employee_infoDetail button.modifyEmployeeEnd,
+.employee_infoDetail button.delEmployee {
+    background-color: #007bff; /* 등록하기 버튼과 동일한 파란색 계열 */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.employee_infoDetail button.modifyEmployee:hover,
+.employee_infoDetail button.modifyEmployeeEnd:hover,
+.employee_infoDetail button.delEmployee:hover {
+    background-color: #0056b3; /* hover 시 배경색 변경 */
 }

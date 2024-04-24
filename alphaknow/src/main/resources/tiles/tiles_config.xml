@@ -125,5 +125,13 @@
 			<put-attribute name="title" value="출고관리" />
 			<put-attribute name="content" value="/WEB-INF/views/product_management/delivering_management.jsp" />
 		</definition>
+		
+	<!-- 실적 -->
+		
+		<!-- 실적차트 -->
+		<definition name="productionPerformanceChart" extends="baseLayout">
+			<put-attribute name="title" value="생산실적" />
+			<put-attribute name="content" value="/WEB-INF/views/productionperf/production_performance_chart.jsp" />
+		</definition>
 
 </tiles-definitions>

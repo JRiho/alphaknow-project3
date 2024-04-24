@@ -1,156 +1,630 @@
-/* 입고관리 */
 .receiving_management_header {
-	font-size: 30px;
-	font-weight: bold;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    text-align: left;
+    color: #333;
 }
 
-/* 입고신청목록, 상세 */
-.receiving_management_list_header,
+.receiving_management_list_header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-align: left;
+    color: #333;
+}
+
 .receiving_management_detail_header {
-	font-size: 20px;
-	font-weight: 500;
-	padding-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-align: left;
+    color: #333;
 }
 
-/* 입고관리와 입고신청목록의 약간의 여백 */
-.receiving_management_list_container {
-	padding-top: 10px;
-	min-height: 350px;
-}
 
-/* 전체,결제대기,결재완료,반려 & 입고신청,선택삭제 버튼 양 옆으로 배치 */
 .receiving_management_list_buttonset_container {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-/* 입고신청, 선택삭제 버튼 양 옆으로 배치 */
-.receiving_management_list_buttonset1,
+.receiving_management_list_buttonset1 div,
+.receiving_management_list_buttonset2 div {
+    cursor: pointer;
+}
+
+.receiving_management_list_buttonset2 div {
+	margin-right: 10px;
+}
+
+.receiving_management_list_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.receiving_management_list_table th,
+.receiving_management_list_table td {
+	border-color: #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.receiving_management_list_table th {
+    background-color: #f2f2f2;
+}
+
+.receiving_management_list_table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.receiving_management_list_table tbody tr:hover {
+    background-color: #e5e5e5;
+}
+
+
+
+
+.receiving_management_detail_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.receiving_management_detail_table th,
+.receiving_management_detail_table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.item_list_wrap,
+.request_item_wrap,
+.modify_item_wrap {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.item_list_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.item_list_table th,
+.item_list_table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.show_request_item_div,
+.done_request_item_div,
+.done_modify_item_div {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 버튼을 일렬로 정렬하기 위한 컨테이너 스타일 */
+.receiving_management_list_buttonset_container {
+    display: flex;
+    justify-content: space-between; /* 요소들을 좌우로 공간 분배 */
+    align-items: center; /* 요소들을 수직으로 가운데 정렬 */
+    margin-bottom: 10px;
+}
+
+.receiving_management_list_buttonset1 {
+	display: flex;
+}
+
+/* receiving_management_list_buttonset1 내의 모든 div 요소들에 공통적인 버튼 스타일 적용 */
+.receiving_management_list_buttonset1 > div {
+	margin-left: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+}
+
+/* receiving_management_list_buttonset2 내의 모든 button 요소들에 고유한 버튼 스타일 적용 */
+.receiving_management_list_buttonset2 button {
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* receiving_management_list_buttonset2 내의 button 요소들 사이에 간격을 주기 위한 스타일 */
+.receiving_management_list_buttonset2 button + button {
+    margin-left: 10px;
+}
+
 .receiving_management_list_buttonset2 {
 	display: flex;
 }
 
-/* 각 div 간격 벌리기 */
-.receiving_management_list_buttonset1>div {
-	border: 1px solid red;
-	padding: 0px 5px;
-}
 
-.receiving_management_list_buttonset2>div {
-	padding: 0px 5px;
-}
 
-/* 전체,결제대기,결재완료,반려 & 입고신청,선택삭제 버튼과 날짜, 선택날짜조회의 약간의 여백  */
+
+
+
+
+/* 날짜조회버튼 */
+/* 날짜 검색 세트 컨테이너 스타일 */
 .date_search_set {
-	padding-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+	margin-left: 10px;
 }
 
-/* 날짜조회와 입고신청한 목록 테이블의 약간의 여백 */
-.receiving_management_list_table_container,
-/*상세(글자)와 상세 테이블의 약간의 여백 */
-.receiving_management_detail_table_container,
-/* 품목리스트 글자와 검색창의 약간의 여백 */
-.item_list_buttonset2 {
-	padding-top: 5px;
+/* 날짜 입력 필드 스타일 */
+.date_search_set input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 150px;
+    box-sizing: border-box; /* 내부 패딩을 포함한 크기 지정 */
 }
 
-/* 테이블의 넓이 */
-.receiving_management_list_table,
-.receiving_management_detail_table {
-	width: 97%;
+/* 조회 버튼 스타일 */
+.date_search_set button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
 }
 
-/* 테이블 중앙정렬 */
-.receiving_management_list_table_container,
-.receiving_management_detail_table_container {
+/* 조회 버튼에 호버 효과 추가 */
+.date_search_set button:hover {
+    background-color: #0056b3;
+}
+
+
+/* 입고 품목 팝업창 */
+/* 팝업창 전체 스타일 */
+.item_list_wrap {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* 팝업창 헤더 스타일 */
+.item_list_header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 팝업창 닫기 버튼 스타일 */
+.close_item_list {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+}
+
+.close_item_list:hover {
+    color: #666;
+}
+
+/* 검색 및 버튼 컨테이너 스타일 */
+.item_list_button_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 검색 옵션 셀렉트 박스 스타일 */
+.item_list_buttonset2 select,
+.item_list_buttonset2 input[type="text"],
+.item_list_buttonset2 button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 검색창 일렬정렬 */
+.item_list_buttonset2 div {
 	display: flex;
-	justify-content: center;
 }
 
-/* 품목리스트 전체 넓이 */
-.item_list_wrap,
-/* 입고신청서 전체 넓이 */
-.request_item_wrap,
-/* 입고신청서 수정 */
-.modify_item_wrap
-{
-	width: 80%;
-	/* 테두리 */
-	border: 1px solid red;
-	/* 처음엔 안보이기 */
-	display: none;
-	/* 중앙에 위치하기 */
-	position: relative;
-	top: -345px;
-	/* 화면 세로 중앙 정렬을 위해 top 위치를 50%로 설정 */
-	left: 50%;
-	/* 화면 가로 중앙 정렬을 위해 left 위치를 50%로 설정 */
-	transform: translate(-50%, -50%);
-	/* 요소의 중심을 화면 중앙으로 이동 */
-	z-index: 10;
-	/* 요소의 맨 위로 올리기 */
-	background-color: white;
-	/* 뒷 요소 비침 방지 */
+/* 검색 버튼 스타일 */
+.item_list_buttonset2 button {
+	width: 110px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
 }
+
+.item_list_buttonset2 button:hover {
+    background-color: #0056b3;
+}
+
+/* 테이블 스타일 */
+.item_list_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.item_list_table th,
+.item_list_table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.item_list_table th {
+    background-color: #f2f2f2;
+}
+
+.item_list_table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.item_list_table tbody tr:hover {
+    background-color: #e5e5e5;
+}
+
+/* 입고신청서 작성 버튼 스타일 */
+.show_request_item {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.show_request_item:hover {
+    background-color: #218838;
+}
+/* 닫기버튼 *
+/* close_item_list 버튼 스타일 설정 */
+.close_item_list {
+    padding: 10px 20px;
+    background-color: #f8a7a7; /* 파스텔톤의 붉은색 계열 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.close_item_list:hover {
+    background-color: #e88383; /* 호버 시 미묘하게 변하는 색상 */
+}
+
+
+
+
+
+
+
+
+/* 입고신청서 작성 팝업창 */
+/* request_item_wrap 전체 스타일 */
 .request_item_wrap {
-	top: -600px;
-}
-.modify_item_wrap {
-    top: -300px;
-}
-
-/* 품목리스트와 닫기버튼 양 옆 배치 */
-.item_list_buttonset1 {
-	display: flex;
-	justify-content: space-between;
-}
-
-/* 리스트 검색 중앙에 위치 */
-.item_list_buttonset2 {
-	display: flex;
-	justify-content: center;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 80%;
+    max-width: 800px;
 }
 
-/* 품목리스트 테이블 div 상단에 여백 */
-.item_list_table_container {
-	padding-top: 10px;
+/* request_item_buttonset 스타일 */
+.request_item_buttonset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-/* 품목리스트 테이블 넓이 */
-.item_list_table,
-/* 입고신청서 테이블 넓이 */
-.request_item_table,
-.modify_item_table {
-	width: 100%;
+/* close_request_item 버튼 스타일 */
+.close_request_item {
+    padding: 8px 12px;
+    background-color: #f8a7a7; /* 파스텔톤의 붉은색 계열 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* 입고신청서 작성 버튼 div */
-.show_request_item_div,
-/* 입고신청서 작성완료 버튼 div */
+.close_request_item:hover {
+    background-color: #e88383; /* 호버 시 미묘하게 변하는 색상 */
+}
+
+/* request_item_table 스타일 */
+.request_item_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.request_item_table th,
+.request_item_table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.request_item_table th {
+    background-color: #f2f2f2;
+}
+
+.request_item_table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.request_item_table tbody tr:hover {
+    background-color: #e5e5e5;
+}
+
+/* done_request_item_div 스타일 */
 .done_request_item_div {
-	/* 상 하단 여백 */
-	padding: 10px 0px;
-	/* 중앙정렬 */
-	display: flex;
-	justify-content: center;
+    text-align: center;
+    margin-top: 20px;
 }
 
-/* 입고신청서 글자랑 닫기버튼 좌우정렬 */
-.request_item_buttonset,
-.modify_item_buttonset {
-	display: flex;
-	justify-content: space-between;
+/* done_request_btn 버튼 스타일 */
+#done_request_btn {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* 중앙구분선 */
-.center_line {
-	/* 상단에 여백 */
-	margin-top: 30px;
-	border-top: 1px solid gray;
+#done_request_btn:hover {
+    background-color: #0056b3;
+}
+/* 인풋상자들 */
+/* 입력 상자(input) 스타일 */
+input[type="text"],
+input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* 입력 내용이 패딩과 테두리 안에 들어가도록 설정 */
+    transition: border-color 0.3s ease;
 }
 
-/* 입고신청서 작성창 */
-.request_item_table_container,
-.modify_item_table_container {
-	min-height: 500px;
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-color: #007bff; /* 입력 상자에 포커스를 주면 테두리 색상 변경 */
+    outline: none; /* 포커스 효과 제거 */
+}
+
+/* 숫자 입력 상자(input[type="number"]) 스타일 */
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* 입력 내용이 패딩과 테두리 안에 들어가도록 설정 */
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #007bff; /* 입력 상자에 포커스를 주면 테두리 색상 변경 */
+    outline: none; /* 포커스 효과 제거 */
+}
+
+/* 숫자 입력 상자 내 화살표 버튼 스타일 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none; /* 화살표 버튼 숨김 */
+    margin: 0; /* 마진 제거 */
+}
+
+/* Firefox에서의 화살표 버튼 숨김 */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+
+/* 선택 상자(select) 스타일 */
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* 입고신청서 수정 팝업창 */
+/* 팝업 창 스타일 */
+.modify_item_wrap {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 팝업 창 제목 스타일 */
+.modify_item_buttonset > div:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 닫기 버튼 스타일 */
+.close_modify_item {
+    background-color: #ff6961; /* 파스텔톤의 붉은색 계열 */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.close_modify_item:hover {
+    background-color: #d9534f; /* 마우스 호버 시 색상 변경 */
+}
+
+/* 입력 상자(input) 스타일 */
+.modify_item_table_container input[type="text"],
+.modify_item_table_container input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* 입력 내용이 패딩과 테두리 안에 들어가도록 설정 */
+    transition: border-color 0.3s ease;
+}
+
+.modify_item_table_container input[type="text"]:focus,
+.modify_item_table_container input[type="number"]:focus {
+    border-color: #007bff; /* 입력 상자에 포커스를 주면 테두리 색상 변경 */
+    outline: none; /* 포커스 효과 제거 */
+}
+
+/* 테이블 스타일 */
+.modify_item_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.modify_item_table th,
+.modify_item_table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.modify_item_table th {
+    background-color: #f0f0f0;
+}
+
+/* 작성완료 버튼 스타일 */
+#done_modify_btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#done_modify_btn:hover {
+    background-color: #0056b3; /* 마우스 호버 시 색상 변경 */
+}
+
+
+
+
+
+
+
+
+
+
+/* 상세정보 보기 */
+/* 상세 정보 헤더 스타일 */
+.receiving_management_detail_header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 상세 정보 테이블 컨테이너 스타일 */
+.receiving_management_detail_table_container {
+    margin-top: 20px;
+}
+
+/* 상세 정보 테이블 스타일 */
+.receiving_management_detail_table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+.receiving_management_detail_table th,
+.receiving_management_detail_table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.receiving_management_detail_table th {
+    background-color: #f0f0f0; /* 헤더 배경색 */
+}
+
+.receiving_management_detail_table tbody th {
+    font-weight: normal;
+    background-color: #fff; /* 내용이 없는 셀 배경색 */
 }

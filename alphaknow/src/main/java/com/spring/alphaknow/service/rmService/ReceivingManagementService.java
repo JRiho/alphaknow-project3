@@ -12,6 +12,7 @@ import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax4DTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingManagementUpdateDTO;
 
 @Service
 public class ReceivingManagementService {
@@ -44,5 +45,9 @@ public class ReceivingManagementService {
 	
 	public List<ReceivingManagementAjax4DTO> rmAjaxList4(String trade_code) {
 		return receivingManagementDAO.receivingManagementAjaxSelect4(trade_code);
+	}
+	
+	public void rmUpdate(ReceivingManagementUpdateDTO dto) {
+		receivingManagementDAO.receivingManagementUpdate(dto);
 	}
 }

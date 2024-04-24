@@ -29,7 +29,7 @@
 				<li>생산지시관리</li>
 			</ul>
 		</li>
-		<li>실적현황</li>
+		<li><a href="/alphaknow/chart/ppc">실적현황</a></li>
 		<li id="employeeLi"><a href="/alphaknow/employee">사원관리/등록</a></li>
 	</ul>
 </nav>

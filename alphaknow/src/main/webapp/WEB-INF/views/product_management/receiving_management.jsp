@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="date_search_set">
-		<input type="date">
+		<input type="date"> ~ <input type="date">
 		<button type="button">조회</button>
 	</div>
 	<div class="receiving_management_list_table_container">
@@ -68,7 +68,7 @@
 								<td>${ list.PRODUCT_ALL_PRICE }</td>
 								<td>${ list.REQUEST_DATE }</td>
 								<td>${ list.REQUEST_PERSON }</td>
-								<td>${ list.MODIFY_REQEUST_DATE }</td>
+								<td>${ list.MODIFY_REQUEST_DATE }</td>
 								<td>${ list.MODIFY_REQUEST_PERSON }</td>
 								<td>${ list.SIGN_PERSON }</td>
 							</tr>
@@ -130,7 +130,7 @@
 		<div class="item_list_buttonset1">
 			<div class="item_list_header">품목리스트</div>
 			<div>
-				<button type="button" class="close_item_list">x</button>
+				<button type="button" class="close_item_list">닫기</button>
 			</div>
 		</div>
 		<div class="item_list_buttonset2">
@@ -311,7 +311,7 @@
 		</table>
 	</div>
 	<div class="done_request_item_div">
-		<button type="button" id="done_request_btn">작성완료</button>
+		<button type="button" id="done_modify_btn">작성완료</button>
 	</div>
 	</form>
 </div>
