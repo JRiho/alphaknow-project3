@@ -3,6 +3,7 @@ package com.spring.alphaknow.controller.boardController;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,11 +58,12 @@ public class BoardController {
 	// Ajax 게시글번호 받아서 상세정보 표시
 	@RequestMapping("/board/ajax.doSelect")
 	@ResponseBody
-	public List<BoardDTO> boardAjax(@RequestParam("boardno") int boardNum) {
+	public List<BoardDTO> boardAjax(@RequestParam("boardno") int boardNum, @RequestParam("employeeName") String employeeName, HttpSession session) {
 
 		// dto 에 담기
 		BoardDTO dto = new BoardDTO();
 		dto.setBoardNum(boardNum);
+		dto.setEmployeeName(employeeName);
 
 		List<BoardDTO> list = boardService.boardDetailList(dto);
 		return list;
@@ -82,5 +84,7 @@ public class BoardController {
 		boardService.boardUpdate(dto);
 		return dto;
 	}
+	
+	
 
 }

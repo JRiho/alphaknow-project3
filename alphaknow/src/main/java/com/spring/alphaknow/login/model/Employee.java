@@ -3,6 +3,11 @@ package com.spring.alphaknow.login.model;
 public class Employee {
     private String department_name;
     private String employee_name;
+    private String job_grade;
+    private String userId;        // 사용자 ID
+    private String password;      // 사용자 비밀번호
+    private String employee_phone; // 사용자 휴대폰번호
+    
     public String getDepartment_name() {
 		return department_name;
 	}
@@ -21,9 +26,6 @@ public class Employee {
 	public void setJob_grade(String job_grade) {
 		this.job_grade = job_grade;
 	}
-	private String job_grade;
-    private String userId;        // 사용자 ID
-    private String password;      // 사용자 비밀번호
 
     // departmentName의 getter와 setter
     public String getDepartmentName() {
@@ -56,4 +58,11 @@ public class Employee {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+	public String getEmployee_phone() {
+		return employee_phone;
+	}
+	public void setEmployee_phone(String employee_phone) {
+		this.employee_phone = employee_phone;
+	}
 }
