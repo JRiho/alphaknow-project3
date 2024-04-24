@@ -16,7 +16,7 @@
 			<div class="title_select_container">
 				<h1>공정코드관리</h1>
 			</div>
-			<form action="/processcode?action=add" method="post">
+			<form action="alphaknow/processcode" method="post">
 			<div id="process_code_button">
 				<button type="button" class="change_button" id="new_process_button">추가</button>
                 <button type="button" class="edit_button" data-id="${process.sequenceNo}">수정</button>
@@ -92,8 +92,9 @@
 	<div id="process_new_register" style="display:none;">
         <div id="process_title">공정명 등록/수정</div>
         <div id="table_wrap">
-            <form action="/processcode" method="post">
-                <input type="hidden" name="_method" value="post" id="form_method">
+            <form action="/alphaknow/processcode" method="post">
+            	<input type="hidden" name="action" id="form_action" value="add"> 
+            	<input type="hidden" name="sequenceNo"> 
                 <table id="new_process">
                     <colgroup>
                         <col style="width: 30%" />
@@ -141,7 +142,7 @@
                     </tr>
                 </table>
                 <div id="setting_button">
-                    <button type="submit" class="change_button">저장</button>
+                    <button type="submit" class="change_button" id="save_button">저장</button>
                     <button type="button" class="button_basic" id="close">닫기</button>
                 </div>
             </form>

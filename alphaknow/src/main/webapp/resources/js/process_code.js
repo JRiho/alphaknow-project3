@@ -7,12 +7,22 @@ $(document).ready(function() {
         clearInputs();
     });
 
+	// 닫기 버튼 이벤트
+	
     $("#close").click(function() {
         processNewRegister.hide();
         clearInputs();
     });
+	
+	// 추가 버튼 이벤트
+	 $('#add_button').click(function() {
+        clearFormData(); // 폼 데이터 초기화
+        $('#form_action').val('add'); // 액션을 '추가'로 설정
+        $('#process_form').show(); // 팝업 보이기
+    });
 
-    // 수정 버튼 이벤트 리스너
+   
+    // 수정 버튼 이벤트 
     $('.edit_button').click(function() {
         let sequenceNo = $('input[name="selectedProcess"]:checked').val();
         
@@ -20,30 +30,50 @@ $(document).ready(function() {
             alert("공정 번호가 지정되지 않았습니다.");
             return;
         }
-        
+        $('#form_action').val('update');
         console.log(sequenceNo);  // 콘솔에 sequenceNo 출력
         loadProcessData(sequenceNo);  // 데이터 로딩 함수 호출
         processNewRegister.show();  // 공정 등록 팝업 표시
     });
 
-	$("#save_button").click(function(event) {
-    event.preventDefault();  // 기본 폼 제출 막기
+	 $('#save_button').click(function(event) {
+        event.preventDefault(); // 폼의 기본 제출 방지
+		var action = $('#form_action').val(); // 현재 설정된 액션
 
-    $.ajax({
-        url: "/processcode?action=add",  // 컨트롤러 매핑 URL
-        type: "POST",
-        data: $("#new_process").serialize(),  // 폼 데이터 직렬화
-        success: function(response) {
-            alert("저장되었습니다.");
-            $("#process_new_register").hide();  // 팝업 숨기기
-        },
-        error: function(xhr, status, error) {
-            alert("저장 실패: " + error);
-        }
-   		 });
-	});
+        let formData = {
+        	sequenceNo : $('input[name="sequenceNo"]').val(),
+            code: $('input[name="code"]').val(),
+            errorCode: $('input[name="errorCode"]').val(),
+            processAbbreviation: $('input[name="processAbbreviation"]').val(),
+            processAlias: $('input[name="processAlias"]').val(),
+            processType: $('input[name="processType"]').val(),
+            standard: $('input[name="standard"]').val(),
+            standardWorkingTime: $('input[name="standardWorkingTime"]').val(),
+            fakeFaultWarning: $('input[name="fakeFaultWarning"]').val(),
+            genuineFaultWarning: $('input[name="genuineFaultWarning"]').val(),
+            repeatable: $('input[name="repeatable"]').val()
+        };
 
-	
+        $.ajax({
+		    url: '/alphaknow/processcode/'+ action,  
+		    type: 'POST',
+		    contentType: 'application/json',
+		    data: JSON.stringify(formData),  // formData는 ProcessCodeDTO 클래스의 필드 구조와 일치한지 확인할 것.
+		    success: function(response) {
+		        alert('저장되었습니다. & 테이블 업데이트!');
+		        console.log(action);
+		        console.log(formData);
+		        // 성공 후 필요한 추가 작업
+		        location.reload();
+		        processNewRegister.hide();
+        		clearInputs();
+		    },
+		    error: function(xhr, status, error) {
+		        alert('저장 실패: ' + xhr.responseText);
+		    }
+		});
+    });
+
 
     updateCounts();
 });
@@ -86,31 +116,35 @@ function loadProcessData(sequenceNo) {
 }
 // "삭제" 버튼 이벤트 처리
 function deleteSelectedProcess() {
-    var selectedIds = [];
+    var selectedId = [];
     $('input[name="selectedProcess"]:checked').each(function() {
-        selectedIds.push($(this).val());  // 체크된 항목의 값(공정 코드 ID) 수집
+        selectedId.push($(this).val());
     });
 
-    if (selectedIds.length === 0) {
-        alert('삭제할 항목을 선택해주세요.');
+    if (selectedId.length === 0) {
+        alert('삭제할 공정 코드를 선택하세요.');
         return;
     }
 
-    // AJAX 요청으로 서버에 삭제 요청
-    $.ajax({
-        url: '/processcode?action=delete',  // 삭제 처리 URL
-        type: 'POST',
-        data: { ids: selectedIds },  // 전송할 데이터
-        traditional: true,  // jQuery가 배열을 적절하게 처리하도록 설정
-        success: function(response) {
-            alert('선택한 항목이 삭제되었습니다.');
-            location.reload();  // 성공 시 페이지 새로고침
-        },
-        error: function() {
-            alert('삭제 처리 중 오류가 발생했습니다.');
-        }
-    });
+    if (confirm('선택한 공정 코드를 정말 삭제하시겠습니까?')) {
+        $.ajax({
+            url: '/alphaknow/processcode/deleteProcessCode',
+            type: 'POST',
+            data: JSON.stringify(selectedId),
+            contentType: 'application/json',
+            success: function(response) {
+                alert('성공적으로 삭제되었습니다.');
+                location.reload(); // 페이지를 다시 불러옴
+            },
+            error: function(error) {
+                alert('삭제 중 오류가 발생했습니다.');
+            }
+        });
+    }
 }
+
+
+
 
 // 프로세스 갯수 업데이트
 function updateCounts() {

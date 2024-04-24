@@ -38,7 +38,7 @@
 		manufacturer,
 		purchasing_company_name, repair_company_name, manager, location,
 		usage, usage_status, purchase_date, history_registration_date)
-		VALUES (equipment_seq.NEXTVAL, #{equipmentName}, #{managementNumber},
+		VALUES (processcode_seq.NEXTVAL, #{equipmentName}, #{managementNumber},
 		#{manufacturer},
 		#{purchasingCompanyName}, #{repairCompanyName}, #{manager}, #{location},
 		#{usage}, #{usageStatus}, #{purchaseDate}, #{historyRegistrationDate})

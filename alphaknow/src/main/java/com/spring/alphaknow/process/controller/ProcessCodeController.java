@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,38 +25,48 @@ public class ProcessCodeController {
     @Autowired
     private ProcessCodeService processCodeService;  // 서비스 자동 주입
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.GET)
     public String listProcessCodes(Model model) {
         List<ProcessCodeDTO> processCodeList = processCodeService.getAllProcessCodes();
         model.addAttribute("processCodeList", processCodeList);
         return "processCode";  // 포워드할 JSP 페이지
     }
 
-    @RequestMapping(value = "/processcode", params = "action=add", method = RequestMethod.POST)
-    public String addProcessCode(@ModelAttribute ProcessCodeDTO processCode, RedirectAttributes redirectAttributes) {
-        processCodeService.addProcessCode(processCode);
-        redirectAttributes.addFlashAttribute("message", "프로세스 코드가 성공적으로 추가되었습니다!");
-        return "redirect:/processcode";
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity<String> addProcessCode(@RequestBody ProcessCodeDTO processCode) {
+        try {
+            processCodeService.addProcessCode(processCode);
+            return ResponseEntity.ok("프로세스 코드가 성공적으로 추가되었습니다!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("저장 실패: " + e.getMessage());
+        }
     }
 
-    @RequestMapping(params = "action=delete", method = RequestMethod.POST)
-    public String deleteProcessCode(@RequestParam("id") int sequenceNo, RedirectAttributes redirectAttributes) {
-        processCodeService.deleteProcessCode(sequenceNo);
-        redirectAttributes.addFlashAttribute("message", "프로세스 코드가 성공적으로 삭제되었습니다!");
-        return "redirect:/processcode";
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ResponseEntity<String> updateProcessCode(@RequestBody ProcessCodeDTO processCode) {
+        try {
+        	System.out.println(processCode);
+            processCodeService.updateProcessCode(processCode);
+            return ResponseEntity.ok("프로세스 코드 정보가 업데이트되었습니다!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("업데이트 실패: " + e.getMessage());
+        }
+    }
+    
+    @RequestMapping(value= "/deleteProcessCode", method = RequestMethod.POST)
+    public ResponseEntity<?> deleteProcessCodes(@RequestParam ("sequenceNo") int sequenceNo) {
+        try {
+            processCodeService.deleteProcessCode(sequenceNo);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    @RequestMapping(params = "action=update", method = RequestMethod.POST)
-    public String updateProcessCode(@ModelAttribute ProcessCodeDTO processCode, RedirectAttributes redirectAttributes) {
-        processCodeService.updateProcessCode(processCode);
-        redirectAttributes.addFlashAttribute("message", "프로세스 코드 정보가 업데이트되었습니다!");
-        return "redirect:/processcode";
-    }
     
     @RequestMapping(value = "/detail", method = RequestMethod.POST)
     @ResponseBody
     public ProcessCodeDTO getProcessCodeDetail(@RequestParam("sequenceNo") int sequenceNo) {
-    	System.out.println("시퀀스 넘버 넘어오나 확인 :" + sequenceNo);
         return processCodeService.processCodeSelect(sequenceNo);
     }
 }

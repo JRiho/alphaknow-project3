@@ -10,11 +10,13 @@
     </select>
 
     <!-- 프로세스 코드 추가 -->
-    <insert id="insertProcessCode" parameterType="processCodeDTO">
-        INSERT INTO ProcessCode (sequenceNo, code, errorCode, processAbbreviation,
+    <insert id="addProcessCode" parameterType="processCodeDTO">
+        INSERT INTO ProcessCode 
+        (sequenceNo, code, errorCode, processAbbreviation,
         processAlias, processType, standard, standardWorkingTime,
         fakeFaultWarning, genuineFaultWarning, repeatable)
-        VALUES (#{sequenceNo}, #{code}, #{errorCode}, #{processAbbreviation},
+        VALUES 
+        (equipment_seq.NEXTVAL, #{code}, #{errorCode}, #{processAbbreviation},
         #{processAlias}, #{processType}, #{standard}, #{standardWorkingTime},
         #{fakeFaultWarning}, #{genuineFaultWarning}, #{repeatable})
     </insert>

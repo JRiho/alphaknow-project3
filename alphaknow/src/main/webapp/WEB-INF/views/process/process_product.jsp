@@ -10,7 +10,7 @@
 	<div id="process_code">
 		<div class="top_section">
 			<div class="title_select_container">
-				<h1>제품코드관리</h1>
+				<h1>부품 목록</h1>
 			</div>
 			<div id="process_code_button">
 				<button type="button" class="change_button" id="new_process_button">추가</button>
@@ -23,7 +23,55 @@
 	<br>
 	<br>
 	<div id="main_content">
-		<table id="process_board">
+		<table id="process_board1">
+			<!-- 테이블 너비 조절 -->
+			<colgroup>
+				<col style="width: 8%" />
+				<col style="width: 23%" />
+				<col style="width: 23%" />
+				<col style="width: 23%" />
+				<col style="width: 23%" />
+			</colgroup>
+			<thead>
+				<tr>
+					<th></th>
+					<th>코 드</th>
+					<th>이 름</th>
+					<th>가 격</th>
+					<th>타 입</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<c:forEach var="product" items="${product}">
+					<tr>
+						<th><input type="checkbox" name="selectedProduct"
+							value="${product.sequenceNo}" data-id="${product.sequenceNo}"></th>
+						<td>${product.productCode}</td>
+						<td>${product.productName}</td>
+						<td>${product.productPrice}</td>
+						<td>${product.productType}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<div id="process_code">
+		<div class="top_section">
+			<div class="title_select_container">
+				<h1>완제품 목록</h1>
+			</div>
+			<div id="process_code_button">
+				<buttion type="button" class="change_button">BOM 출력</buttion>
+				<button type="button" class="change_button" id="new_process_button">추가</button>
+				<button type="button" class="edit_button"
+					data-id="${process.sequenceNo}">수정</button>
+				<button type="button" onclick="deleteSelectedProcess();">삭제</button>
+			</div>
+		</div>
+	</div>
+	<div id="main_content">
+	<table id="process_board2">
 			<!-- 테이블 너비 조절 -->
 			<colgroup>
 				<col style="width: 8%" />
