@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+<!-- 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" -->
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.pppChart">
+
+	<resultMap id="productionPlanPerformanceResultMap" type="pppDTO.ProductionPlanPerformanceDTO">
+        <id property="workYear" column="work_year"/>
+        <result property="workMonth" column="work_month"/>
+        <result property="workWeek" column="work_week"/>
+        <result property="workDay" column="work_day"/>
+        <result property="itemName" column="item_name"/>
+        <result property="productionAmount" column="production_amount"/>
+        <result property="makeAmount" column="make_amount"/>
+        <result property="achievementRate" column="achievement_rate"/>
+        <result property="defectRate" column="defect_rate"/>
+    </resultMap>
+		
+	<select id="selectChartList" resultMap="productionPlanPerformanceResultMap">
+		select 
+			*
+		from 
+			production_plan_chart_temp
+	</select>
+	
+	<insert id="insertProductionData" parameterType="pppDTO">
+        INSERT INTO production_plan_chart_temp
+        (work_year, work_month, work_week, work_day, item_name, production_amount, make_amount, achievement_rate, defect_rate)
+        VALUES
+        (#{workYear}, #{workMonth}, #{workWeek}, #{workDay}, #{itemName}, #{productionAmount}, #{makeAmount}, #{achievementRate}, #{defectRate})
+    </insert>
+
+</mapper>
