@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 public class ReceivingManagementAjax4DTO {
 	private String tradeCode;
+	private int productSeq;
     private String productCode;
     private String productName;
     private String lot;
@@ -17,4 +18,7 @@ public class ReceivingManagementAjax4DTO {
     private int requestAmount;
     private int productPrice;
     private int productAllPrice;
+    private String companyName;
+    private String companyEmployee;
+    private String address;
 }

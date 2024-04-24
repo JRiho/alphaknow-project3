@@ -306,6 +306,16 @@ $(function() {
     })
 })
 
+// 작성완료시 update(수정)
+$(function() {
+    $("#done_modify_btn").off("click").on("click", function() {
+        let isConfirm = confirm("신청서를 수정하시겠습니까?")
+        if(isConfirm) {
+            $("#updateForm").submit();
+        }
+    })
+})
+
 // 닫기버튼
 $(function () {
     // 품목리스트 닫기
@@ -322,32 +332,6 @@ $(function () {
     $(".close_modify_item").off("click").on("click", function () {
         $(".modify_item_wrap").hide();
     })
-})
-
-// 각 td클릭이벤트
-$(function() {
-    // td 요소 클릭 시 이벤트 핸들러 등록
-    $("td").on("click", function() {
-        // 모든 tr 요소의 배경색을 원래대로 돌리기
-        resetTableBackground();
-
-        // 클릭한 td 요소의 부모 tr 요소 선택하여 회색 스타일 적용
-        $(this).closest("tr").css("background-color", "lightgrey");
-    });
-
-    // 문서의 다른 영역(비 td 요소) 클릭 시 이벤트 핸들러 등록
-    $(document).on("click", function(event) {
-        // 클릭된 요소가 td 요소가 아닌 경우
-        if (!$(event.target).is("td")) {
-            // 모든 tr 요소의 배경색을 원래대로 돌리기
-            resetTableBackground();
-        }
-    });
-
-    // 모든 tr 요소의 배경색을 원래대로 돌리는 함수
-    function resetTableBackground() {
-        $("tr").css("background-color", "");
-    }
 })
 
 // 선택수정 이벤트
@@ -367,9 +351,9 @@ $(function() {
     
                     // 여기에 받은 데이터를 활용한 작업 수행
                     // 공통데이터 선입력
-                    $(".modify_item_table thead").find("#tradeCodeTd").text(data[0].TRADE_CODE)
-                    $(".modify_item_table thead").find("#tradeDateTd").text(data[0].REQUEST_DATE)
-                    $(".modify_item_table thead").find("#tradePersonTd").text(data[0].REQUEST_PERSON)
+                    $(".modify_item_table thead").find("#tradecodeTd").text(data[0].TRADE_CODE)
+                    $(".modify_item_table thead").find("#requestDateTd").text(data[0].REQUEST_DATE)
+                    $(".modify_item_table thead").find("#requestPersonTd").text(data[0].REQUEST_PERSON)
 
 
                     // 수정일 자동 기입
@@ -399,21 +383,23 @@ $(function() {
                     $("#modifyDate").val(currentDateTime[0].formattedDateTimeSpacing);
 
                     // 기존주소 자동 기입하기
-                    $(".modify_item_table thead").find("#oldRequestAddrTd").text(data[0].TRADE_CODE)
-                    $(".modify_item_table thead").find("#oldRequestAddr").text(data[0].TRADE_CODE)
+                    $(".modify_item_table thead").find("#oldRequestAddrTd").text(data[0].REQUEST_ADDR)
+                    $(".modify_item_table thead").find("#oldRequestAddr").text(data[0].REQUEST_ADDR)
                     
                     // 거래처명 담당자 거래처주소
                     $(".modify_item_table thead").find("#companyNameTd").text(data[0].COMPANY_NAME)
                     $(".modify_item_table thead").find("#companyEmployeeTd").text(data[0].COMPANY_EMPLOYEE)
-                    $(".modify_item_table thead").find("#companyAddrTd").text(data[0].COMPANY_ADDR)
+                    $(".modify_item_table thead").find("#companyAddrTd").text(data[0].ADDRESS)
 
                     // 기존 수정 제거
-                    $(".request_item_table_tbody").find("tr").remove()
+                    $(".modify_item_table tbody").find("tr").remove()
                     for(let i=0; i<data.length; i++) {
-                        
+                        // 계산식으로 미리 바꾸기
+                        let productPrice = parseFloat(data[i].PRODUCT_PRICE)
                         // 각 행을 동적으로 생성하여 tbody에 추가
                         let htmlString = `
                         <tr>
+                            <input type="hidden" name="productSeq" value="${data[i].PRODUCT_SEQ}">
                             <td>
                                 ${data[i].PRODUCT_CODE}
                                 <input type="hidden" name="itemCode" class="itemCode">
@@ -423,7 +409,7 @@ $(function() {
                                 <input type="hidden" name="itemName" class="itemName">
                             </td>
                             <td>
-                                <input type="number" name="itemAmount" class="itemAmount" data-price="">
+                                <input type="number" name="itemAmount" class="itemAmount" data-price="${productPrice}">
                             </td>
                             <td>
                                 ${data[i].PRODUCT_PRICE}
@@ -436,7 +422,7 @@ $(function() {
                     `;
 
                         // 생성된 행을 tbody에 추가
-                        $(".request_item_table_tbody").append(htmlString);
+                        $(".modify_item_table tbody").append(htmlString);
                     }
 
                     // 아이템 수량 입력하면 자동으로 총 금액 입력

@@ -3,32 +3,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!DOCTYPE html>
-<html lang="ko">
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MainPage</title>
-
-<%
-String contextPath = request.getContextPath();
-%>
-
-<link rel="stylesheet" href="<%=contextPath%>/css/production_performance_chart.css">
-<script src="<%=contextPath%>/js/production_performance_chart.js"></script>
+<link rel="stylesheet" href="/alphaknow/resources/css/production_performance_chart.css">
+<script src="/alphaknow/resources/js/production_performance_chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-</head>
-<style>
-</style>
 
-<body>
 
-	<%@ include file="../mainheader.jsp"%>
 	<div id="content">
 
 		<!-- div id="headerj" 시작 -->
-		<div id="headerj">생산계획대비실적현황</div>
+		<div id="headerj">생산실적현황</div>
 		<!-- div id="headerj" 끝 -->
 
 		<!-- updiv -->

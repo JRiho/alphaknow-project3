@@ -55,7 +55,7 @@
 	</div>
 
 
-
+	<!-- 사원등록 팝업창 -->
 	<div class="employee_regedit">
 		<form action="/alphaknow/employee/insert" method="post">
 			<div class="regedit_header">
@@ -94,7 +94,7 @@
 	</div>
 
 
-
+	<!-- 사원 세부정보 팝업창 -->
 	<div class="employee_infoDetail">
 		<form id="myForm">
 			<div class="infoDetail_header">

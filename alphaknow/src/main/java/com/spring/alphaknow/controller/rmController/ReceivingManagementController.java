@@ -17,6 +17,7 @@ import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax4DTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingManagementUpdateDTO;
 import com.spring.alphaknow.service.rmService.ReceivingManagementService;
 
 @Controller
@@ -77,6 +78,49 @@ public class ReceivingManagementController {
 		return "redirect:/receivingManagement/list";
 	}
 	
+	// update문
+	@RequestMapping("/receivingManagement/update")
+	public String receivingManagementUpdate(
+			@RequestParam("productSeq") int[] product_seq,
+			@RequestParam("modifyDate") String str_modify_date,
+			@RequestParam("modifyPerson") String modify_request_person,
+			@RequestParam("modifyAddr") String request_addr,
+			@RequestParam("itemAmount") int[] request_amount,		
+			@RequestParam("itemAllPrice") int[] product_all_price
+			) {
+		
+		// 날짜형 자료 변환
+		// SimpleDateFormat을 사용하여 문자열을 java.util.Date 객체로 파싱
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        java.util.Date utilDate = null;
+        try {
+            utilDate = sdf.parse(str_modify_date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        // java.util.Date 객체를 java.sql.Date 객체로 변환
+        java.sql.Date modify_request_date = new java.sql.Date(utilDate.getTime());
+        System.out.println("modify_date : " + modify_request_date);
+        
+		ReceivingManagementUpdateDTO dto = new ReceivingManagementUpdateDTO();
+		
+		for(int i=0; i<product_seq.length; i++) {
+			dto.setProduct_seq(product_seq[i]);
+			dto.setModify_request_date(modify_request_date);
+			dto.setModify_request_person(modify_request_person);
+			dto.setRequest_addr(request_addr);
+			dto.setRequest_amount(request_amount[i]);
+			dto.setProduct_all_price(product_all_price[i]);
+			
+			System.out.println(dto);
+			
+			receivingManagementService.rmUpdate(dto);
+		}
+		
+		return "redirect:/receivingManagement/list";
+	}
+	
+	// delete문
 	@RequestMapping("/receivingManagement/delete")
 	public String receivingManagementDelete (
 			@RequestParam("trade_code_chk") String[] trade_code
