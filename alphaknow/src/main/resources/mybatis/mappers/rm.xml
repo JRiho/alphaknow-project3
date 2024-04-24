@@ -7,41 +7,66 @@
 	<!-- 첫페이지 -->
 	<select id="receivingManagementSelect" resultType="map">
 		SELECT 
-			RECEIVING_MANAGEMENT.*, 
-			company_and_product_temp.*, 
-			receiving_company_list.*, 
-			product_temp.*, 
-			inventory.*
+			rm.TRADE_CODE, 
+			rcl.COMPANY_NAME, 
+			rm.SIGN_STATUS, 
+			rm.RECEIVING_DATE, 
+			SUM(rm.PRODUCT_ALL_PRICE) PRODUCT_ALL_PRICE, 
+			rm.REQUEST_DATE, 
+			rm.REQUEST_PERSON, 
+			rm.MODIFY_REQUEST_DATE, 
+			rm.MODIFY_REQUEST_PERSON, 
+			rm.SIGN_PERSON
 		FROM 
-			RECEIVING_MANAGEMENT
-		JOIN company_and_product_temp 
-			ON RECEIVING_MANAGEMENT.COMPANY_AND_PRODUCT_TEMP_SEQ = company_and_product_temp.COMPANY_AND_PRODUCT_TEMP_SEQ
-		JOIN receiving_company_list 
-			ON company_and_product_temp.COMPANY_SEQ = receiving_company_list.COMPANY_SEQ
-		JOIN product_temp 
-			ON company_and_product_temp.PRODUCT_SEQ = product_temp.PRODUCT_SEQ
-		LEFT OUTER JOIN inventory 
-			ON product_temp.PRODUCT_SEQ = inventory.PRODUCT_SEQ
+			RECEIVING_MANAGEMENT rm
+		JOIN 
+			COMPANY_AND_PRODUCT_TEMP capt 
+		ON 
+			rm.COMPANY_AND_PRODUCT_TEMP_SEQ = CAPT.COMPANY_AND_PRODUCT_TEMP_SEQ
+		JOIN 
+			RECEIVING_COMPANY_LIST rcl 
+		ON 
+			capt.COMPANY_SEQ = rcl.COMPANY_SEQ
+		JOIN 
+			PRODUCT_TEMP pt 
+		ON capt.PRODUCT_SEQ = pt.PRODUCT_SEQ
+		GROUP BY 
+			rm.TRADE_CODE, 
+			rcl.COMPANY_NAME, 
+			rm.SIGN_STATUS, 
+			rm.RECEIVING_DATE, 
+			rm.REQUEST_DATE, 
+			rm.REQUEST_DATE, 
+			rm.REQUEST_PERSON, 
+			rm.MODIFY_REQUEST_DATE, 
+			rm.MODIFY_REQUEST_PERSON, 
+			rm.SIGN_PERSON
 	</select>
 	
 	<!-- ajax 입고신청 -->
 	<select id="receivingManagementAjaxSelect" resultType="map">
 		SELECT 
-			company_and_product_temp.COMPANY_AND_PRODUCT_TEMP_SEQ,
-			company_and_product_temp.COMPANY_SEQ, 
-			company_and_product_temp.PRODUCT_SEQ, 
-			product_temp.PRODUCT_CODE, 
-			product_temp.PRODUCT_NAME,
-			product_temp.PRODUCT_PRICE, 
-			receiving_company_list.COMPANY_NAME, 
-			inventory.PRODUCT_AMOUNT
-		FROM company_and_product_temp
-		JOIN product_temp 
-			ON company_and_product_temp.PRODUCT_SEQ = product_temp.PRODUCT_SEQ
-		JOIN receiving_company_list 
-			ON receiving_company_list.COMPANY_SEQ =  company_and_product_temp.COMPANY_SEQ
-		LEFT OUTER JOIN inventory 
-			ON inventory.PRODUCT_SEQ = product_temp.PRODUCT_SEQ
+			CAPT.COMPANY_AND_PRODUCT_TEMP_SEQ,
+			PT.PRODUCT_CODE, 
+			pt.PRODUCT_NAME, 
+			RCL.COMPANY_SEQ, 
+			RCL.COMPANY_NAME, 
+			pt.PRODUCT_PRICE, 
+			i.PRODUCT_AMOUNT
+		FROM 
+			PRODUCT_TEMP pt
+		JOIN 
+			COMPANY_AND_PRODUCT_TEMP capt 
+		ON 
+			PT.PRODUCT_SEQ = CAPT.PRODUCT_SEQ
+		JOIN 
+			RECEIVING_COMPANY_LIST rcl 
+		ON 
+			CAPT.COMPANY_SEQ = RCL.COMPANY_SEQ
+		LEFT OUTER JOIN 
+			INVENTORY i 
+		ON 
+			i.PRODUCT_SEQ = pt.PRODUCT_SEQ
 	</select>
 	
 	<!-- 입고신청란 -->
@@ -90,7 +115,69 @@
 		DELETE FROM 
 			RECEIVING_MANAGEMENT
 		WHERE 
-			TRADE_SEQ = #{trade_seq}
+			TRADE_CODE = #{trade_code}
 	</delete>
+	
+	<!-- 입고목록 상세보기 -->
+	<select id="receivingManagementAjaxSelect3" parameterType="string" resultType="map">
+		SELECT
+			rm.TRADE_CODE, 
+			pt.PRODUCT_CODE, 
+			pt.PRODUCT_NAME, 
+			rm.LOT, 
+			nvl(i.PRODUCT_AMOUNT,0) PRODUCT_AMOUNT, 
+			nvl(i.PRODUCT_AMOUNT+rm.REQUEST_AMOUNT,0) AFTER_PRODUCT_AMOUNT, 
+			rm.REQUEST_AMOUNT, 
+			pt.PRODUCT_PRICE, 
+			rm.PRODUCT_ALL_PRICE
+		FROM 
+			RECEIVING_MANAGEMENT rm
+		JOIN 
+			COMPANY_AND_PRODUCT_TEMP capt 
+		ON 
+			rm.COMPANY_AND_PRODUCT_TEMP_SEQ = capt.COMPANY_AND_PRODUCT_TEMP_SEQ
+		JOIN 
+			PRODUCT_TEMP pt 
+		ON 
+			CAPT.PRODUCT_SEQ = PT.PRODUCT_SEQ
+		LEFT OUTER JOIN 
+			INVENTORY i 
+		ON 
+			i.PRODUCT_SEQ = pt.PRODUCT_SEQ
+		WHERE 
+			rm.TRADE_CODE = #{trade_code}
+	</select>
 
+	
+	<!-- 수정하기 클릭이벤트(입고신청서) -->
+	<select id="receivingManagementAjaxSelect4" parameterType="string" resultType="map">
+		SELECT 
+			rm.TRADE_CODE, 
+			rm.REQUEST_DATE, 
+			rm.REQUEST_PERSON, 
+			rm.REQUEST_ADDR, 
+			rcl.COMPANY_CODE, 
+			rcl.COMPANY_NAME, 
+			rm.REQUEST_AMOUNT, 
+			pt.PRODUCT_PRICE, 
+			rm.REQUEST_AMOUNT*pt.PRODUCT_PRICE PRODUCT_ALL_PRICE
+		FROM 
+			RECEIVING_MANAGEMENT rm
+		JOIN 
+			COMPANY_AND_PRODUCT_TEMP capt 
+		ON 
+			capt.COMPANY_AND_PRODUCT_TEMP_SEQ = rm.COMPANY_AND_PRODUCT_TEMP_SEQ
+		JOIN 
+			RECEIVING_COMPANY_LIST rcl 
+		ON
+			capt.COMPANY_SEQ = rcl.COMPANY_SEQ
+		JOIN 
+			PRODUCT_TEMP pt 
+		ON 
+			CAPT.PRODUCT_SEQ = PT.PRODUCT_SEQ
+		WHERE 
+			rm.TRADE_CODE = #{trade_code}
+	</select>
+	
+	
 </mapper>

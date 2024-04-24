@@ -8,10 +8,10 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ReceivingManagementAjaxDTO {
-	int company_seq;
-	int product_seq;
 	String product_code;
 	String product_name;
+	int company_seq;
 	String company_name;
+	int product_price;
 	int product_amount;
 }

@@ -70,7 +70,10 @@
 /* 품목리스트 전체 넓이 */
 .item_list_wrap,
 /* 입고신청서 전체 넓이 */
-.request_item_wrap {
+.request_item_wrap,
+/* 입고신청서 수정 */
+.modify_item_wrap
+{
 	width: 80%;
 	/* 테두리 */
 	border: 1px solid red;
@@ -91,6 +94,9 @@
 }
 .request_item_wrap {
 	top: -600px;
+}
+.modify_item_wrap {
+    top: -300px;
 }
 
 /* 품목리스트와 닫기버튼 양 옆 배치 */
@@ -113,7 +119,8 @@
 /* 품목리스트 테이블 넓이 */
 .item_list_table,
 /* 입고신청서 테이블 넓이 */
-.request_item_table {
+.request_item_table,
+.modify_item_table {
 	width: 100%;
 }
 
@@ -129,7 +136,8 @@
 }
 
 /* 입고신청서 글자랑 닫기버튼 좌우정렬 */
-.request_item_buttonset {
+.request_item_buttonset,
+.modify_item_buttonset {
 	display: flex;
 	justify-content: space-between;
 }
@@ -142,6 +150,7 @@
 }
 
 /* 입고신청서 작성창 */
-.request_item_table_container {
+.request_item_table_container,
+.modify_item_table_container {
 	min-height: 500px;
 }

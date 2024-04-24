@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.spring.alphaknow.dao.rmDAO.ReceivingManagementDAO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax2DTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax3DTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax4DTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
@@ -34,5 +36,13 @@ public class ReceivingManagementService {
 	
 	public List<ReceivingManagementAjax2DTO> rmAjaxList2(String company_seq) {
 		return receivingManagementDAO.receivingManagementAjaxSelect2(company_seq);
+	}
+	
+	public List<ReceivingManagementAjax3DTO> rmAjaxList3(String trade_code) {
+		return receivingManagementDAO.receivingManagementAjaxSelect3(trade_code);
+	}
+	
+	public List<ReceivingManagementAjax4DTO> rmAjaxList4(String trade_code) {
+		return receivingManagementDAO.receivingManagementAjaxSelect4(trade_code);
 	}
 }

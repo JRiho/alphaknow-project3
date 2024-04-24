@@ -1,7 +1,5 @@
 package com.spring.alphaknow.controller.rmController;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax2DTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax3DTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax4DTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
@@ -44,9 +44,6 @@ public class ReceivingManagementController {
 			@RequestParam("itemAmount") int[] request_amount,		
 			@RequestParam("itemAllPrice") int[] product_all_price
 			) {
-		System.out.println("trade_code : " + trade_code);
-		System.out.println("company_and_product_temp_seq1 : " + company_and_product_temp_seq[0]);
-		System.out.println("company_and_product_temp_seq2 : " + company_and_product_temp_seq[1]);
 		
 		// 날짜형 자료 변환
 		// SimpleDateFormat을 사용하여 문자열을 java.util.Date 객체로 파싱
@@ -60,8 +57,6 @@ public class ReceivingManagementController {
         // java.util.Date 객체를 java.sql.Date 객체로 변환
         java.sql.Date request_date = new java.sql.Date(utilDate.getTime());
         System.out.println("request_date : " + request_date);
-		
-        PreparedStatement ps = null;
         
 		ReceivingManagementInsertDTO dto = new ReceivingManagementInsertDTO();
 		
@@ -84,13 +79,14 @@ public class ReceivingManagementController {
 	
 	@RequestMapping("/receivingManagement/delete")
 	public String receivingManagementDelete (
-			@RequestParam("trade_seq") int[] trade_seq
+			@RequestParam("trade_code_chk") String[] trade_code
 			) {
+		System.out.println("---------------" + trade_code[0]);
 		
 		ReceivingManagementDTO dto = new ReceivingManagementDTO();
 		
-		for(int i=0; i<trade_seq.length; i++) {
-			dto.setTrade_seq(trade_seq[i]);
+		for(int i=0; i<trade_code.length; i++) {
+			dto.setTrade_code(trade_code[i]);
 			
 			receivingManagementService.rmDelete(dto);
 		}
@@ -112,6 +108,24 @@ public class ReceivingManagementController {
 			@RequestParam("company_seq") String company_seq
 			) {
 		return receivingManagementService.rmAjaxList2(company_seq);
+	}
+	
+	// Ajax 상세보기
+	@RequestMapping("/receivingManagement/ajax.doSelect3")
+	@ResponseBody
+	public List<ReceivingManagementAjax3DTO> receivingManagementAjaxSelect3(
+			@RequestParam("trade_code") String trade_code
+			) {
+		return receivingManagementService.rmAjaxList3(trade_code);
+	}
+	
+	// Ajax 수정하기버튼 누르면 나오는 수정창에 들어갈 정보
+	@RequestMapping("/receivingManagement/ajax.doSelect4")
+	@ResponseBody
+	public List<ReceivingManagementAjax4DTO> receivingManagementAjaxSelect4(
+			@RequestParam("trade_code") String trade_code
+			) {
+		return receivingManagementService.rmAjaxList4(trade_code);
 	}
 	
 }
