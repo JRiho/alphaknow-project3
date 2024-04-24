@@ -77,6 +77,8 @@ $(function() {
 	})
 })
 
+if(sessionStorage.getItem(
+
 // 수정 버튼 클릭 시
 $(document).ready(function() {
 	$("#update").off("click").on("click", function() {

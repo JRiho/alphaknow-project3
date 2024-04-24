@@ -15,9 +15,35 @@
     <div class="side">
         <div class="side_profile">
             <img src="/alphaknow/resources/img/profile_icon.png" class="profile_img">
-            <div><font size="5"><b>이민영</b></font></div>
-            <div>생산1팀/매니저</div>
-            <div>010-5811-9717</div>
+            <div>
+				<font size="5">
+					<b>
+						<%
+							String userName = (String)session.getAttribute("userName");
+							if(userName != null) {
+		                        out.println(userName); // 사용자 이름 출력
+		                    }
+						%>
+					</b>
+				</font>
+			</div>
+			<div>
+				<%
+					String department = (String)session.getAttribute("department");
+					String jobgrade = (String)session.getAttribute("jobgrade");
+					if(department != null && jobgrade != null) {
+		            	out.println(department+"팀/"+jobgrade); // 사용자 부서/직급 출력
+		            }
+				%>
+			</div>
+			<div>
+				<%
+					String phone = (String)session.getAttribute("phone");
+					if(phone != null) {
+		            	out.println(phone); // 사용자 휴대폰번호 출력
+		            }
+				%>		
+			</div>
             <div style="margin-top: 20px"><a href="" class="logout">정보수정</a></div>
         </div>
         
