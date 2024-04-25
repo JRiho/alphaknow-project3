@@ -39,7 +39,7 @@ public class LoginController {
             session.setAttribute("jobgrade", employee.getJob_grade());
             session.setAttribute("phone", employee.getEmployee_phone());
             session.setMaxInactiveInterval(60*30); // 30분 동안 세션 유지
-            if ("관리".equals(employee.getDepartmentName())) {
+            if ("관리자".equals(employee.getDepartmentName())) {
                 session.setAttribute("userType", "admin");
             } else {
                 session.setAttribute("userType", "user");
