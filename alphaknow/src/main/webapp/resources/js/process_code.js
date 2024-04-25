@@ -138,7 +138,7 @@ function deleteSelectedProcess() {
                 location.reload(); // 페이지를 다시 불러옴
             },
             error: function(error) {
-                alert('삭제 중 오류가 발생했습니다: ' + error.statusText);
+                alert('삭제합니다.!!' + error.statusText);
             }
         });
     }
