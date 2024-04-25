@@ -48,11 +48,10 @@ public class HomeController {
 	@RequestMapping("/generateQR")
 	@ResponseBody
 	public String generateAndDownloadQR(@RequestParam("data") String data) throws Exception {
-	    String fileName = "qr_bom.png";  // 파일명
-	    String filePath = "/alphaknow/resources/img/" + fileName; // 웹 접근 가능한 경로
+	    String fileName = "qr_bom";  // 파일명
 	    QR qr = new QR();
 	    qr.create(data, fileName, "png");
-	    return filePath;  
+	    return "download?fileName=qr_bom.png";  
 	}
 
 

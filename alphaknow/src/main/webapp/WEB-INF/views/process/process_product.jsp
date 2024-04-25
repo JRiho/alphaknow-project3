@@ -14,9 +14,9 @@
 			</div>
 			<div id="process_code_button">
 				<button type="button" class="change_button" id="new_process_button">추가</button>
-				<button type="button" class="edit_button"
+				<button type="button" class="edit_button change_button"
 					data-id="${process.sequenceNo}">수정</button>
-				<button type="button" onclick="deleteSelectedProcess();">삭제</button>
+				<button type="button"  class="change_button" onclick="deleteSelectedProcess();">삭제</button>
 			</div>
 		</div>
 	</div>
@@ -46,14 +46,15 @@
 				<c:forEach var="component" items="${components}">
 		            <tr>
 		            	<th><input 
-                    			type="checkbox" 
-                    			name="selectedProduct"
-                    	 		value="${component.productSeq}"
-                    	 		data-id="${component.productSeq}"></th>
-		                <td>${component.productCode}</td>
-		                <td>${component.productName}</td>
-		                <td>${component.productPrice}</td>
-		                <td>${component.productType}</td>
+                                type="checkbox" 
+                                name="selectedProduct"
+                                value="${component.product_seq}"
+                                data-id="${component.product_seq}"
+                                data-name="${component.product_name}"></th>
+                        <td>${component.product_code}</td>
+                        <td>${component.product_name}</td>
+                        <td>${component.product_price}</td>
+                        <td>${component.product_type}</td>
 		            </tr>
        			</c:forEach>
 			</tbody>
@@ -65,11 +66,11 @@
 				<h1>완제품 목록</h1>
 			</div>
 			<div id="process_code_button">
-				<button type="button" id="print_bom_button" class="change_button">BOM 출력</button>
+				<button type="button" id="print_bom_button" class="change_button bom_button">BOM 출력</button>
 				<button type="button" class="change_button" id="new_process_button">추가</button>
-				<button type="button" class="edit_button"
+				<button type="button" class="edit_button change_button"
 					data-id="${process.sequenceNo}">수정</button>
-				<button type="button" onclick="deleteSelectedProcess();">삭제</button>
+				<button type="button" class="change_button" onclick="deleteSelectedProcess();">삭제</button>
 			</div>
 		</div>
 	</div>
@@ -99,12 +100,12 @@
 		            	<th><input 
                     			type="checkbox" 
                     			name="selectedProduct"
-                    	 		value="${finishedProduct.productSeq}"
-                    	 		data-id="${finishedProduct.productSeq}"></th>
-		                <td>${finishedProduct.productCode}</td>
-		                <td>${finishedProduct.productName}</td>
-		                <td>${finishedProduct.productPrice}</td>
-		                <td>${finishedProduct.productType}</td>
+                    	 		value="${finishedProduct.product_seq}"
+                    	 		data-id="${finishedProduct.product_seq}"></th>
+		                <td>${finishedProduct.product_code}</td>
+		                <td>${finishedProduct.product_name}</td>
+		                <td>${finishedProduct.product_price}</td>
+		                <td>${finishedProduct.product_type}</td>
 		            </tr>
 		        </c:forEach>
 			</tbody>
@@ -171,52 +172,55 @@
         </div>
     </div>
     <script>
-	$(document).ready(function() {
-	    // 'BOM 출력' 버튼에 클릭 이벤트 핸들러 추가
-		$(".change_button").click(function() {
-		    var selectedProducts = [];
-		    $('input[name="selectedProduct"]:checked').each(function() {
-		        selectedProducts.push($(this).val());
-		    });
+    $(document).ready(function() {
+        $(".change_button").click(function() {
+            var selectedProducts = [];
+            $('input[name="selectedProduct"]:checked').each(function() {
+                selectedProducts.push($(this).val());
+            });
 
-		    if (selectedProducts.length > 0) {
-		        var data = "Sample Data for QR";  // 필요에 따라 데이터를 동적으로 조정 가능
-		        var url = "/alphaknow/generateQR?data=" + encodeURIComponent(data);
-		        var features = "toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=600";
+            if (selectedProducts.length > 0) {
+                // 서버에서 BOM 데이터를 HTML 테이블 형식으로 요청
+                $.ajax({
+                    url: '/alphaknow/bom/details',
+                    type: 'GET',
+                    data: { product_seq: selectedProducts.join(',') },
+                    success: function(data) {
+                        // 서버로부터 받은 HTML 데이터를 QR 코드 생성 API로 전송
+                        var url = "/alphaknow/generateQR?data=" + encodeURIComponent(data);
+                        var features = "toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=600";
+                        var newWin = window.open(url, "WindowForm", features);
 
-		        // 새 창을 미리 열고 데이터 로드를 기다림
-		        var newWin = window.open("", "WindowForm", features);
+                        // QR 코드 생성 요청
+                        $.ajax({
+                            url: url,
+                            type: 'GET',
+                            success: function(imagePath) {
+                                var html = "<html><head><title>BOM 정보</title></head><body>";
+                                html += "<h1>BOM 정보</h1>";
+                                html += "<img src='" + imagePath + "' alt='QR Code' style='display:block; margin-bottom:20px;'>";
+                                html += data; // 서버에서 받은 HTML 테이블
+                                html += "<button onclick='window.close();'>Close</button>";
+                                html += "</body></html>";
 
-		        // jQuery를 사용하여 서버에 요청
-		        $.ajax({
-		            url: url,
-		            type: 'GET',
-		            success: function(imagePath) {
-		                var html = "<html><head><title>선택된 제품의 BOM 정보</title></head><body>";
-		                html += "<h1>선택된 제품의 BOM 정보</h1>";
-		                html += "<img src='" + imagePath + "' alt='QR Code' style='display:block; margin-bottom:20px;'>";
-		                html += "<ul>";
-		                selectedProducts.forEach(function(productSeq) {
-		                    html += "<li>제품 번호: " + productSeq + "</li>";
-		                });
-		                html += "</ul>";
-		                html += "<button onclick='window.close();'>닫기</button>";
-		                html += "</body></html>";
+                                newWin.document.write(html);
+                                newWin.document.close();
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('QR 또 너야?!:', error);
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        alert("좀 고쳐저라 BOM: " + error);
+                    }
+                });
+            } else {
+                alert("접어라~");
+            }
+        });
+    });
 
-		                newWin.document.write(html);
-		                newWin.document.close();
-		            },
-		            error: function(xhr, status, error) {
-		                console.error('Error loading the QR code:', error);
-		            }
-		        });
-		    } else {
-		        alert("제품을 선택해주세요.");
-		    }
-		});
-
-
-	});
 	</script>
     
 	<script src="/alphaknow/resources/js/processcode_popup.js"></script>

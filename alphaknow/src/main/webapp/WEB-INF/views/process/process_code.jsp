@@ -19,8 +19,8 @@
 			<form action="alphaknow/processcode" method="post">
 			<div id="process_code_button">
 				<button type="button" class="change_button" id="new_process_button">추가</button>
-                <button type="button" class="edit_button" data-id="${process.sequenceNo}">수정</button>
-                <button type="button" onclick="deleteSelectedProcess();">삭제</button>
+                <button type="button" class="edit_button change_button" data-id="${process.sequenceNo}">수정</button>
+                <button type="button" class="change_button" onclick="deleteSelectedProcess();">삭제</button>
 			</div>
 			</form>
 		</div>
