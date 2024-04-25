@@ -10,5 +10,5 @@ import com.spring.alphaknow.dto.BOMItem;
 @Mapper
 public interface BomMapper {
 
-    List<BOMItem> findBOMItemsByBomId(@Param("bomId") String bomId);
+    List<BOMItem> findBOMItemsByBomId(@Param("product_seq") String product_seq);
 }

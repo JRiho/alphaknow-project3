@@ -216,7 +216,8 @@
             <groupId>com.google.zxing</groupId>
             <artifactId>javase</artifactId>
             <version>3.5.0</version>
-        </dependency>	      
+        </dependency>	
+              
 	</dependencies>
 	
     <build>

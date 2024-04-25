@@ -1,28 +1,28 @@
 package com.spring.alphaknow.dto;
 
 public class BOMItem {
-    private String itemId;
-    private String bomId;
-    private int productSeq;
+    private String item_id;
+    private String bom_id;
+    private int product_seq;
     private int quantity;
     private String unit;
-	public String getItemId() {
-		return itemId;
+	public String getItem_id() {
+		return item_id;
 	}
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+	public void setItem_id(String item_id) {
+		this.item_id = item_id;
 	}
-	public String getBomId() {
-		return bomId;
+	public String getBom_id() {
+		return bom_id;
 	}
-	public void setBomId(String bomId) {
-		this.bomId = bomId;
+	public void setBom_id(String bom_id) {
+		this.bom_id = bom_id;
 	}
-	public int getProductSeq() {
-		return productSeq;
+	public int getProduct_seq() {
+		return product_seq;
 	}
-	public void setProductSeq(int productSeq) {
-		this.productSeq = productSeq;
+	public void setProduct_seq(int product_seq) {
+		this.product_seq = product_seq;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -38,9 +38,10 @@ public class BOMItem {
 	}
 	@Override
 	public String toString() {
-		return "BOMItem [itemId=" + itemId + ", bomId=" + bomId + ", productSeq=" + productSeq + ", quantity="
+		return "BOMItem [item_id=" + item_id + ", bom_id=" + bom_id + ", product_seq=" + product_seq + ", quantity="
 				+ quantity + ", unit=" + unit + "]";
 	}
     
     
+  
 }

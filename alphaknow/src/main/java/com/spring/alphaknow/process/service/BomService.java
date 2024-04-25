@@ -18,7 +18,7 @@ public class BomService {
         this.bomItemMapper = bomItemMapper;
     }
 
-    public List<BOMItem> findBOMItemsByBomId(String bomId) {
-        return bomItemMapper.findBOMItemsByBomId(bomId);
+    public List<BOMItem> findBOMItemsByBomId(String product_seq) {
+        return bomItemMapper.findBOMItemsByBomId(product_seq);
     }
 }

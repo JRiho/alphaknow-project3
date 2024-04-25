@@ -88,6 +88,11 @@
 			<put-attribute name="title" value="제품관리" />
 			<put-attribute name="content" value="/WEB-INF/views/process/process_product.jsp" />
 		</definition>
+		
+		<!-- bom 접근 -->
+		<definition name="bomDetails" template="/WEB-INF/views/process/bomDetails.jsp">
+			<put-attribute name="body" value=""/>
+		</definition>
 	
 	<!-- 사원관리 -->
 	<definition name="employeeManagement" extends="baseLayout">

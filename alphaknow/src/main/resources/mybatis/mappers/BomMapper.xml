@@ -3,6 +3,13 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.alphaknow.process.mapper.BomMapper">
     <select id="findBOMItemsByBomId" resultType="com.spring.alphaknow.dto.BOMItem">
-        SELECT * FROM BOM_Items WHERE BOM_ID = (SELECT bom_id FROM product_temp WHERE product_seq = #{product_seq});
+        SELECT
+         bi.* 
+        FROM 
+         BOM_Items bi
+        JOIN BOM_header bh ON bi.BOM_ID = bh.BOM_ID
+        WHERE
+         bh.product_seq =  #{product_seq}
+         
     </select>
 </mapper>

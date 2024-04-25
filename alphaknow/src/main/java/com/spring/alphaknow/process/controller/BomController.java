@@ -1,41 +1,37 @@
 package com.spring.alphaknow.process.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.spring.alphaknow.dto.BOMItem;
 import com.spring.alphaknow.process.service.BomService;
+import com.spring.alphaknow.process.service.QRCodeService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/bom")
 public class BomController {
-
     private final BomService bomService;
+    private final QRCodeService qrCodeService;
 
     @Autowired
-    public BomController(BomService bomService) {
+    public BomController(BomService bomService, QRCodeService qrCodeService) {
         this.bomService = bomService;
+        this.qrCodeService = qrCodeService;
     }
 
     @RequestMapping(value = "/details", method = RequestMethod.GET)
-    public ResponseEntity<?> getBomDetailsAsHtmlTable(@RequestParam String bomId) {
-        List<BOMItem> bomItems = bomService.findBOMItemsByBomId(bomId);
-        if (bomItems.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
+    public String getBomDetailsAsHtmlTable(@RequestParam String product_seq, Model model) {
+        List<BOMItem> bomItems = bomService.findBOMItemsByBomId(product_seq);
+        model.addAttribute("bomItems", bomItems);
 
-        StringBuilder tableHtml = new StringBuilder("<table border='1'>");
-        tableHtml.append("<tr><th>Item ID</th><th>BOM ID</th><th>Product Seq</th><th>Quantity</th><th>Unit</th></tr>");
-        for (BOMItem item : bomItems) {
-            tableHtml.append(String.format("<tr><td>%s</td><td>%s</td><td>%d</td><td>%d</td><td>%s</td></tr>",
-                item.getItemId(), item.getBomId(), item.getProductSeq(), item.getQuantity(), item.getUnit()));
-        }
-        tableHtml.append("</table>");
+        String qrCodeUrl = qrCodeService.generateQRCode(product_seq);
+        model.addAttribute("qrCodeUrl", qrCodeUrl);
 
-        return ResponseEntity.ok(tableHtml.toString());
+        return "bomDetails";
     }
 }
