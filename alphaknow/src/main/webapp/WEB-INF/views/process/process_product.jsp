@@ -173,10 +173,11 @@
     </div>
     <script>
     $(document).ready(function() {
-        $(".bom_button").click(function() {
-            var selectedProducts = $('input[name="selectedProduct"]:checked').map(function() {
-                return $(this).val();
-            }).get();
+        $(".change_button").click(function() {
+            var selectedProducts = [];
+            $('input[name="selectedProduct"]:checked').each(function() {
+                selectedProducts.push($(this).val());
+            });
 
             if (selectedProducts.length > 0) {
                 // 서버에서 BOM 데이터를 HTML 테이블 형식으로 요청
@@ -185,17 +186,16 @@
                     type: 'GET',
                     data: { product_seq: selectedProducts.join(',') },
                     success: function(data) {
-                        // BOM 데이터를 받고 나서 QR 코드 URL을 요청
-                        var encodedData = encodeURIComponent(data);
-                        var qrUrl = `/alphaknow/generateQR?data=${encodedData}`;
+                        // 서버로부터 받은 HTML 데이터를 QR 코드 생성 API로 전송
+                        var url = "/alphaknow/generateQR?data=" + encodeURIComponent(data);
                         var features = "toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=600";
-                        
-                        // QR 코드 생성 후, 새 창에서 QR 코드를 표시
+                        var newWin = window.open(url, "WindowForm", features);
+
+                        // QR 코드 생성 요청
                         $.ajax({
-                            url: qrUrl,
+                            url: url,
                             type: 'GET',
                             success: function(imagePath) {
-                                var newWin = window.open("", "WindowForm", features);
                                 var html = "<html><head><title>BOM 정보</title></head><body>";
                                 html += "<h1>BOM 정보</h1>";
                                 html += "<img src='" + imagePath + "' alt='QR Code' style='display:block; margin-bottom:20px;'>";
@@ -207,16 +207,16 @@
                                 newWin.document.close();
                             },
                             error: function(xhr, status, error) {
-                                console.error('QR 코드 생성 실패:', error);
+                                console.error('QR 또 너야?!:', error);
                             }
                         });
                     },
                     error: function(xhr, status, error) {
-                        alert("BOM 데이터를 가져오는 데 실패했습니다: " + error);
+                        alert("좀 고쳐저라 BOM: " + error);
                     }
                 });
             } else {
-                alert("완제품 체크박스를 클릭하세요.");
+                alert("접어라~");
             }
         });
     });
