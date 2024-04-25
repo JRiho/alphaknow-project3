@@ -85,6 +85,11 @@
     text-align: center;
 }
 
+/* 버튼 호버스타일 */
+.receiving_management_list_buttonset2 > div > button:hover {
+    background-color: #0056b3;
+}
+
 .item_list_wrap,
 .request_item_wrap,
 .modify_item_wrap {
@@ -507,6 +512,13 @@ select:focus {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* 입고신청서 수정과 닫기버튼 일렬정렬 */
+.modify_item_buttonset {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* 팝업 창 제목 스타일 */
 .modify_item_buttonset > div:first-child {
