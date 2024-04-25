@@ -13,6 +13,7 @@ import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementUpdateDTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingSignDTO;
 
 @Service
 public class ReceivingManagementService {
@@ -50,4 +51,13 @@ public class ReceivingManagementService {
 	public void rmUpdate(ReceivingManagementUpdateDTO dto) {
 		receivingManagementDAO.receivingManagementUpdate(dto);
 	}
+	
+	public void rmSignUpdate(ReceivingSignDTO dto) {
+		receivingManagementDAO.receivingSign(dto);
+	}
+	
+	public void rmSignUpdate2(ReceivingSignDTO dto) {
+		receivingManagementDAO.receivingSign2(dto);
+	}
+
 }

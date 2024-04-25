@@ -640,3 +640,68 @@ select:focus {
     font-weight: normal;
     background-color: #fff; /* 내용이 없는 셀 배경색 */
 }
+
+
+/* 결재자명 입력하는 팝업창 */
+/* 전체 팝업을 감싸는 부분 */
+.end_sign_wrap {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    text-align: center;
+}
+
+/* 결재자명 입력 필드를 감싸는 div */
+.sign_text_div {
+    margin-bottom: 20px; /* 입력 필드와 버튼 간격을 조절 */
+}
+
+/* 결재하기와 닫기 버튼을 감싸는 div */
+.sign_buttonset {
+    display: flex;
+    justify-content: center; /* 버튼을 가운데 정렬 */
+}
+
+/* 입력 필드 스타일 */
+.end_sign_wrap input[type="text"] {
+    width: 300px; /* 입력 필드 너비 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 결재하기 버튼 스타일 */
+#sign_ok {
+    padding: 10px 20px;
+    margin-right: 10px; /* 버튼 간격 조절 */
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* 푸른색 계열 */
+    color: white;
+    cursor: pointer;
+}
+
+/* 닫기 버튼 스타일 */
+#sign_cancel {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #dc3545; /* 붉은색 계열 */
+    color: white;
+    cursor: pointer;
+}
+
+/* 버튼에 마우스 호버 시 스타일 */
+#sign_ok:hover, #sign_cancel:hover {
+    opacity: 0.8; /* 호버 시 투명도 조절 */
+}

@@ -18,6 +18,7 @@ import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementUpdateDTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingSignDTO;
 import com.spring.alphaknow.service.rmService.ReceivingManagementService;
 
 @Controller
@@ -119,6 +120,40 @@ public class ReceivingManagementController {
 		
 		return "redirect:/receivingManagement/list";
 	}
+	
+	// update 결재상태
+	@RequestMapping("/receivingManagement/signUpdate")
+	public String receivingManagementSignUpdate(
+			@RequestParam("trade_code") String[] trade_code,
+			@RequestParam("sign_person") String sign_person
+			) {
+		ReceivingSignDTO dto = new ReceivingSignDTO();
+		
+		for(int i=0; i<trade_code.length; i++) {
+			dto.setTrade_code(trade_code[i]);
+			dto.setSign_person(sign_person);
+			
+			receivingManagementService.rmSignUpdate(dto);
+		}
+		
+		return "redirect:/receivingManagement/list";
+	}
+	
+	// update 반려
+		@RequestMapping("/receivingManagement/signUpdate2")
+		public String receivingManagementSignUpdate2(
+				@RequestParam("trade_code") String[] trade_code
+				) {
+			ReceivingSignDTO dto = new ReceivingSignDTO();
+			
+			for(int i=0; i<trade_code.length; i++) {
+				dto.setTrade_code(trade_code[i]);
+				
+				receivingManagementService.rmSignUpdate2(dto);
+			}
+			
+			return "redirect:/receivingManagement/list";
+		}
 	
 	// delete문
 	@RequestMapping("/receivingManagement/delete")

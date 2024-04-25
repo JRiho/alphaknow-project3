@@ -205,4 +205,26 @@
 			REQUEST_AMOUNT = #{request_amount},
 			PRODUCT_ALL_PRICE = #{product_all_price}
 	</update>
+	
+	
+	<!-- 결제완료시 이벤트 -->
+	<update id="receivingSign" parameterType="com.spring.alphaknow.dto.rmDTO.ReceivingSignDTO">
+		UPDATE 
+			RECEIVING_MANAGEMENT
+		SET
+			SIGN_STATUS = '결재완료',
+			SIGN_PERSON = #{sign_person}
+		WHERE 
+			TRADE_CODE = #{trade_code}
+	</update>
+	
+	<!-- 선택반려시 이벤트 -->
+	<update id="receivingSign2" parameterType="com.spring.alphaknow.dto.rmDTO.ReceivingSignDTO">
+		UPDATE 
+			RECEIVING_MANAGEMENT
+		SET
+			SIGN_STATUS = '반려'
+		WHERE 
+			TRADE_CODE = #{trade_code}
+	</update>
 </mapper>

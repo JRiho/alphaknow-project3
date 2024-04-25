@@ -58,7 +58,7 @@ public class BoardController {
 	// Ajax 게시글번호 받아서 상세정보 표시
 	@RequestMapping("/board/ajax.doSelect")
 	@ResponseBody
-	public List<BoardDTO> boardAjax(@RequestParam("boardno") int boardNum, @RequestParam("employeeName") String employeeName, HttpSession session) {
+	public List<BoardDTO> boardAjax(@RequestParam("boardno") int boardNum, @RequestParam(value="employeeName", required=false) String employeeName, HttpSession session) {
 
 		// dto 에 담기
 		BoardDTO dto = new BoardDTO();
