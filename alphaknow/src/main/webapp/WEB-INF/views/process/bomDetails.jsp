@@ -31,10 +31,10 @@
         </c:forEach>
     </table>
 
-    <!-- QR 코드 이미지 표시 -->
-    <div>
-        <h2>QR Code:</h2>
-        <img src="${qrCodeUrl}" alt="QR Code for BOM Details"/>
-    </div>
+<!--     QR 코드 이미지 표시 -->
+<!--     <div> -->
+<!--         <h2>QR Code:</h2> -->
+<!--         <img src="${qrCodeUrl}" alt="QR Code for BOM Details"/> -->
+<!--     </div> -->
 </body>
 </html>

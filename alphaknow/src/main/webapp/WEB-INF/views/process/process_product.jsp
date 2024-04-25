@@ -187,7 +187,7 @@
                     data: { product_seq: selectedProducts.join(',') },
                     success: function(data) {
                         // 서버로부터 받은 HTML 데이터를 QR 코드 생성 API로 전송
-                        var url = "/alphaknow/generateQR?data=" + encodeURIComponent(data);
+                        var url = "/alphaknow/generateQR?data=" + encodeURIComponent(selectedProducts.join(','));
                         var features = "toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=800,height=600";
                         var newWin = window.open(url, "WindowForm", features);
 
