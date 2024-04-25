@@ -11,6 +11,7 @@ import com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjaxDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementInsertDTO;
 import com.spring.alphaknow.dto.rmDTO.ReceivingManagementUpdateDTO;
+import com.spring.alphaknow.dto.rmDTO.ReceivingSignDTO;
 
 @Mapper
 public interface ReceivingManagementDAO {
@@ -22,4 +23,6 @@ public interface ReceivingManagementDAO {
 	List<ReceivingManagementAjax3DTO> receivingManagementAjaxSelect3(String trade_code);
 	List<ReceivingManagementAjax4DTO> receivingManagementAjaxSelect4(String trade_code);
     void receivingManagementUpdate(ReceivingManagementUpdateDTO dto);
+    void receivingSign(ReceivingSignDTO dto);
+    void receivingSign2(ReceivingSignDTO dto);
 }

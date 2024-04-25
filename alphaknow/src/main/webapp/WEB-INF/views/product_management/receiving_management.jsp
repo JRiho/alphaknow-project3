@@ -16,6 +16,7 @@
 			<div>결재대기</div>
 			<div>결재완료</div>
 			<div>반려</div>
+			<div>입고완료</div>
 		</div>
 		<div class="receiving_management_list_buttonset2">
 			<div>
@@ -26,6 +27,15 @@
 			</div>
 			<div>
 				<button type="button" class="delete_item_list">선택삭제</button>
+			</div>
+			<div>
+				<button type="button" class="end_sign">결재처리</button>
+			</div>
+			<div>
+				<button type="button" class="sign_cancel">선택반려</button>
+			</div>
+			<div>
+				<button type="button" class="receiving_complete">입고완료</button>
 			</div>
 		</div>
 	</div>
@@ -50,7 +60,7 @@
 					<th>신청자</th>
 					<th>수정일</th>
 					<th>수정자</th>
-					<th>결제자</th>
+					<th>결재자</th>
 				</tr>
 			</thead>
 			<form id="deleteForm" method="get" action="/alphaknow/receivingManagement/delete">
@@ -63,7 +73,8 @@
 								<th><input type="checkbox" class="selectRequestList" name="trade_code_chk" value="${ list.TRADE_CODE }"></th>
 								<td>${ list.TRADE_CODE }<input type="hidden" value="${ list.TRADE_CODE }"></td>
 								<td>${ list.COMPANY_NAME }</td>
-								<td>${ list.SIGN_STATUS }</td>
+								<td class="sign_status_text">${ list.SIGN_STATUS }</td>
+								<input type="hidden" name="sign_status" class="sign_status" value="${ list.SIGN_STATUS }">
 								<td>${ list.RECEIVING_DATE }</td>
 								<td>${ list.PRODUCT_ALL_PRICE }</td>
 								<td>${ list.REQUEST_DATE }</td>
@@ -314,4 +325,15 @@
 		<button type="button" id="done_modify_btn">작성완료</button>
 	</div>
 	</form>
+</div>
+
+<!-- 결재완료 버튼 클릭 팝업 -->
+<div class="end_sign_wrap">
+	<div class="sign_text_div">
+		<input type="text" name="sign_person" placeholder="결제자명을 입력하세요.">
+	</div>
+	<div class="sign_buttonset">
+		<button type="button" id="sign_ok">결재하기</button>
+		<button type="button" id="sign_cancel">닫기</button>
+	</div>
 </div>

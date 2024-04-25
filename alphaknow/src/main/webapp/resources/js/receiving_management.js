@@ -1,3 +1,19 @@
+// 상태에 따라서 스타일 추가
+$(function() {
+    $(".receiving_management_list_table").find(".sign_status").each(function(index, status) {
+        let statusTd = $(status).parent().find(".sign_status_text")
+        if($(status).val() === "결재완료") {
+            statusTd.css("color", "green")
+        } else if ($(status).val() === "반려") {
+            statusTd.css("color", "red")
+        } else if ($(status).val() === "입고완료") {
+            statusTd.css("color", "blue")
+        }
+    })
+})
+
+
+
 // 입고신청 열기(품목리스트 오픈)
 $(function () {
     $(".show_item_list").off("click").on("click", function () {
@@ -337,7 +353,8 @@ $(function () {
 // 선택수정 이벤트
 $(function() {
     $(".modify_item_list").off("click").on("click", function() {
-        if($(".selectRequestList:checked").length == 1) {
+        if($(".selectRequestList:checked").length == 1 
+        && $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '결재대기') {
             console.log("하나만 선택")
             $(".modify_item_wrap").show();
             let tradeCode = $(".selectRequestList:checked").closest("tr").find(".trade_code").val();
@@ -450,9 +467,102 @@ $(function() {
             });
 
 
-        } else if ($(".selectRequestList").length > 1 || $(".selectRequestList").length < 1) {
+        } else if ($(".selectRequestList:checked").length > 1 || $(".selectRequestList:checked").length < 1) {
             console.log("여러개 선택")
             alert("수정은 하나씩만 가능합니다.")
+        } else if ($(".selectRequestList:checked").closest("tr").find(".sign_status").val() != '결재대기') {
+            alert("결재완료되거나 반려된 거래는 수정이 불가합니다.")
+        }
+    })
+})
+
+// 결재완료 버튼 클릭
+$(function() {
+    $(".end_sign").off("click").on("click", function() {
+        // 결재할 거래가 하나 이상 있을때
+        if($(".selectRequestList:checked").length < 1) {
+            alert("결재할 거래를 하나 이상 선택해 주세요.")
+        } else if($(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '결재완료'
+               || $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '반려'
+               || $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '배송완료') {
+            alert("결재대기중인 거래만 결재확인이 가능합니다.")
+        } else {
+            // 이름값 지우기
+            $("input[name='sign_person']").val("")
+            $(".end_sign_wrap").show()
+            // 결재하기 버튼 클릭
+            $("#sign_ok").off("click").on("click", function() {
+                // 결재자명
+                let signPerson = $("input[name='sign_person']").val()
+                console.log(signPerson)
+                // 결재완료 처리할 거래번호
+                let tradeCodes = []
+                $(".selectRequestList:checked").each(function(index, tradeCode) {
+                    console.log($(tradeCode).val())
+                    tradeCodes.push({"tradeCode": $(tradeCode).val()})
+                })
+                // 전송할 링크 생성
+                let strLink = "?sign_person=";
+                strLink += signPerson
+                for(let i=0; i<tradeCodes.length; i++) {
+                    strLink += "&trade_code="
+                    strLink += tradeCodes[i].tradeCode
+                }
+    
+                // 전송할 코드가 1개 이상일 경우에만 이동
+                if(tradeCodes.length > 0) {
+                    let isConfirm = confirm("결재 후에는 삭제나 취소가 불가능합니다.\n결재하시겠습니까?")
+                    if(isConfirm) {
+                        window.location.href = "/alphaknow/receivingManagement/signUpdate"+strLink
+                    }
+                }
+                
+            })
+        }
+    })
+    
+})
+
+// 결제완료창 닫기
+$(function() {
+    $("#sign_cancel").off("click").on("click", function() {
+        $(".end_sign_wrap").hide()
+        $("input[name='sign_person']").val("")
+    })
+})
+
+// 선택반려 버튼 클릭 이벤트
+$(function() {
+    $(".sign_cancel").off("click").on("click", function() {
+        // 하나 이상 선택해야 이벤트 발생하게끔 하기
+        if($(".selectRequestList:checked").length < 1) {
+            alert("반려할 신청을 하나 이상 선택하세요.")
+        } else if ($(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '결재완료'
+                || $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '반려'
+                || $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '배송완료' ) {
+            alert("결재대기중인 거래만 결재확인이 가능합니다.") 
+        } else {
+            let isConfirm = confirm("반려 후에는 되돌릴 수 없습니다.\n반려처리 하시겠습니까?")
+            if(isConfirm) {
+                let tradeCodes = []
+                $(".selectRequestList:checked").each(function(index, tradeCode) {
+                    console.log($(tradeCode).val())
+                    tradeCodes.push({"tradeCode": $(tradeCode).val()})
+                })
+                // 전송할 링크 생성 
+                let strLink = "?";
+                for (let i = 0; i < tradeCodes.length; i++) {
+                    if (i > 0) {
+                        strLink += "&";
+                    }
+                    strLink += "trade_code=";
+                    strLink += tradeCodes[i].tradeCode;
+                }
+                // 생성 후 이동
+                window.location.href = "/alphaknow/receivingManagement/signUpdate2"+strLink
+                
+                
+            }
         }
     })
 })
