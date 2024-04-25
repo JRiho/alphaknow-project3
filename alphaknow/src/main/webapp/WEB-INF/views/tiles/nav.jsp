@@ -26,10 +26,10 @@
 		<li>생산관리
 			<ul>
 				<li><a href="/alphaknow/ppm/select">생산계획관리</a></li>
-				<li>생산지시관리</li>
+				<li><a href="/alphaknow/pom/select">생산지시관리</a></li>
 			</ul>
 		</li>
-		<li><a href="/alphaknow/chart/ppc">실적현황</a></li>
+		<li id="chartLi"><a href="/alphaknow/chart/ppc">실적현황</a></li>
 		<li id="employeeLi"><a href="/alphaknow/employee">사원관리/등록</a></li>
 	</ul>
 </nav>
