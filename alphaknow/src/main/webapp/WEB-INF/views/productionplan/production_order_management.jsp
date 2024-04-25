@@ -1,17 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>생산지시관리</title>
-</head>
-
-<body>
-	<%@ include file="../mainheader.jsp"%>
 	<!-- content -->
 	<div id="content">
 
@@ -62,15 +51,7 @@
 
 
 
-</body>
-
-<%
-String contextPath = request.getContextPath();
-%>
-
 <link rel="stylesheet"
-	href="<%=contextPath%>/css/production_order_management.css">
+	href="/alphaknow/resources/css/production_order_management.css">
 <script
-	src="<%=contextPath%>/js/production_order_management.js"></script>
-
-</html>
+	src="/alphaknow/resources/js/production_order_management.js"></script>

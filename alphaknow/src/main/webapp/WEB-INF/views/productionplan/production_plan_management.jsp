@@ -3,7 +3,6 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO"%>
 
-<body>
 	<form id=myForm method="post">
 		<!-- content -->
 		<div id="content">
@@ -107,11 +106,8 @@
 
 		<div id="overlay"></div>
 	</form>
-</body>
 
 <link rel="stylesheet"
 	href="/alphaknow/resources/css/production_plan_management.css">
 <script
 	src="/alphaknow/resources/js/production_plan_management.js"></script>
-
-</html>

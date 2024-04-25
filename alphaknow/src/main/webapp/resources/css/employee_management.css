@@ -111,6 +111,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    border: 1px solid #ccc;
 }
 
 /* 팝업 헤더 */
@@ -205,6 +206,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    border: 1px solid #ccc;
 }
 
 /* 팝업 헤더 */
@@ -260,4 +262,9 @@
 .employee_infoDetail button.modifyEmployeeEnd:hover,
 .employee_infoDetail button.delEmployee:hover {
     background-color: #0056b3; /* hover 시 배경색 변경 */
+}
+
+/* 수정완료버튼은 처음에 숨기기 */
+.employee_infoDetail button.modifyEmployeeEnd {
+    display: none;
 }

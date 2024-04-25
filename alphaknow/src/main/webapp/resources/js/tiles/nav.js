@@ -23,5 +23,17 @@ window.addEventListener("load", ()=>{
             }
         });
     });
+
+    // 실적현황
+    let chartLi = document.querySelectorAll('ul #chartLi');
+	
+    chartLi.forEach(function(li) {
+        li.addEventListener('click', function(event) {
+            var aLink = li.querySelector('a');
+            if (aLink) {
+                aLink.click();
+            }
+        });
+    });
         
 })
