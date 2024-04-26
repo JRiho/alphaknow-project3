@@ -29,10 +29,10 @@
 				<button type="button" class="delete_item_list">선택삭제</button>
 			</div>
 			<div>
-				<button type="button" class="end_sign">결재처리</button>
+				<button type="button" class="sign_cancel">선택반려</button>
 			</div>
 			<div>
-				<button type="button" class="sign_cancel">선택반려</button>
+				<button type="button" class="end_sign">결재처리</button>
 			</div>
 			<div>
 				<button type="button" class="receiving_complete">입고완료</button>
@@ -52,8 +52,7 @@
 					</th>
 					<th>거래번호</th>
 					<th>거래처</th>
-					<th>상태 <!-- 결재대기, 결재완료, 반려 -->
-					</th>
+					<th>상태 <!-- 결재대기, 결재완료, 반려 --> </th>
 					<th>입고일</th>
 					<th>총금액</th>
 					<th>신청일</th>
@@ -76,6 +75,7 @@
 								<td class="sign_status_text">${ list.SIGN_STATUS }</td>
 								<input type="hidden" name="sign_status" class="sign_status" value="${ list.SIGN_STATUS }">
 								<td>${ list.RECEIVING_DATE }</td>
+								<input type="hidden" class="receiving_date_css" value="${ list.RECEIVING_DATE }">
 								<td>${ list.PRODUCT_ALL_PRICE }</td>
 								<td>${ list.REQUEST_DATE }</td>
 								<td>${ list.REQUEST_PERSON }</td>
@@ -110,6 +110,7 @@
 
 <div class="receiving_management_detail_header">상세</div>
 <div class="receiving_management_detail_table_container">
+	<form id="inventoryForm" method="get" action="/alphaknow/receivingManagement/insert/toInventory">
 	<table border="1" class="receiving_management_detail_table">
 		<thead>
 			<tr>
@@ -117,8 +118,6 @@
 				<th>품목코드</th>
 				<th>품목명</th>
 				<th>LOT</th>
-				<th>입고전 재고</th>
-				<th>입고후 재고</th>
 				<th>입고신청수량</th>
 				<th>단가</th>
 				<th>총금액</th>
@@ -130,6 +129,7 @@
 			</tr>
 		</tbody>
 	</table>
+	</form>
 </div>
 
 

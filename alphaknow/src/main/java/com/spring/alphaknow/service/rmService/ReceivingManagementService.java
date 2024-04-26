@@ -59,5 +59,10 @@ public class ReceivingManagementService {
 	public void rmSignUpdate2(ReceivingSignDTO dto) {
 		receivingManagementDAO.receivingSign2(dto);
 	}
+	
+	public void rmToiv(ReceivingManagementAjax3DTO dto) {
+		receivingManagementDAO.receivingToInventory(dto);
+		receivingManagementDAO.receivingToInventory2(dto);
+	}
 
 }

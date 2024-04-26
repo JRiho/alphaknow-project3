@@ -12,6 +12,17 @@ $(function() {
     })
 })
 
+// 입고일이 있을경우 추가이벤트
+window.addEventListener("load", function() {
+    document.querySelectorAll(".receiving_date_css").forEach(function(receivingDate, index) {
+        if(receivingDate.value != "" || receivingDate.value != undefined) {
+            console.log("비었음")
+        } else {
+            console.log("채웠음")
+            receivingDate.parentNode.parentNode.style.cssText = "background-color: #; color:4c4c4c;"
+        }
+    })
+})
 
 
 // 입고신청 열기(품목리스트 오픈)
@@ -229,12 +240,14 @@ $(function() {
                     `
                     <tr>
                         <th>${i+1}</th>
+                        <input type="hidden" name="trade_code" value="${data[0].TRADE_CODE}">
+                        <input type="hidden" name="product_seq" value="${data[i].PRODUCT_SEQ}">
                         <td>${data[i].PRODUCT_CODE}</td>
                         <td>${data[i].PRODUCT_NAME}</td>
                         <td>${data[i].LOT}</td>
-                        <td>${data[i].PRODUCT_AMOUNT}</td>
-                        <td>${data[i].AFTER_PRODUCT_AMOUNT}</td>
+                        <input type="hidden" name="lot" value="${data[i].LOT}">
                         <td>${data[i].REQUEST_AMOUNT}</td>
+                        <input type="hidden" name="product_amount" value="${data[i].REQUEST_AMOUNT}">
                         <td>${data[i].PRODUCT_PRICE}</td>
                         <td>${data[i].PRODUCT_ALL_PRICE}</td>
                     </tr>
@@ -250,9 +263,6 @@ $(function() {
         });
     })
 })
-
-
-
 
 // 입고신청목록 체크박스 이벤트
 $(function () {
@@ -564,5 +574,26 @@ $(function() {
                 
             }
         }
+    })
+})
+
+// 입고완료버튼 클릭이벤트
+window.addEventListener("load", function() {
+    document.querySelector(".receiving_complete").addEventListener("click", function() {
+
+        // 결재완료 처리된 건만 입고완료 가능하게 하기
+        let = signStatus = document.querySelector(".sign_status").value;
+        let selectedboxesLength = document.querySelectorAll(".selectRequestList:checked").length;
+        if(signStatus === '결재완료' && selectedboxesLength === 1) {
+            let isConfirm = confirm("보유재고에 추가됩니다.\n입고처리 하시겠습니까?")
+            if(isConfirm) {
+                document.querySelector("#inventoryForm").submit();
+            }
+        } else if (signStatus != '결재완료'){
+            alert("결재완료된 건만 입고처리가 가능합니다.")
+        } else if (selectedboxesLength != 1){
+            alert("입고처리는 한건씩만 선택해서 진행해 주세요.")
+        }
+
     })
 })

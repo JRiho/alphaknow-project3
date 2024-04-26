@@ -25,4 +25,6 @@ public interface ReceivingManagementDAO {
     void receivingManagementUpdate(ReceivingManagementUpdateDTO dto);
     void receivingSign(ReceivingSignDTO dto);
     void receivingSign2(ReceivingSignDTO dto);
+    void receivingToInventory(ReceivingManagementAjax3DTO dto);
+    void receivingToInventory2(ReceivingManagementAjax3DTO dto);
 }

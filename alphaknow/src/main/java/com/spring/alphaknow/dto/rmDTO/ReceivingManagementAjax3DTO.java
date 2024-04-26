@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 public class ReceivingManagementAjax3DTO {
     private String tradeCode;
+    private int productSeq;
     private String productCode;
     private String productName;
     private String lot;

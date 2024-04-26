@@ -207,4 +207,28 @@ public class ReceivingManagementController {
 		return receivingManagementService.rmAjaxList4(trade_code);
 	}
 	
+	@RequestMapping("/receivingManagement/insert/toInventory")
+	public String receivingManagementToInventory(
+			@RequestParam("trade_code") String[] trade_code,
+			@RequestParam("product_seq") int[] product_seq,
+			@RequestParam("lot") String[] lot,
+			@RequestParam("product_amount") int[] product_amount
+			) {
+		
+		ReceivingManagementAjax3DTO dto = new ReceivingManagementAjax3DTO();
+		
+		
+		
+		for(int i=0; i<product_seq.length; i++) {
+			dto.setTradeCode(trade_code[0]);
+			dto.setProductSeq(product_seq[i]);
+			dto.setLot(lot[i]);
+			dto.setRequestAmount(product_amount[i]);			
+		}
+		
+		receivingManagementService.rmToiv(dto);
+		
+		return "redirect:/receivingManagement/list";
+	}
+	
 }

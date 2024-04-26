@@ -121,12 +121,11 @@
 	<!-- 입고목록 상세보기 -->
 	<select id="receivingManagementAjaxSelect3" parameterType="string" resultType="map">
 		SELECT
-			rm.TRADE_CODE, 
+			rm.TRADE_CODE,
+			pt.PRODUCT_SEQ, 
 			pt.PRODUCT_CODE, 
 			pt.PRODUCT_NAME, 
-			rm.LOT, 
-			nvl(i.PRODUCT_AMOUNT,0) PRODUCT_AMOUNT, 
-			nvl(i.PRODUCT_AMOUNT+rm.REQUEST_AMOUNT,0) AFTER_PRODUCT_AMOUNT, 
+			rm.LOT,
 			rm.REQUEST_AMOUNT, 
 			pt.PRODUCT_PRICE, 
 			rm.PRODUCT_ALL_PRICE
@@ -140,10 +139,6 @@
 			PRODUCT_TEMP pt 
 		ON 
 			CAPT.PRODUCT_SEQ = PT.PRODUCT_SEQ
-		LEFT OUTER JOIN 
-			INVENTORY i 
-		ON 
-			i.PRODUCT_SEQ = pt.PRODUCT_SEQ
 		WHERE 
 			rm.TRADE_CODE = #{trade_code}
 	</select>
@@ -227,4 +222,35 @@
 		WHERE 
 			TRADE_CODE = #{trade_code}
 	</update>
+	
+	<!-- 입고완료 이벤트 -->
+	
+		<!-- 입고완료 버튼 이벤트 -->
+		<insert id="receivingToInventory" parameterType="com.spring.alphaknow.dto.rmDTO.ReceivingManagementAjax3DTO">
+			INSERT INTO 
+				INVENTORY (
+					INVENTORY_SEQ, 
+					PRODUCT_SEQ, 
+					PRODUCT_AMOUNT, 
+					LOT, 
+					PRODUCT_TYPE
+				)
+				VALUES (
+					INVENTORY_SEQ.nextval, 
+					#{productSeq}, 
+					#{requestAmount},
+					#{lot}, 
+					'부품'
+				)
+		</insert>
+		
+		<!-- 입고완료시 입고처리 이벤트 -->
+		<update id="receivingToInventory2" parameterType="com.spring.alphaknow.dto.rmDTO.ReceivingSignDTO">
+			UPDATE 
+				RECEIVING_MANAGEMENT
+			SET
+				RECEIVING_DATE = sysdate
+			WHERE 
+				TRADE_CODE = #{tradeCode}
+		</update>
 </mapper>
