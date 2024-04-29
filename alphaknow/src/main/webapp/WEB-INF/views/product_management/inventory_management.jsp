@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet" href="/alphaknow/resources/css/inventory_management.css" />
-<script src="https://code.jquery.com/jquery-4.0.0-beta.min.js"></script>
 <script src="/alphaknow/resources/js/inventory_management.js"></script>
 
 <div class="inventory_management_header">
@@ -22,6 +21,21 @@
         <button type="button">검색</button>
     </div>
 </div>
+
+<!-- 모든 정보 로드 -->
+<div>
+	<c:forEach var="list" items="${ list }">
+		<input type="hidden" 
+		data-ivseq="${ list.INVENTORY_SEQ }" 
+		data-pdseq="${ list.PRODUCT_SEQ }" 
+		data-pdamount="${ list.PRODUCT_AMOUNT }"
+		data-lot="${ list.LOT }"
+		data-pdtype="${ list.PRODUCT_TYPE }"
+		data-pdcode="${ list.PRODUCT_CODE }"
+		data-pdname="${ list.PRODUCT_NAME }">
+	</c:forEach>
+</div>
+
 <div class="inventory_list_table_container">
     <table border="1" class="inventory_list_table">
         <thead>
@@ -39,45 +53,43 @@
                     품목명
                 </th>
                 <th>
-                	안전재고
-                </th>
-                <th>
                     현재고(EA) <!-- 상세에서 모든 lot의 합계가 오도록 -->
-                </th>
-                <th>
-                    과부족(%)
-                </th>
-                <th>
-                    상태
                 </th>
             </tr>
         </thead>
-        <tbody>
-            <th>
-                1
-            </th>
-            <td>
-                
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                
-            </td>
-        </tbody>
+        <c:if test="${ not empty list2 }">
+        	<c:forEach var="list" items="${ list2 }" varStatus="status">
+		        <tbody class="ivNow">
+		            <th>
+		                ${ status.count }
+		            </th>
+		            <input type="hidden" 
+		            value="${ list.PRODUCT_SEQ }"
+		            class="pdseq">
+		            <td>
+		                ${ list.PRODUCT_CODE }
+		            </td>
+		            <td>
+		                ${ list.PRODUCT_TYPE }
+		            </td>
+		            <td>
+		                ${ list.PRODUCT_NAME }
+		            </td>
+		            <td>
+		                ${ list.PRODUCT_AMOUNT }
+		            </td>
+		        </tbody>
+	        </c:forEach>
+        </c:if>
+        <c:if test="${ empty list2 }">
+        	<tbody>
+        		<tr>
+        			<th colspan="5">
+        				보유재고가 없습니다.
+        			</th>
+        		</tr>
+        	</tbody>
+        </c:if>
     </table>
 </div>
 
@@ -112,21 +124,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>
-                    1
-                </th>
-                <td>
-                    
-                </td>
-                <td>
-                    
-                </td>
-                <td>
-                    
-                </td>
-                <td>
-                    
-                </td>
+				<th colspan="5">표기할 품목을 선택하세요.</th>
             </tr>
         </tbody>
     </table>

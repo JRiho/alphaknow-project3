@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.alphaknow.dao.ivDAO.InventoryDAO">
+
+	<!-- 모든 정보 인풋상자에 넣기 -->
+	<select id="InventorySelect" resultType="map">
+		SELECT 
+			i.*, 
+			pt.PRODUCT_CODE, 
+			pt.PRODUCT_NAME
+		FROM 
+			INVENTORY i
+		LEFT OUTER JOIN 
+			PRODUCT_TEMP pt 
+		ON 
+			i.PRODUCT_SEQ = pt.PRODUCT_SEQ
+	</select>
+	
+	<!-- 보유재고 현황 -->
+	<select id="InventoryNow" resultType="map">
+		SELECT 
+			i.PRODUCT_SEQ, 
+			sum(i.PRODUCT_AMOUNT) AS PRODUCT_AMOUNT, 
+			i.PRODUCT_TYPE, 
+			pt.PRODUCT_CODE, 
+			pt.PRODUCT_NAME
+		FROM 
+			INVENTORY i
+		LEFT OUTER JOIN 
+			PRODUCT_TEMP pt 
+		ON 
+			i.PRODUCT_SEQ = pt.PRODUCT_SEQ
+		WHERE 
+			i.PRODUCT_SEQ = pt.PRODUCT_SEQ
+		GROUP BY 
+			i.PRODUCT_SEQ, 
+			i.PRODUCT_TYPE, 
+			pt.PRODUCT_CODE, 
+			pt.PRODUCT_NAME
+	</select>
+	
+	<!-- AJAX -->
+	
+		<!-- 재고현황 클릭 시 상세 나오기 -->
+		<select id="InventoryDetailAjax" resultType="map">
+			SELECT 
+				i.*, 
+				pt.PRODUCT_CODE, 
+				pt.PRODUCT_NAME
+			FROM 
+				INVENTORY i
+			LEFT OUTER JOIN 
+				PRODUCT_TEMP pt 
+			ON 
+				i.PRODUCT_SEQ = pt.PRODUCT_SEQ
+			WHERE 
+				i.PRODUCT_SEQ = #{product_seq}
+		</select>
+</mapper>

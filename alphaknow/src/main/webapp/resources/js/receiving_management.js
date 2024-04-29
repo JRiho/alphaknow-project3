@@ -15,11 +15,12 @@ $(function() {
 // 입고일이 있을경우 추가이벤트
 window.addEventListener("load", function() {
     document.querySelectorAll(".receiving_date_css").forEach(function(receivingDate, index) {
-        if(receivingDate.value != "" || receivingDate.value != undefined) {
+        console.log(receivingDate.value)
+        if(receivingDate.value == "" || receivingDate.value == undefined) {
             console.log("비었음")
         } else {
             console.log("채웠음")
-            receivingDate.parentNode.parentNode.style.cssText = "background-color: #; color:4c4c4c;"
+            receivingDate.parentNode.parentNode.style.cssText = "background-color: #dadada;"
         }
     })
 })
@@ -494,7 +495,7 @@ $(function() {
             alert("결재할 거래를 하나 이상 선택해 주세요.")
         } else if($(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '결재완료'
                || $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '반려'
-               || $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '배송완료') {
+               || $(".selectRequestList:checked").closest("tr").find(".sign_status").val() == '입고완료') {
             alert("결재대기중인 거래만 결재확인이 가능합니다.")
         } else {
             // 이름값 지우기
@@ -582,7 +583,8 @@ window.addEventListener("load", function() {
     document.querySelector(".receiving_complete").addEventListener("click", function() {
 
         // 결재완료 처리된 건만 입고완료 가능하게 하기
-        let = signStatus = document.querySelector(".sign_status").value;
+        let signStatus = document.querySelector(".selectRequestList:checked").parentNode.parentNode.querySelector(".sign_status").value;
+        //document.querySelector(".sign_status").value;
         let selectedboxesLength = document.querySelectorAll(".selectRequestList:checked").length;
         if(signStatus === '결재완료' && selectedboxesLength === 1) {
             let isConfirm = confirm("보유재고에 추가됩니다.\n입고처리 하시겠습니까?")

@@ -705,3 +705,9 @@ select:focus {
 #sign_ok:hover, #sign_cancel:hover {
     opacity: 0.8; /* 호버 시 투명도 조절 */
 }
+
+/* 중앙선 스타일 */
+.center_line {
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+}

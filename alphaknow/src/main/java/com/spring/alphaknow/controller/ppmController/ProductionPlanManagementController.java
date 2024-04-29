@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.alphaknow.dto.inventoryDTO.InventoryDTO;
 import com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO;
 import com.spring.alphaknow.service.ppmService.ProductionPlanManagementService;
 
@@ -21,7 +22,7 @@ public class ProductionPlanManagementController {
 	@RequestMapping("/ppm/select")
 	public String ppmPage(Model model) {
 		
-		List list = productionPlanManagementService.ppmList();
+		List<InventoryDTO> list = productionPlanManagementService.ppmList();
 
 		model.addAttribute("list", list);
 

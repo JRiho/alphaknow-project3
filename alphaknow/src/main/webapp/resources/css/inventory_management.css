@@ -1,50 +1,87 @@
-/* 재고관리 */
-.inventory_management_header {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-/* 재고관리목록, 상세 */
-.inventory_management_list_header,
+/* 헤더 스타일 */
+.inventory_management_header,
 .inventory_management_detail_header {
-    font-size: 20px;
-    font-weight: 500;
-    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
-/* 검색창과 날짜조회 나란히 두기 & 상단여백 */
-.search_buttonset {
-    display: flex;
-    padding-top: 5px;
-}
-
-.search_buttonset2 {
-    margin-left: 30px;
-}
-
-/* 테이블이랑 위에 여백 */
+/* 테이블 스타일 */
 .inventory_list_table_container,
 .inventory_detail_table_container {
-    padding-top: 5px;
-    min-height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    margin-top: 10px;
 }
 
-/* 테이블 넓이 */
 .inventory_list_table,
 .inventory_detail_table {
-    width: 97%;
+    width: 100%;
+    border-collapse: collapse;
 }
 
+.inventory_list_table th,
+.inventory_list_table td,
+.inventory_detail_table th,
+.inventory_detail_table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
 
+.inventory_list_table th,
+.inventory_detail_table th {
+    background-color: #f2f2f2;
+}
 
+tr:hover {
+    background-color: #e5e5e5; /* 마우스가 올라가면 배경색 변경 */
+}
 
+/* 버튼 세트 스타일 */
+.search_buttonset {
+    margin-top: 20px;
+    display: flex;
+}
 
-/* 중앙구분선 */
+.search_buttonset div {
+    margin-right: 10px;
+}
+
+.search_buttonset div input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search_buttonset2 input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search_buttonset2 button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search_buttonset2 button:hover {
+    background-color: #0056b3;
+}
+
+/* 중앙선 스타일 */
 .center_line {
-    /* 상단에 여백 */
-    margin-top: 30px;
-    border-top: 1px solid gray;
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+}
+
+/* 인풋상자 테두리 효과 */
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #007bff; /* 입력 상자에 포커스를 주면 테두리 색상 변경 */
+    outline: none; /* 포커스 효과 제거 */
+    transition: border-color 0.3s ease-in-out;
 }

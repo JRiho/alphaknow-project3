@@ -249,7 +249,8 @@
 			UPDATE 
 				RECEIVING_MANAGEMENT
 			SET
-				RECEIVING_DATE = sysdate
+				RECEIVING_DATE = sysdate,
+				SIGN_STATUS = '입고완료'
 			WHERE 
 				TRADE_CODE = #{tradeCode}
 		</update>
