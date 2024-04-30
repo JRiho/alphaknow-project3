@@ -1,7 +1,6 @@
 package com.spring.alphaknow.filter;
 
-import org.springframework.stereotype.Component;
-import org.springframework.core.annotation.Order;
+import java.io.IOException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,11 +11,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.annotation.WebFilter;
 
-import java.io.IOException;
-
-@Component
-@Order(1) // 필터 실행 순서를 지정, 필요에 따라 변경 가능
+@WebFilter("/*")
 public class AlphaFilter implements Filter {
     
     @Override
@@ -31,7 +28,8 @@ public class AlphaFilter implements Filter {
         HttpSession session = req.getSession(false); // 세션 가져오기 (없으면 null 반환)
         String uri = req.getRequestURI();
 
-        System.out.println("필터 적용 확인: " + uri); // 처리 중인 URI 로깅
+        // filter 적용안되면 주석 풀어서 확인하기!
+//        System.out.println("필터 적용 확인: " + uri); // 처리 중인 URI 로깅 
 
         // CSS, JS, 이미지 파일 처리
         if (uri.endsWith(".css")) {
@@ -56,10 +54,10 @@ public class AlphaFilter implements Filter {
                 res.sendRedirect(req.getContextPath() + "/login"); // 로그인 페이지로 리다이렉트
             } else {
                 // 권한에 따른 접근 제어
-                if ((uri.contains("/alphaknow/process/") || uri.contains("/equipment")) && !"admin".equals(session.getAttribute("userType"))) {
-                    res.sendRedirect(req.getContextPath() + "/accessDenied.jsp"); // 접근 거부 페이지로 리다이렉트
+                if ((uri.contains("/alphaknow/process/") || uri.contains("/equipment") || uri.contains("/processcode") || uri.contains("/processproduce") || uri.contains("/processproduct")) && !"admin".equals(session.getAttribute("userType"))) {
+                    res.sendRedirect(req.getContextPath() + "/accessdenied"); // 접근 거부 페이지로 리다이렉트
                 } else {
-                    chain.doFilter(req, res); // 요청을 다음 필터나 대상 리소스로 전달
+                    chain.doFilter(req, res); // 요청을 다음 필터나 대상 리소스로 전달 
                 }
             }
         }   
