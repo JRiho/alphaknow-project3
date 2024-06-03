@@ -18,15 +18,15 @@ public class ProductionPlanManagementService {
 		return productionPlanManagementDAO.ppmSelect();
 	}
 	
-	public ProductPlanManagementDTO ppmInsert(ProductPlanManagementDTO dto) {
-		return productionPlanManagementDAO.ppmInsert(dto);
+	public void ppmInsert(ProductPlanManagementDTO dto) {
+		productionPlanManagementDAO.ppmInsert(dto);
 	}
 	
-	public ProductPlanManagementDTO ppmUpdate(ProductPlanManagementDTO dto) {
-		return productionPlanManagementDAO.ppmUpdate(dto);
+	public void ppmUpdate(ProductPlanManagementDTO dto) {
+		productionPlanManagementDAO.ppmUpdate(dto);
 	}
 	
-	public String ppmDelete(String ppc) {
-		return productionPlanManagementDAO.ppmDelete(ppc);
+	public void ppmDelete(String ppc) {
+		productionPlanManagementDAO.ppmDelete(ppc);
 	}
 }

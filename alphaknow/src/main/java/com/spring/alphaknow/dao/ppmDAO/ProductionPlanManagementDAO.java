@@ -9,7 +9,7 @@ import com.spring.alphaknow.dto.ppmDTO.ProductPlanManagementDTO;
 @Mapper
 public interface ProductionPlanManagementDAO {
 	List ppmSelect();
-	ProductPlanManagementDTO ppmInsert(ProductPlanManagementDTO dto);
-	ProductPlanManagementDTO ppmUpdate(ProductPlanManagementDTO dto);
-	String ppmDelete(String ppc);
+	void ppmInsert(ProductPlanManagementDTO dto);
+	void ppmUpdate(ProductPlanManagementDTO dto);
+	void ppmDelete(String ppc);
 }

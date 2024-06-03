@@ -224,9 +224,9 @@ public class ReceivingManagementController {
 			dto.setProductSeq(product_seq[i]);
 			dto.setLot(lot[i]);
 			dto.setRequestAmount(product_amount[i]);			
+			receivingManagementService.rmToiv(dto);
 		}
 		
-		receivingManagementService.rmToiv(dto);
 		
 		return "redirect:/receivingManagement/list";
 	}
